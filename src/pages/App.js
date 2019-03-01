@@ -1,39 +1,30 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { Provider } from 'react-redux'
-
-import store from '../store'
+import Routers from '../router/router'
 import Header from '../components/header/header'
-import Sider from '../components/sider/sider'
-import Recommend from './recommend/recommend'
-import SongList from './songlist/songlist'
-import Rank from './rank/rank'
-import Singer from './singer/singer'
+import Nav from '../components/nav/nav'
+import Lyrics from '../components/lyrics/lyrics'
+import Bar from '../components/bar/bar'
+import './App.scss'
+import store from '../store'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      redirect: true
-    }
-  }
-
   render() {
     return (
       <Provider store={store}>
-        <Router>
-          <div className="App">
-            <Header />
-            <Sider />
-            <div className="app-background" />
-            {/* exact 路径完全相等的时候才显示路由内的内容 */}
-            <Route exact path="/" component={Recommend} />
-            <Route path="/songlist" component={SongList} />
-            <Route path="/rank" component={Rank} />
-            <Route path="/singer" component={Singer} />
-            {this.state.redirect ? <Redirect to="/" /> : null}
+        <div className="m-App">
+          <Header />
+          <div className="m-App-Content">
+            <div className="m-App-Content-l">
+              <Nav />
+              <Routers />
+            </div>
+            <div className="m-App-Content-r">
+              <Lyrics />
+            </div>
           </div>
-        </Router>
+          <Bar />
+        </div>
       </Provider>
     )
   }

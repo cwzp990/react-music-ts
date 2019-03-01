@@ -1,0 +1,4 @@
+@import '../../styles/mixin.scss';
+.m-Bar {
+  @include wh(100%, 85px);
+}

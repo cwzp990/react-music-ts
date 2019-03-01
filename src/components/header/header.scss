@@ -1,0 +1,12 @@
+@import '../../styles/mixin.scss';
+.m-Header {
+  position: relative;
+  @include wh(100%, 60px);
+  .m-Header-title {
+    @include center();
+  }
+  .m-Header-user {
+    @include ct();
+    right: 0;
+  }
+}
