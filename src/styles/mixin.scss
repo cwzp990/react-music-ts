@@ -1,3 +1,15 @@
+// 弹出框背景颜色 灰色
+$pop-gray: #000;
+
+// 边框颜色 灰色
+$border-gray: #ccc;
+
+// 正常状态下字体颜色
+$fc: hsla(0, 0%, 100%, 0.6);
+
+// hover状态下背景颜色
+$hover-bgc: #ffaa20; 
+
 // 背景图片地址和大小
 @mixin bis($url) {
 	background-image: url($url);
@@ -57,13 +69,6 @@
 	fill: $fill;
 }
 
-// 单行文本省略号
-@mixin nowrap() {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
 // 多行文本省略号
 @mixin nowraps($row) {
 	display: -webkit-box;
@@ -71,16 +76,4 @@
 	-webkit-line-clamp: $row;
 	word-break: break-all;
 	overflow: hidden;
-}
-
-// 清除浮动
-.clearfix {
-  &:after {
-    display: block;
-    visibility: hidden;
-    content: '.';
-    height: 0;
-    line-height: 0;
-    clear: both;
-  }
 }

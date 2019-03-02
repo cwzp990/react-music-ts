@@ -1,0 +1,42 @@
+@import '../../styles/mixin.scss';
+.m-Classify {
+  display: flex;
+  flex-direction: column;
+  .m-Classify-all {
+    @include wh(100%, 30px);
+  }
+  .m-Classify-other {
+    display: flex;
+    flex-direction: column;
+    .other-item {
+      display: flex;
+      margin-bottom: 10px;
+      .item-name {
+        width: calc(100% / 6);
+        flex: 0 0 calc(100% / 6);
+        text-align: center;
+        margin-right: 10px;
+      }
+      .item-tag {
+        display: flex;
+        flex-wrap: wrap;
+        flex: 1;
+        .tag-box {
+          @include wh(calc(100% / 6), 30px);
+        }
+      }
+    }
+  }
+}
+
+.box {
+  border: 1px solid $border-gray;
+  text-align: center;
+  @include sc(12px, $fc);
+  line-height: 30px;
+  cursor: pointer;
+  &:hover {
+    background: $hover-bgc;
+    color: #fff;
+  }
+}

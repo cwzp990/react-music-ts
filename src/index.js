@@ -4,6 +4,7 @@ import App from './pages/App'
 import * as serviceWorker from './serviceWorker'
 
 import './styles/reset.scss'
+import './styles/music.scss'
 
 ReactDOM.render(<App />, document.getElementById('root'))
 

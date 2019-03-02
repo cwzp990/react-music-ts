@@ -1,0 +1,26 @@
+@import './mixin.scss';
+
+/* 公共样式 */
+
+.flex {
+  display: flex;
+}
+
+// 清除浮动
+.clearfix {
+  &:after {
+    display: block;
+    visibility: hidden;
+    content: '.';
+    height: 0;
+    line-height: 0;
+    clear: both;
+  }
+}
+
+// 单行文本省略号
+.nowrap {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
