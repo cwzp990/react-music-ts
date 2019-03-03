@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import RankList from '../../components/ranklist/ranklist'
+import Loading from '../../components/loading/loading'
 import { api } from '../../api'
+
+import './rank.scss'
 
 class Rank extends Component {
   state = {
+    isLoading: false,
     surge: {}, // 云音乐飙升榜
     news: {}, // 新歌排行榜
     original: {}, // 原创歌曲排行榜
@@ -12,6 +16,10 @@ class Rank extends Component {
   }
 
   componentDidMount() {
+    this.getData()
+  }
+
+  getData = () => {
     axios
       .all([
         api.getTopListResource(3),
@@ -21,11 +29,12 @@ class Rank extends Component {
       ])
       .then(
         axios.spread((res1, res2, res3, res4) => {
-          const surge = res1.data
-          const news = res2.data
-          const original = res3.data
-          const hot = res4.data
+          const surge = res1.data.playlist
+          const news = res2.data.playlist
+          const original = res3.data.playlist
+          const hot = res4.data.playlist
           this.setState({
+            isLoading: true,
             surge,
             news,
             original,
@@ -36,21 +45,22 @@ class Rank extends Component {
   }
 
   render() {
-    const rank = [
-      this.state.surge,
-      this.state.news,
-      this.state.original,
-      this.state.hot
-    ]
+    const rank = this.state.isLoading
+      ? [this.state.surge, this.state.news, this.state.original, this.state.hot]
+      : []
     return (
       <div className="m-Rank">
-        <ul>
-          {rank.map(item => (
-            <li key={item.id}>
-              <RankList list={item} />
-            </li>
-          ))}
-        </ul>
+        {rank.length ? (
+          <ul>
+            {rank.map(item => (
+              <li key={item.id}>
+                <RankList list={item} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <Loading />
+        )}
       </div>
     )
   }

@@ -1,0 +1,6 @@
+@import '../../styles/mixin.scss';
+.m-Rank {
+  height: calc(100vh - 185px);
+  margin-top: -15px;
+  overflow: auto;
+}

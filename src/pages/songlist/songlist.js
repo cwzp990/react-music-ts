@@ -18,6 +18,10 @@ class SongList extends Component {
   }
 
   componentDidMount() {
+    this.getData()
+  }
+
+  getData = () => {
     api.getCategoryPlayList().then(res => {
       if (res.status === 200) {
         this.setState({

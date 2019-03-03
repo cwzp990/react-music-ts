@@ -1,0 +1,13 @@
+@import '../../styles/mixin.scss';
+.m-Loading {
+  @include allcover();
+  @include wh(100%, 100%);
+  z-index: 99999;
+  background-color: $pop-gray;
+  .m-Loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include wh(100%, 100%);
+  }
+}

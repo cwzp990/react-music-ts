@@ -1,5 +1,5 @@
 // 弹出框背景颜色 灰色
-$pop-gray: #000;
+$pop-gray: rgba(0, 0, 0, 0.5);
 
 // 边框颜色 灰色
 $border-gray: #ccc;
@@ -19,7 +19,7 @@ $hover-bgc: #ffaa20;
 
 // 定位全屏
 @mixin allcover{
-	position:absolute;
+	position:fixed;
 	top:0;
 	right:0;
 }

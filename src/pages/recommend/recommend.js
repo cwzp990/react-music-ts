@@ -12,6 +12,10 @@ class Recommend extends Component {
   }
 
   componentDidMount() {
+    this.getData()
+  }
+
+  getData = () => {
     api.getBanner().then(res => {
       if (res.status === 200) {
         this.setState({
@@ -27,7 +31,7 @@ class Recommend extends Component {
       }
     })
   }
-  
+
   // 上一页
   prev = () => {
     this.refs.banner.prev()
