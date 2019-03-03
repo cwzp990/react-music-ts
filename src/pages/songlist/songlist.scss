@@ -1,26 +1,6 @@
 @import '../../styles/mixin.scss';
 .m-SongList {
   position: relative;
-  .m-SongList-tag {
-    margin: 10px 0;
-    line-height: 18px;
-    .title {
-      font-size: 14px;
-    }
-    .hot-tags {
-      display: flex;
-      margin-left: 10px;
-      .item-tag {
-        @include sc(14px, $fc);
-        padding: 0 10px;
-        border-right: 1px solid #fff;
-        cursor: pointer;
-        &:last-child {
-          border: none;
-        }
-      }
-    }
-  }
   .m-SongList-pop {
     display: none;
     position: absolute;

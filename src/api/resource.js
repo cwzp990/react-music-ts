@@ -30,6 +30,7 @@ const apiMusic = {
   topPlaylist: '/top/playlist', //  歌单(网友精选歌单
   newAlbum: '/top/albums', // 新碟上架
   topArtists: '/top/artists', //  热门歌手
+  querySinger: '/artist/list',
   topList: '/top/list', //  音乐排行榜
   personalized: '/personalized', //  推荐歌单
   highquality: '/top/playlist/highquality', // 精品歌单
@@ -79,6 +80,7 @@ export const FmTrashResource = API_ROOT.concat(apiMusic.fmTrash)
 export const CategoryPlaylist = API_ROOT.concat(apiMusic.categoryPlaylist)
 export const TopPlaylistResource = API_ROOT.concat(apiMusic.topPlaylist)
 export const NewAlbumResource = API_ROOT.concat(apiMusic.newAlbum)
+export const QuerySinger = API_ROOT.concat(apiMusic.querySinger)
 export const TopArtistsResource = API_ROOT.concat(apiMusic.topArtists)
 export const TopListResource = API_ROOT.concat(apiMusic.topList)
 export const PersonalizedResource = API_ROOT.concat(apiMusic.personalized)

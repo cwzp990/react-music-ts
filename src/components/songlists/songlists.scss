@@ -6,31 +6,31 @@
     grid-row-gap: 25px;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     justify-content: space-between;
-  }
-  .list-item {
-    position: relative;
-    @include wh(150px, 150px);
-    .item-tips {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      @include sc(12px, #fff);
-      background: $pop-gray;
-    }
-    .item-count {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-    .item-play {
-      display: none;
-      position: absolute;
-      right: 0;
-      bottom: 0;
-    }
-    .item-title {
-      @include sc(13px, $fc);
+    .list-item {
+      position: relative;
+      @include wh(150px, 150px);
+      .item-tips {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include sc(12px, #fff);
+        background: $pop-gray;
+      }
+      .item-count {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .item-play {
+        display: none;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+      .item-title {
+        @include sc(13px, $fc);
+      }
     }
   }
 }

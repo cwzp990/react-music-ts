@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 class Player extends Component {
   render () {
     return (
-      <div>我是Player</div>
+      <div className="m-Player">
+      </div>
     )
   }
 }

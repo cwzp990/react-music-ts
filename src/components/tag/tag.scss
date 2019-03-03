@@ -1,0 +1,18 @@
+@import '../../styles/mixin.scss';
+.m-Tag {
+  margin: 10px 0;
+  line-height: 18px;
+  .m-Tag-list {
+    display: flex;
+    margin-left: 10px;
+    .item-tag {
+      @include sc(14px, $fc);
+      padding: 0 10px;
+      border-right: 1px solid #fff;
+      cursor: pointer;
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+}

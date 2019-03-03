@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Icon } from 'antd'
 
 import './songlists.scss'
 
 class SongLists extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
+  getListDetails = item => {
+    this.context.router.history.push(`/songlist/${item.id}`)
+  }
+
   render() {
     const songList = this.props.songList || []
     return (
@@ -11,7 +20,11 @@ class SongLists extends Component {
         <ul className="list-wrapper">
           {songList.map(list => {
             return (
-              <li className="list-item" key={list.id}>
+              <li
+                key={list.id}
+                className="list-item"
+                onClick={this.getListDetails.bind(this, list)}
+              >
                 <p className="item-tips">{list.copywriter}</p>
                 <span className="item-count">{list.playCount}</span>
                 <span className="item-play">

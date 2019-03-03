@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import RankList from '../../components/ranklist/ranklist'
+import RankList from './ranklist/ranklist'
 import Loading from '../../components/loading/loading'
 import { api } from '../../api'
 
@@ -51,9 +51,9 @@ class Rank extends Component {
     return (
       <div className="m-Rank">
         {rank.length ? (
-          <ul>
+          <ul className="m-Rank-wrapper">
             {rank.map(item => (
-              <li key={item.id}>
+              <li key={item.id} className="m-Rank-list">
                 <RankList list={item} />
               </li>
             ))}

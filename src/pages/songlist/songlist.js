@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, Icon } from 'antd'
 import { api } from '../../api/index'
 import Classify from '../../components/classify/classify'
+import Tag from '../../components/tag/tag'
 import SongLists from '../../components/songlists/songlists'
 
 import './songlist.scss'
@@ -59,16 +60,7 @@ class SongList extends Component {
           流行
           <Icon type="down" />
         </Button>
-        <div className="m-SongList-tag flex">
-          <span className="title">热门标签:</span>
-          <ul className="hot-tags">
-            {category.hot.map((tag, index) => (
-              <li key={index} className="item-tag">
-                {tag.name}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <Tag title="热门标签:" category={category.hot} />
         <div className="m-SongList-pop">
           <Classify category={category} />
         </div>

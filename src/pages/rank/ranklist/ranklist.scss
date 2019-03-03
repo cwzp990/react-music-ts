@@ -1,0 +1,25 @@
+@import '../../../styles/mixin.scss';
+.m-RankList {
+  @include wh(100%, 100%);
+  .m-RankList-title {
+    position: relative;
+    height: 150px;
+    .list-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include wh(100%, 100%);
+    }
+  }
+  .rank-item {
+    display: flex;
+    justify-content: space-between;
+    @include sc(13px, $fc);
+    line-height: 30px;
+  }
+  .more {
+    text-align: right;
+    @include sc(13px, $fc);
+    line-height: 30px;
+  }
+}

@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.title {
+  font-size: 14px;
+}
+
 // 清除浮动
 .clearfix {
   &:after {

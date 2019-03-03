@@ -1,0 +1,73 @@
+@import '../../styles/mixin.scss';
+.m-SonglistDetails {
+  height: calc(100vh - 185px);
+  overflow: auto;
+  .m-Details-wrapper {
+    display: flex;
+    flex-direction: column;
+    .m-Details-header {
+      display: flex;
+      justify-content: space-between;
+      .m-Details-cover {
+        flex: 0 0 150px;
+        @include wh(150px, 150px);
+        margin-right: 15px;
+      }
+      .m-details-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex: 1;
+        .m-details-info-title {
+          display: flex;
+          justify-content: space-between;
+          .m-details-info-name {
+            @include sc(16px, #fff);
+          }
+          .m-details-info-count {
+            display: flex;
+            .info-count {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              flex: 1;
+              padding: 0 8px;
+              @include sc(12px, $fc);
+              &:first-child {
+                border-right: 1px solid $border-gray;
+              }
+            }
+          }
+        }
+        .m-details-info-author {
+          display: flex;
+          align-items: center;
+          .author-avatar {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+            .author-avatar-wrapper {
+              @include avatar(30px, 30px);
+            }
+            .author-name {
+              @include sc(14px, $fc-dark);
+            }
+          }
+          .author-createTime {
+            @include sc(12px, $fc);
+          }
+        }
+        .m-details-brief {
+          @include sc(12px, $fc);
+          @include nowraps(3);
+        }
+      }
+    }
+    .m-Details-list {
+      .ant-card {
+        background-color: transparent;
+        border: none;
+      }
+    }
+  }
+}

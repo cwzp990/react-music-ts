@@ -1,3 +1,6 @@
+// 背景色
+$bgc: rgba(0, 0, 0, 0.3);
+
 // 弹出框背景颜色 灰色
 $pop-gray: rgba(0, 0, 0, 0.5);
 
@@ -7,73 +10,85 @@ $border-gray: #ccc;
 // 正常状态下字体颜色
 $fc: hsla(0, 0%, 100%, 0.6);
 
+// 深一点的灰色
+$fc-dark: hsla(0, 0%, 0%, 0.6);
+
 // hover状态下背景颜色
-$hover-bgc: #ffaa20; 
+$hover-bgc: #ffaa20;
 
 // 背景图片地址和大小
 @mixin bis($url) {
-	background-image: url($url);
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 // 定位全屏
-@mixin allcover{
-	position:fixed;
-	top:0;
-	right:0;
+@mixin allcover {
+  position: fixed;
+  top: 0;
+  right: 0;
 }
 
 // 定位上下左右居中
 @mixin center {
-	position: absolute;
-	top: 50%;
+  position: absolute;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 // 定位上下居中
 @mixin ct {
-	position: absolute;
-	top: 50%;
+  position: absolute;
+  top: 50%;
   transform: translateY(-50%);
 }
 
 // 定位左右居中
 @mixin cl {
-	position: absolute;
-	left: 50%;
+  position: absolute;
+  left: 50%;
   transform: translateX(-50%);
 }
 
 // 宽高
-@mixin wh($width, $height){
-	width: $width;
-	height: $height;
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
 }
 
 // 字体大小、行高、字体
 @mixin font($size, $line-height, $family: 'Microsoft YaHei') {
-	font: #{$size}/#{$line-height} $family;
+  font: #{$size}/#{$line-height} $family;
 }
 
 // 字体大小，颜色
-@mixin sc($size, $color){
-	font-size: $size;
-	color: $color;
+@mixin sc($size, $color) {
+  font-size: $size;
+  color: $color;
 }
 
 // svg
 @mixin svg($size, $fill) {
-	font-size: $size;
-	fill: $fill;
+  font-size: $size;
+  fill: $fill;
 }
 
 // 多行文本省略号
 @mixin nowraps($row) {
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: $row;
-	word-break: break-all;
-	overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $row;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+// 圆形头像
+@mixin avatar($width, $height) {
+  position: relative;
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+  overflow: hidden;
 }
