@@ -6,6 +6,7 @@ import Header from '../components/header/header'
 import Nav from '../components/nav/nav'
 import Lyrics from '../components/lyrics/lyrics'
 import Bar from '../components/bar/bar'
+import Mine from '../pages/mine/mine'
 import './App.scss'
 import store from '../store'
 
@@ -26,6 +27,7 @@ class App extends Component {
               </div>
             </div>
             <Bar />
+            <Mine />
           </div>
         </BrowserRouter>
       </Provider>

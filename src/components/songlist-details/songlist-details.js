@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Tag from '../../components/tag/tag'
 import Loading from '../loading/loading'
 import { api } from '../../api/index'
+import { fmtDate } from '../../utils/common'
 
 import './songlist-details.scss'
 
@@ -62,7 +63,7 @@ class SonglistDetails extends Component {
                     </div>
                     <p className="author-name">{details.creator.nickname}</p>
                   </div>
-                  <p className="author-createTime">{details.createTime}</p>
+                  <p className="author-createTime">{fmtDate(details.createTime)}</p>
                 </div>
                 <div className="m-details-info-tag">
                   <Tag title="标签" category={details.tags} />
