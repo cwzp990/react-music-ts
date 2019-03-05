@@ -28,3 +28,8 @@ export const formatDuring = function (mss){
   seconds = seconds < 10 && seconds >= 1 ? ('0' + seconds) : seconds;
   return hours === '00' ? '' : hours + " :" + minutes + " :" + seconds;
 }
+
+// 时间戳转换成当地时间 2019/3/5 下午4:19
+export const toLocalTime = function (time) {
+  return new Date(parseInt(time)).toLocaleString().replace(/:\d{1,2}$/,' ')
+}

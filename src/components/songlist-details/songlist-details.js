@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Tag from '../../components/tag/tag'
+import Comment from '../../components/comment/comment'
 import Loading from '../loading/loading'
 import { Tabs, Table } from 'antd'
 import { api } from '../../api/index'
-import { fmtDate, formatDuring } from '../../utils/common'
+import { fmtDate } from '../../utils/common'
 
 import './songlist-details.scss'
 
@@ -34,7 +35,10 @@ class SonglistDetails extends Component {
     this.state = {
       isLoading: false,
       details: {}, // 歌单详情数据
-      list: [],
+      songLists: [],
+      comments: [],
+      hotComments: [],
+      count: undefined,
       selectedRowKeys: []
     }
   }
@@ -47,7 +51,7 @@ class SonglistDetails extends Component {
     // console.log(this.props) 获取url参数
     api.getPlaylistDetailResource(this.props.match.params.id).then(res => {
       if (res.status === 200) {
-        const list = res.data.playlist.tracks.map((item, index) => {
+        const songLists = res.data.playlist.tracks.map((item, index) => {
           let singer = ''
           item.ar.forEach(i => {
             singer += i.name + '/'
@@ -65,7 +69,19 @@ class SonglistDetails extends Component {
         this.setState({
           isLoading: true,
           details: res.data.playlist,
-          list
+          songLists
+        })
+      }
+    })
+  }
+
+  getCommentList = () => {
+    api.getPlaylistCommentResource(this.props.match.params.id).then(res => {
+      if (res.status === 200) {
+        this.setState({
+          comments: res.data.comments,
+          count: res.data.total,
+          hotComments: res.data.hotComments
         })
       }
     })
@@ -73,6 +89,13 @@ class SonglistDetails extends Component {
 
   onSelectChange = selectedRowKeys => {
     this.setState({ selectedRowKeys })
+  }
+
+  // tab页点击回调
+  changeTab = tab => {
+    if (tab === '2') {
+      this.getCommentList()
+    }
   }
 
   render() {
@@ -127,16 +150,19 @@ class SonglistDetails extends Component {
               </div>
             </div>
             <div className="m-Details-list">
-              <Tabs>
+              <Tabs onTabClick={this.changeTab}>
                 <TabPane tab="歌曲列表" key="1">
                   <Table
                     rowSelection={rowSelection}
                     columns={columns}
-                    dataSource={this.state.list}
+                    dataSource={this.state.songLists}
                   />
                 </TabPane>
                 <TabPane tab="评论" key="2">
-                  Content of Tab 2
+                  <h3>精彩评论</h3>
+                  <Comment commentList={this.state.hotComments} />
+                  <h3>最新评论({this.state.count})</h3>
+                  <Comment commentList={this.state.comments} />
                 </TabPane>
               </Tabs>
             </div>
