@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux'
 import * as types from './actionTypes'
 import { playMode } from '../utils/common'
+
 // 定义初始 state
 const defaultState = {
   // 歌手
@@ -16,9 +17,9 @@ const defaultState = {
   // 播放方式
   mode: playMode.sequence,
   // 我的歌单显隐
-  mine: false,
+  showMine: false,
   // 用户聊天消息
-  msg: false
+  showMsg: false
 }
 
 // state 里存放了所有的数据
@@ -84,22 +85,22 @@ function mode(mode = defaultState.mode, action) {
 }
 
 // 我的歌单抽屉显隐
-function myList(mine = defaultState.mine, action) {
+function showMyList(showMine = defaultState.showMine, action) {
   switch (action.type) {
     case types.SET_MY_LIST:
-      return action.mine
+      return action.showMine
     default:
-      return mine
+      return showMine
   }
 }
 
 // 用户聊天消息显隐
-function msg(msg = defaultState.msg, action) {
+function showMsg(showMsg = defaultState.showMsg, action) {
   switch (action.type) {
     case types.SET_MSG:
-      return action.msg
+      return action.showMsg
     default:
-      return msg
+      return showMsg
   }
 }
 
@@ -110,8 +111,8 @@ const reducer = combineReducers({
   sequenceList,
   currentIndex,
   mode,
-  myList,
-  msg
+  showMyList,
+  showMsg
 })
 
 export default reducer

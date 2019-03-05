@@ -42,16 +42,16 @@ export function setMode(mode) {
   }
 }
 
-export function setMyList(mine) {
+export function setMyList(showMine) {
   return {
     type: types.SET_MY_LIST,
-    mine
+    showMine
   }
 }
 
-export function setMsg(msg) {
+export function setMsg(showMsg) {
   return {
     type: types.SET_MSG,
-    msg
+    showMsg
   }
 }

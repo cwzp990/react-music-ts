@@ -2,21 +2,18 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Button } from 'antd'
-import { setMyList } from "../../store/actions"
+import { setMyList } from '../../store/actions'
 
 import './nav.scss'
 
 class Nav extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      mine: false
-    }
+    this.state = {}
   }
 
   showDrawer = () => {
     this.props.setMyList(true)
-    console.log(this.props)
   }
 
   render() {
@@ -42,16 +39,12 @@ class Nav extends Component {
   }
 }
 
-// 映射Redux全局的state到组件的props上
-const mapStateToProps = state => ({
-  mine: state.mine
-})
-
-// 映射dispatch到props
+// 映射dispatch到props (发送)
 const mapDispatchToProps = dispatch => ({
   setMyList: status => {
+    console.log(dispatch)
     dispatch(setMyList(status))
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default connect(mapDispatchToProps)(Nav)
