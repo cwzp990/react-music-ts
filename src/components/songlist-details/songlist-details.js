@@ -1,10 +1,32 @@
 import React, { Component } from 'react'
 import Tag from '../../components/tag/tag'
 import Loading from '../loading/loading'
+import { Tabs, Table } from 'antd'
 import { api } from '../../api/index'
-import { fmtDate } from '../../utils/common'
+import { fmtDate, formatDuring } from '../../utils/common'
 
 import './songlist-details.scss'
+
+const TabPane = Tabs.TabPane
+
+const columns = [
+  {
+    title: '序号',
+    dataIndex: 'index'
+  },
+  {
+    title: '音乐标题',
+    dataIndex: 'title'
+  },
+  {
+    title: '歌手',
+    dataIndex: 'singer'
+  },
+  {
+    title: '专辑',
+    dataIndex: 'album'
+  }
+]
 
 class SonglistDetails extends Component {
   constructor(props) {
@@ -12,7 +34,8 @@ class SonglistDetails extends Component {
     this.state = {
       isLoading: false,
       details: {}, // 歌单详情数据
-      key: 'tab1'
+      list: [],
+      selectedRowKeys: []
     }
   }
 
@@ -24,16 +47,43 @@ class SonglistDetails extends Component {
     // console.log(this.props) 获取url参数
     api.getPlaylistDetailResource(this.props.match.params.id).then(res => {
       if (res.status === 200) {
+        const list = res.data.playlist.tracks.map((item, index) => {
+          let singer = ''
+          item.ar.forEach(i => {
+            singer += i.name + '/'
+          })
+          singer = singer.slice(0, -1)
+          return {
+            index: index + 1,
+            singer,
+            title: item.name,
+            album: item.al.name,
+            picUrl: item.al.picUrl,
+            key: item.id
+          }
+        })
         this.setState({
           isLoading: true,
-          details: res.data.playlist
+          details: res.data.playlist,
+          list
         })
       }
     })
   }
 
+  onSelectChange = selectedRowKeys => {
+    this.setState({ selectedRowKeys })
+  }
+
   render() {
-    const details = this.state.details
+    const { details, selectedRowKeys } = this.state
+
+    // 全选
+    const rowSelection = {
+      selectedRowKeys,
+      onChange: this.onSelectChange
+    }
+
     return (
       <div className="m-SonglistDetails">
         {this.state.isLoading ? (
@@ -63,7 +113,9 @@ class SonglistDetails extends Component {
                     </div>
                     <p className="author-name">{details.creator.nickname}</p>
                   </div>
-                  <p className="author-createTime">{fmtDate(details.createTime)}</p>
+                  <p className="author-createTime">
+                    {fmtDate(details.createTime)}
+                  </p>
                 </div>
                 <div className="m-details-info-tag">
                   <Tag title="标签" category={details.tags} />
@@ -75,6 +127,18 @@ class SonglistDetails extends Component {
               </div>
             </div>
             <div className="m-Details-list">
+              <Tabs>
+                <TabPane tab="歌曲列表" key="1">
+                  <Table
+                    rowSelection={rowSelection}
+                    columns={columns}
+                    dataSource={this.state.list}
+                  />
+                </TabPane>
+                <TabPane tab="评论" key="2">
+                  Content of Tab 2
+                </TabPane>
+              </Tabs>
             </div>
           </div>
         ) : (
