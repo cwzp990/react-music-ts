@@ -1,4 +1,35 @@
 @import '../../styles/mixin.scss';
 .m-Bar {
-  @include wh(100%, 85px);
+  display: flex;
+  align-items: center;
+  @include wh(100%, 70px);
+  padding-bottom: 15px;
+  .m-Bar-playBtn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    @include sc(30px, $fc);
+    cursor: pointer;
+  }
+  .m-Progress-wrapper {
+    flex: 1;
+    margin: 0 15px;
+  }
+  .m-Bar-listBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include sc(30px, $fc);
+    cursor: pointer;
+    .m-Bar-sound {
+      display: flex;
+      align-items: center;
+      .ant-slider {
+        width: 100px;
+      }
+    }
+  }
+  .btn-center {
+    margin: 0 10px;
+  }
 }

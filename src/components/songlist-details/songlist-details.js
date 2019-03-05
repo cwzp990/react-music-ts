@@ -99,13 +99,7 @@ class SonglistDetails extends Component {
   }
 
   render() {
-    const { details, selectedRowKeys } = this.state
-
-    // 全选
-    const rowSelection = {
-      selectedRowKeys,
-      onChange: this.onSelectChange
-    }
+    const { details } = this.state
 
     return (
       <div className="m-SonglistDetails">
@@ -152,11 +146,7 @@ class SonglistDetails extends Component {
             <div className="m-Details-list">
               <Tabs onTabClick={this.changeTab}>
                 <TabPane tab="歌曲列表" key="1">
-                  <Table
-                    rowSelection={rowSelection}
-                    columns={columns}
-                    dataSource={this.state.songLists}
-                  />
+                  <Table columns={columns} dataSource={this.state.songLists} />
                 </TabPane>
                 <TabPane tab="评论" key="2">
                   <h3>精彩评论</h3>
