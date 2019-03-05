@@ -22,7 +22,7 @@ class Bar extends Component {
         </div>
         <div className="m-Bar-listBtn">
           <p className="m-Bar-sound">
-            <Icon type="sound" theme="outlined" />
+            <Icon type="sound" theme="filled" />
             <Slider />
           </p>
           <Icon type="retweet" theme="outlined" className="btn-center" />

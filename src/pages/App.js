@@ -28,6 +28,7 @@ class App extends Component {
             </div>
             <Bar />
             <Mine />
+            <Mine />
           </div>
         </BrowserRouter>
       </Provider>

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Drawer } from 'antd'
-import '../../api/index'
+import { api } from '../../api/index'
 
 import './mine.scss'
-import { api } from '../../api/index';
 
 class Mine extends Component {
   constructor(props) {
@@ -17,6 +16,10 @@ class Mine extends Component {
   }
 
   componentDidMount() {
+    this.getData()
+  }
+
+  getData = () => {
     api.getUserPlaylistResource(this.state.userId).then(res => {
       if (res.status === 200) {
         this.setState({
@@ -32,7 +35,6 @@ class Mine extends Component {
     })
   }
 
-
   render() {
     // const { mine } = this.props
     return (
@@ -44,13 +46,13 @@ class Mine extends Component {
         onClose={this.onClose}
         visible={this.state.visible}
       >
-      {
-        this.state.myList.map(list => {
+        {this.state.myList.map(list => {
           return (
-            <p key={list.id} className="nowrap m-Mine-title">{list.name}</p>
+            <p key={list.id} className="nowrap m-Mine-title">
+              {list.name}
+            </p>
           )
-        })
-      }
+        })}
       </Drawer>
     )
   }

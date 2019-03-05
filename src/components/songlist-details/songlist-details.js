@@ -38,8 +38,7 @@ class SonglistDetails extends Component {
       songLists: [],
       comments: [],
       hotComments: [],
-      count: undefined,
-      selectedRowKeys: []
+      count: undefined
     }
   }
 
@@ -85,10 +84,6 @@ class SonglistDetails extends Component {
         })
       }
     })
-  }
-
-  onSelectChange = selectedRowKeys => {
-    this.setState({ selectedRowKeys })
   }
 
   // tab页点击回调
