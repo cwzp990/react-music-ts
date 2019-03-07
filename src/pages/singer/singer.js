@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Empty } from 'antd'
 import Tag from '../../components/tag/tag'
 import { api } from '../../api'
 
@@ -57,18 +58,22 @@ class Singer extends Component {
           <Tag title="分类:" category={classify} />
           <Tag title="筛选:" category={hot} />
         </div>
-        <ul className="m-Singer-list">
-          {this.state.singerList.map(singer => {
-            return (
-              <li key="singer.id">
-                <p>
-                  <img src={singer.picUrl} />
-                </p>
-                <p className="item-name">{singer.name}</p>
-              </li>
-            )
-          })}
-        </ul>
+        {this.state.singerList.length ? (
+          <ul className="m-Singer-list">
+            {this.state.singerList.map(singer => {
+              return (
+                <li key={singer.id}>
+                  <p>
+                    <img src={singer.picUrl} />
+                  </p>
+                  <p className="item-name">{singer.name}</p>
+                </li>
+              )
+            })}
+          </ul>
+        ) : (
+          <Empty />
+        )}
       </div>
     )
   }

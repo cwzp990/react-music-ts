@@ -42,9 +42,11 @@ class Nav extends Component {
 // 映射dispatch到props (发送)
 const mapDispatchToProps = dispatch => ({
   setMyList: status => {
-    console.log(dispatch)
     dispatch(setMyList(status))
   }
 })
 
-export default connect(mapDispatchToProps)(Nav)
+export default connect(
+  null,
+  mapDispatchToProps
+)(Nav)

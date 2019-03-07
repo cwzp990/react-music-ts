@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Drawer } from 'antd'
 import { api } from '../../api/index'
+import { setMyList } from '../../store/actions'
 
 import './mine.scss'
 
@@ -9,13 +10,14 @@ class Mine extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      visible: true,
+      visible: false,
       userId: undefined || 88905019,
       myList: []
     }
   }
 
   componentDidMount() {
+    console.log(this.props)
     this.getData()
   }
 
@@ -30,13 +32,10 @@ class Mine extends Component {
   }
 
   onClose = () => {
-    this.setState({
-      visible: false
-    })
+    this.props.setMyList(false)
   }
 
   render() {
-    // const { mine } = this.props
     return (
       <Drawer
         title="我的歌单"
@@ -44,7 +43,7 @@ class Mine extends Component {
         width="17%"
         closable={false}
         onClose={this.onClose}
-        visible={this.state.visible}
+        visible={this.props.showMine}
       >
         {this.state.myList.map(list => {
           return (
@@ -63,4 +62,14 @@ const mapStateToProps = state => ({
   showMine: state.showMine
 })
 
-export default connect(mapStateToProps)(Mine)
+// 映射dispatch到props (发送)
+const mapDispatchToProps = dispatch => ({
+  setMyList: status => {
+    dispatch(setMyList(status))
+  }
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Mine)

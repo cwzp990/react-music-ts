@@ -21,10 +21,10 @@ class Bar extends Component {
           <Slider />
         </div>
         <div className="m-Bar-listBtn">
-          <p className="m-Bar-sound">
+          <div className="m-Bar-sound">
             <Icon type="sound" theme="filled" />
             <Slider />
-          </p>
+          </div>
           <Icon type="retweet" theme="outlined" className="btn-center" />
           <Icon type="bars" theme="outlined" />
         </div>
