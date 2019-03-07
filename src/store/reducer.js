@@ -9,7 +9,7 @@ const defaultState = {
   // 播放状态
   playing: false,
   // 当前播放列表
-  playlist: [],
+  playList: [],
   // 顺序列表
   sequenceList: [],
   // 播放单曲的序号
@@ -35,7 +35,7 @@ function singer(singer = defaultState.singer, action) {
 }
 
 // 设置播放状态
-function playingStatus(playing = defaultState.playing, action) {
+function playing(playing = defaultState.playing, action) {
   switch (action.type) {
     case types.SET_PLAY_STATUS:
       return action.playing
@@ -45,12 +45,12 @@ function playingStatus(playing = defaultState.playing, action) {
 }
 
 // 设置播放列表
-function playList(playlist = defaultState.playlist, action) {
+function playList(playList = defaultState.playList, action) {
   switch (action.type) {
     case types.SET_PLAY_LIST:
-      return action.playlist
+      return action.playList
     default:
-      return playlist
+      return playList
   }
 }
 
@@ -85,7 +85,7 @@ function mode(mode = defaultState.mode, action) {
 }
 
 // 我的歌单抽屉显隐
-function showMyList(showMine = defaultState.showMine, action) {
+function showMine(showMine = defaultState.showMine, action) {
   switch (action.type) {
     case types.SET_MY_LIST:
       return action.showMine
@@ -106,12 +106,12 @@ function showMsg(showMsg = defaultState.showMsg, action) {
 
 const reducer = combineReducers({
   singer,
-  playingStatus,
+  playing,
   playList,
   sequenceList,
   currentIndex,
   mode,
-  showMyList,
+  showMine,
   showMsg
 })
 

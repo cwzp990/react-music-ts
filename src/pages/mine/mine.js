@@ -17,7 +17,6 @@ class Mine extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props)
     this.getData()
   }
 
