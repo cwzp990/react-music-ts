@@ -52,7 +52,7 @@ class Singer extends Component {
     const hot = this.getEN()
 
     return (
-      <div className="m-Singer">
+      <div className="m-Singer scrollbar">
         <div className="m-Singer-nav">
           <Tag title="语种:" category={language} />
           <Tag title="分类:" category={classify} />

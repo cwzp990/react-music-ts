@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Tag from '../../components/tag/tag'
 import Comment from '../../components/comment/comment'
 import Loading from '../loading/loading'
-import { Tabs, Table } from 'antd'
+import { Tabs, Table, Tooltip } from 'antd'
 import { api } from '../../api/index'
 import { fmtDate } from '../../utils/common'
 
@@ -13,15 +13,18 @@ const TabPane = Tabs.TabPane
 const columns = [
   {
     title: '序号',
-    dataIndex: 'index'
+    dataIndex: 'index',
+    width: 50
   },
   {
     title: '音乐标题',
-    dataIndex: 'title'
+    dataIndex: 'title',
+    width: 210
   },
   {
     title: '歌手',
-    dataIndex: 'singer'
+    dataIndex: 'singer',
+    width: 130
   },
   {
     title: '专辑',
@@ -130,24 +133,37 @@ class SonglistDetails extends Component {
                   </p>
                 </div>
                 <div className="m-details-info-tag">
-                  <Tag title="标签" category={details.tags} />
+                  <Tag title="标签:" category={details.tags} />
                 </div>
-                <div>
-                  <span className="title">简介: </span>
-                  <span className="m-details-brief">{details.description}</span>
+                <div className="m-details-brief nowrap">
+                  <Tooltip
+                    placement="topLeft"
+                    overlayClassName="brief-card"
+                    title={details.description}
+                  >
+                    简介: {details.description}
+                  </Tooltip>
                 </div>
               </div>
             </div>
             <div className="m-Details-list">
               <Tabs onTabClick={this.changeTab}>
                 <TabPane tab="歌曲列表" key="1">
-                  <Table columns={columns} dataSource={this.state.songLists} />
+                  <Table
+                    size={'small'}
+                    scroll={{ y: 300 }}
+                    pagination={{ position: 'top', size: 'small' }}
+                    columns={columns}
+                    dataSource={this.state.songLists}
+                  />
                 </TabPane>
                 <TabPane tab="评论" key="2">
-                  <h3>精彩评论</h3>
-                  <Comment commentList={this.state.hotComments} />
-                  <h3>最新评论({this.state.count})</h3>
-                  <Comment commentList={this.state.comments} />
+                  <div className="m-Comment-container scrollbar">
+                    <h3>精彩评论</h3>
+                    <Comment commentList={this.state.hotComments} />
+                    <h3>最新评论({this.state.count})</h3>
+                    <Comment commentList={this.state.comments} />
+                  </div>
                 </TabPane>
               </Tabs>
             </div>

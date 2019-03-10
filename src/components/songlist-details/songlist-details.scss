@@ -1,7 +1,6 @@
 @import '../../styles/mixin.scss';
 .m-SonglistDetails {
   height: calc(100vh - 185px);
-  overflow: auto;
   .m-Details-wrapper {
     display: flex;
     flex-direction: column;
@@ -18,11 +17,12 @@
         flex-direction: column;
         justify-content: space-around;
         flex: 1;
+        width: calc(100% - 165px);
         .m-details-info-title {
           display: flex;
           justify-content: space-between;
           .m-details-info-name {
-            @include sc(16px, #fff);
+            @include sc(16px, $lg);
           }
           .m-details-info-count {
             display: flex;
@@ -32,7 +32,7 @@
               align-items: flex-end;
               flex: 1;
               padding: 0 8px;
-              @include sc(12px, $fc);
+              @include sc(12px, $lg);
               &:first-child {
                 border-right: 1px solid $border-gray;
               }
@@ -45,28 +45,33 @@
           .author-avatar {
             display: flex;
             align-items: center;
-            margin-right: 15px;
+            margin-right: 10px;
             .author-avatar-wrapper {
               @include avatar(30px, 30px);
+              margin-right: 10px;
             }
             .author-name {
-              @include sc(14px, $fc-dark);
+              @include sc(14px, $dg);
             }
           }
           .author-createTime {
-            @include sc(12px, $fc);
+            @include sc(12px, $lg);
           }
         }
         .m-details-brief {
-          @include sc(12px, $fc);
-          @include nowraps(3);
+          @include sc(12px, $lg);
+          width: 100%;
+          cursor: pointer;
         }
       }
     }
     .m-Details-list {
-      .ant-card {
-        background-color: transparent;
-        border: none;
+      .m-Comment-container {
+        @include wh(100%, calc(100vh - 390px));
+        overflow: auto;
+      }
+      .ant-table-pagination.ant-pagination {
+        margin: 0;
       }
     }
   }

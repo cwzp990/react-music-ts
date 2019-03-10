@@ -42,7 +42,7 @@ class Recommend extends Component {
 
   render() {
     return (
-      <div className="m-Recommend">
+      <div className="m-Recommend scrollbar">
         <div className="m-Recommend-banner">
           <Icon
             type="left"

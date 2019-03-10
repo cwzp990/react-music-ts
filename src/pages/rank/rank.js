@@ -49,7 +49,7 @@ class Rank extends Component {
       ? [this.state.surge, this.state.news, this.state.original, this.state.hot]
       : []
     return (
-      <div className="m-Rank">
+      <div className="m-Rank scrollbar">
         {rank.length ? (
           <ul className="m-Rank-wrapper">
             {rank.map(item => (

@@ -1,20 +1,17 @@
 // 背景色
-$bgc: rgba(0, 0, 0, 0.3);
-
-// 弹出框背景颜色 灰色
-$pop-gray: rgba(0, 0, 0, 0.5);
+$bgc: #fafafa;
 
 // 边框颜色 灰色
-$border-gray: #ccc;
+$border-gray: #e1e1e1;
 
 // 正常状态下字体颜色
-$fc: hsla(0, 0%, 100%, 0.6);
+$lg: #666;
 
-// 深一点的灰色
-$fc-dark: hsla(0, 0%, 0%, 0.6);
+// 深灰
+$dg: #333;
 
 // hover状态下背景颜色
-$hover-bgc: #ffaa20;
+$hover-bgc: #1890ff;
 
 // 背景图片地址和大小
 @mixin bis($url) {

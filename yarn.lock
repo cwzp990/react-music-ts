@@ -7835,6 +7835,12 @@ react-hot-loader@^4.6.5:
     shallowequal "^1.0.2"
     source-map "^0.7.3"
 
+react-infinite-scroller@^1.2.4:
+  version "1.2.4"
+  resolved "http://registry.npm.taobao.org/react-infinite-scroller/download/react-infinite-scroller-1.2.4.tgz#f67eaec4940a4ce6417bebdd6e3433bfc38826e9"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-is@^16.6.3, react-is@^16.7.0:
   version "16.8.2"
   resolved "http://registry.npm.taobao.org/react-is/download/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"

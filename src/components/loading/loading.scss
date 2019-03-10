@@ -3,7 +3,7 @@
   @include allcover();
   @include wh(100%, 100%);
   z-index: 99999;
-  background-color: $pop-gray;
+  background-color: $bgc;
   .m-Loading-wrapper {
     display: flex;
     justify-content: center;

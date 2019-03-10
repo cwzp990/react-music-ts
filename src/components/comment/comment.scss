@@ -5,17 +5,43 @@
     flex-direction: column;
     .m-Comment-list {
       display: flex;
-      @include wh(100%, 80px);
-      margin: 8px 0;
+      @include wh(100%, auto);
+      margin-bottom: 5px;
       .m-Comment-avatar-wrapper {
         @include avatar(50px, 50px);
         flex: 0 0 50px;
         margin-right: 10px;
       }
       .m-Comment-content {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
+        width: 90%;
+        .comment-mine {
+          display: flex;
+          flex-direction: column;
+          .name {
+            @include sc(13px, $dg);
+          }
+          .content {
+            @include sc(12px, $lg);
+          }
+        }
+        .comment-other {
+          display: flex;
+          flex-direction: column;
+          border: 1px solid $border-gray;
+          @include sc(12px, $lg);
+          margin: 3px 0;
+          padding: 3px 0 3px 10px;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .m-Comment-data {
+          display: flex;
+          justify-content: space-between;
+          @include sc(12px, $lg);
+          .comment-like {
+            cursor: pointer;
+          }
+        }
       }
     }
   }

@@ -61,10 +61,10 @@ class SongList extends Component {
           <Icon type="down" />
         </Button>
         <Tag title="热门标签:" category={category.hot} />
-        <div className="m-SongList-pop">
+        <div className="m-SongList-pop scrollbar">
           <Classify category={category} />
         </div>
-        <div className="m-SongList-wrapper">
+        <div className="m-SongList-wrapper scrollbar">
           <SongLists songList={this.state.songList} />
         </div>
       </div>
