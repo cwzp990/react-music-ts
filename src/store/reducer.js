@@ -5,7 +5,7 @@ import { playMode } from '../utils/common'
 // 定义初始 state
 const defaultState = {
   // 歌手
-  singer: null,
+  song: {},
   // 播放状态
   playing: false,
   // 当前播放列表
@@ -25,12 +25,12 @@ const defaultState = {
 // state 里存放了所有的数据
 // reducer 可以接收数据，但不可以改变数据
 // 设置歌手
-function singer(singer = defaultState.singer, action) {
+function song(song = defaultState.song, action) {
   switch (action.type) {
-    case types.SET_SINGER:
-      return action.singer
+    case types.SET_SONG:
+      return action.song
     default:
-      return singer
+      return song
   }
 }
 
@@ -105,7 +105,7 @@ function showMsg(showMsg = defaultState.showMsg, action) {
 }
 
 const reducer = combineReducers({
-  singer,
+  song,
   playing,
   playList,
   sequenceList,

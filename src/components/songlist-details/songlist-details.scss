@@ -8,8 +8,8 @@
       display: flex;
       justify-content: space-between;
       .m-Details-cover {
-        flex: 0 0 150px;
-        @include wh(150px, 150px);
+        flex: 0 0 110px;
+        @include wh(110px, 110px);
         margin-right: 15px;
       }
       .m-details-info {
@@ -71,7 +71,7 @@
         overflow: auto;
       }
       .ant-table-pagination.ant-pagination {
-        margin: 0;
+        margin: -45px 0 0 0;
       }
     }
   }

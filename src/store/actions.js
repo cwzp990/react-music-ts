@@ -1,9 +1,9 @@
 import * as types from './actionTypes'
 
-export function setSinger(singer) {
+export function setSong(song) {
   return {
-    type: types.SET_SINGER,
-    singer
+    type: types.SET_SONG,
+    song
   }
 }
 

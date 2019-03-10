@@ -19,12 +19,12 @@ const columns = [
   {
     title: '音乐标题',
     dataIndex: 'title',
-    width: 210
+    width: 250
   },
   {
     title: '歌手',
     dataIndex: 'singer',
-    width: 130
+    width: 250
   },
   {
     title: '专辑',
@@ -96,6 +96,15 @@ class SonglistDetails extends Component {
     }
   }
 
+  // 播放歌曲
+  play = (song, index) => {
+    this.props.setSong(song)
+    this.props.setPlayingStatus(true)
+    this.props.setPlayList(this.state.songLists)
+    this.props.setSequenceList(this.state.songLists)
+    this.props.setCurrentIndex(index)
+  }
+
   render() {
     const { details } = this.state
 
@@ -151,10 +160,14 @@ class SonglistDetails extends Component {
                 <TabPane tab="歌曲列表" key="1">
                   <Table
                     size={'small'}
-                    scroll={{ y: 300 }}
                     pagination={{ position: 'top', size: 'small' }}
                     columns={columns}
                     dataSource={this.state.songLists}
+                    onRow={(record, rowkey) => {
+                      return {
+                        onClick: this.play.bind(this, record, rowkey) // record: 本行内容 rowkey：本行索引
+                      }
+                    }}
                   />
                 </TabPane>
                 <TabPane tab="评论" key="2">
@@ -175,5 +188,24 @@ class SonglistDetails extends Component {
     )
   }
 }
+
+// 映射dispatch到props (发送)
+const mapDispatchToProps = dispatch => ({
+  setSong: status => {
+    dispatch(setSong(status))
+  },
+  setPlayingStatus: status => {
+    dispatch(setPlayingStatus(status))
+  },
+  setPlayList: status => {
+    dispatch(setPlayList(status))
+  },
+  setSequenceList: status => {
+    dispatch(setSequenceList(status))
+  },
+  setCurrentIndex: status => {
+    dispatch(setCurrentIndex(status))
+  }
+})
 
 export default SonglistDetails

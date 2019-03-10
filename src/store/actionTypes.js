@@ -1,5 +1,5 @@
 // 歌手
-export const SET_SINGER = 'SET_SINGER'
+export const SET_SONG = 'SET_SONG'
 // 播放状态
 export const SET_PLAY_STATUS = 'CHANGE_PLAY_STATUS'
 // 播放列表
