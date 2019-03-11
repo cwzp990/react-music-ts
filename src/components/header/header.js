@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import { Icon, Modal, Input } from 'antd'
+import { Icon, Modal, Form, Input } from 'antd'
 
 import './header.scss'
 
 class Header extends Component {
-  state = {
-    visible: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      visible: false
+    }
   }
 
   showDialog = () => {
@@ -27,6 +30,10 @@ class Header extends Component {
     })
   }
 
+  handleSubmit = e => {
+    e.preventDefault()
+  }
+
   render() {
     return (
       <div className="m-Header">
@@ -41,7 +48,27 @@ class Header extends Component {
           visible={this.state.visible}
           onOk={this.onSure}
           onCancel={this.onCancel}
-        />
+        >
+          <Form onSubmit={this.handleSubmit} className="login-form">
+            <Form.Item>
+              <Input
+                prefix={
+                  <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />
+                }
+                placeholder="username"
+              />
+            </Form.Item>
+            <Form.Item>
+              <Input
+                prefix={
+                  <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />
+                }
+                type="password"
+                placeholder="password"
+              />
+            </Form.Item>
+          </Form>
+        </Modal>
       </div>
     )
   }

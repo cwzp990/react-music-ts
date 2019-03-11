@@ -8,5 +8,6 @@
   .m-Header-user {
     @include ct();
     right: 0;
+    cursor: pointer;
   }
 }

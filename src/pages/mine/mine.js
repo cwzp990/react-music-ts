@@ -40,6 +40,7 @@ class Mine extends Component {
         title="我的歌单"
         placement="left"
         width="17%"
+        className="m-Mine-songlist"
         closable={false}
         onClose={this.onClose}
         visible={this.props.showMine}
