@@ -20,6 +20,7 @@ class Tag extends Component {
   render() {
     const title = this.props.title
     const category = this.props.category
+    
     return (
       <div className="m-Tag flex">
         <p className="m-Tag-title">{title}</p>

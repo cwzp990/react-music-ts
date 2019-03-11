@@ -20,6 +20,7 @@ class Classify extends Component {
       { name: '情感', type: 'emotion', list: this.props.category.emotion },
       { name: '主题', type: 'theme', list: this.props.category.theme }
     ]
+    
     return (
       <div className="m-Classify">
         <p

@@ -1,5 +1,12 @@
 import * as types from './actionTypes'
 
+export function setUser(userInfo) {
+  return {
+    type: types.SET_USER_INFO,
+    userInfo
+  }
+}
+
 export function setSong(song) {
   return {
     type: types.SET_SONG,

@@ -79,6 +79,7 @@ class SongList extends Component {
       theme: this.state.theme,
       hot: this.state.hot
     }
+    
     return (
       <div className="m-SongList">
         <Button size="small" onClick={this.showCategoryBox}>

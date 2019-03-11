@@ -1,3 +1,5 @@
+// 用户信息
+export const SET_USER_INFO = 'SET_USER_INFO'
 // 歌手
 export const SET_SONG = 'SET_SONG'
 // 播放状态
