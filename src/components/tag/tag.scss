@@ -6,7 +6,7 @@
     display: flex;
     margin-left: 10px;
     .item-tag {
-      @include sc(14px, $lg);
+      @include sc($font_size_medium, $lg);
       padding: 0 10px;
       border-right: 1px solid #fff;
       cursor: pointer;

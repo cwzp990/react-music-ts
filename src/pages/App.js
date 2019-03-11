@@ -5,7 +5,7 @@ import Routers from '../router/router'
 import Header from '../components/header/header'
 import Nav from '../components/nav/nav'
 import Lyrics from '../components/lyrics/lyrics'
-import Bar from '../components/bar/bar'
+import Player from '../pages/player/player'
 import Mine from '../pages/mine/mine'
 import './App.scss'
 import store from '../store'
@@ -26,7 +26,7 @@ class App extends Component {
                 <Lyrics />
               </div>
             </div>
-            <Bar />
+            <Player />
             <Mine />
           </div>
         </BrowserRouter>

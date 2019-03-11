@@ -1,5 +1,5 @@
 @import '../../styles/mixin.scss';
 .m-Mine-title {
-  @include sc(16px, $dg);
+  @include sc($font_size_medium_x, $dg);
   line-height: 24px;
 }

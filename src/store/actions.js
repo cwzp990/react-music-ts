@@ -14,10 +14,10 @@ export function setPlayingStatus(playing) {
   }
 }
 
-export function setPlayList(playlist) {
+export function setPlayList(playList) {
   return {
     type: types.SET_PLAY_LIST,
-    playlist
+    playList
   }
 }
 

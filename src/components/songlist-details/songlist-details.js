@@ -1,10 +1,18 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Tag from '../../components/tag/tag'
 import Comment from '../../components/comment/comment'
 import Loading from '../loading/loading'
 import { Tabs, Table, Tooltip } from 'antd'
 import { api } from '../../api/index'
 import { fmtDate } from '../../utils/common'
+import {
+  setSong,
+  setPlayingStatus,
+  setPlayList,
+  setSequenceList,
+  setCurrentIndex
+} from '../../store/actions'
 
 import './songlist-details.scss'
 
@@ -208,4 +216,7 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default SonglistDetails
+export default connect(
+  null,
+  mapDispatchToProps
+)(SonglistDetails)

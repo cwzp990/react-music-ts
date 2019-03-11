@@ -1,9 +1,9 @@
 // 歌手
 export const SET_SONG = 'SET_SONG'
 // 播放状态
-export const SET_PLAY_STATUS = 'CHANGE_PLAY_STATUS'
+export const SET_PLAY_STATUS = 'SET_PLAY_STATUS'
 // 播放列表
-export const SET_PLAY_LIST = 'CHANGE_PLAY_LIST'
+export const SET_PLAY_LIST = 'SET_PLAY_LIST'
 // 顺序列表
 export const SET_SEQUENCE_LIST = 'SET_SEQUENCE_LIST'
 // 播放单曲的序号

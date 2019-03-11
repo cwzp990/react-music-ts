@@ -9,7 +9,7 @@
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     justify-content: space-between;
     .item-name {
-      @include sc(13px, $lg);
+      @include sc($font_size_medium, $lg);
     }
   }
 }

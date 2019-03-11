@@ -14,7 +14,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        @include sc(12px, #fff);
+        @include sc($font_size_small, #fff);
         background: $bgc;
       }
       .item-count {
@@ -29,7 +29,7 @@
         bottom: 0;
       }
       .item-title {
-        @include sc(13px, $lg);
+        @include sc($font_size_medium, $lg);
       }
     }
   }

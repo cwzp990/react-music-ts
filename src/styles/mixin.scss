@@ -13,6 +13,13 @@ $dg: #333;
 // hover状态下背景颜色
 $hover-bgc: #1890ff;
 
+//字体大小定义规范
+$font_size_small: 12px;
+$font_size_medium: 14px;
+$font_size_medium_x: 16px;
+$font_size_large: 18px;
+$font_size_large_x: 22px;
+
 // 背景图片地址和大小
 @mixin bis($url) {
   background-image: url($url);

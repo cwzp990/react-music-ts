@@ -22,7 +22,7 @@
           display: flex;
           justify-content: space-between;
           .m-details-info-name {
-            @include sc(16px, $lg);
+            @include sc($font_size_medium_x, $lg);
           }
           .m-details-info-count {
             display: flex;
@@ -32,7 +32,7 @@
               align-items: flex-end;
               flex: 1;
               padding: 0 8px;
-              @include sc(12px, $lg);
+              @include sc($font_size_small, $lg);
               &:first-child {
                 border-right: 1px solid $border-gray;
               }
@@ -51,15 +51,15 @@
               margin-right: 10px;
             }
             .author-name {
-              @include sc(14px, $dg);
+              @include sc($font_size_medium, $dg);
             }
           }
           .author-createTime {
-            @include sc(12px, $lg);
+            @include sc($font_size_small, $lg);
           }
         }
         .m-details-brief {
-          @include sc(12px, $lg);
+          @include sc($font_size_small, $lg);
           width: 100%;
           cursor: pointer;
         }

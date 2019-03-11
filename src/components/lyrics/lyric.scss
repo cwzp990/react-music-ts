@@ -1,0 +1,35 @@
+@import '../../styles/mixin.scss';
+.m-Lyric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .m-Lyric-avatar {
+    position: relative;
+    @include wh(180px, 180px);
+    margin-bottom: 15px;
+    .avatar-wrapper {
+      position: absolute;
+      @include wh(180px, 180px);
+    }
+    .album-wrapper {
+      position: absolute;
+      left: 10px;
+      @include wh(200px, 180px);
+    }
+  }
+  .m-Lyric-info {
+    @include sc($font_size_medium, $lg);
+    margin-bottom: 15px;
+    .singer-info {
+      margin: 10px 0;
+    }
+    .author-info {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+  }
+  .m-Lyric-container {
+    @include sc($font_size_medium, $lg);
+  }
+}

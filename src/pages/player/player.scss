@@ -1,10 +1,10 @@
 @import '../../styles/mixin.scss';
-.m-Bar {
+.m-Player {
   display: flex;
   align-items: center;
   @include wh(100%, 70px);
-  padding-bottom: 15px;
-  .m-Bar-playBtn {
+  padding-bottom: 10px;
+  .m-Player-playBtn {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -15,13 +15,13 @@
     flex: 1;
     margin: 0 15px;
   }
-  .m-Bar-listBtn {
+  .m-Player-listBtn {
     display: flex;
     justify-content: space-between;
     align-items: center;
     @include sc(26px, $lg);
     cursor: pointer;
-    .m-Bar-sound {
+    .m-Player-sound {
       display: flex;
       align-items: center;
       .ant-slider {
