@@ -8,7 +8,7 @@ class Classify extends Component {
     this.state = {}
   }
 
-  selectedTag = (item) => {
+  selectedTag = (item = '') => {
     this.props.handleEvent(item)
   }
 
@@ -22,7 +22,12 @@ class Classify extends Component {
     ]
     return (
       <div className="m-Classify">
-        <p className="m-Classify-all box">全部歌单</p>
+        <p
+          className="m-Classify-all box"
+          onClick={this.selectedTag}
+        >
+          全部歌单
+        </p>
         <ul className="m-Classify-other">
           {arr.map(item => {
             return (
@@ -32,7 +37,7 @@ class Classify extends Component {
                   {item.list.map((tag, index) => (
                     <li
                       key={index}
-                      className="tag-box box"
+                      className="tag-box box nowrap"
                       onClick={this.selectedTag.bind(this, tag)}
                     >
                       {tag.name}

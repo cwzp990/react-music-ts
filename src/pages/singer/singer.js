@@ -5,10 +5,12 @@ import { api } from '../../api'
 
 import './singer.scss'
 
+let param1 = '1',
+  param2 = '001',
+  param3 = ''
+
 class Singer extends Component {
   state = {
-    id: undefined,
-    initial: '',
     singerList: []
   }
 
@@ -16,8 +18,8 @@ class Singer extends Component {
     this.getData()
   }
 
-  getData = () => {
-    api.getSingerList(this.state.id, this.state.initial).then(res => {
+  getData = (id = '', capital = '') => {
+    api.getSingerList(id, capital).then(res => {
       if (res.status === 200) {
         this.setState({
           singerList: res.data.artists
@@ -26,11 +28,22 @@ class Singer extends Component {
     })
   }
 
+  // 用户点击了tag标签
+  selectedTag = tag => {
+    if (tag.type === 'language') param1 = tag.id
+    else if (tag.type === 'classify') param2 = tag.id
+    else if (tag.type === 'hots') param3 = ''
+    else param3 = tag.name
+    console.log(param1, param2, param3)
+    this.getData(param1 + param2, param3)
+  }
+
   getEN = () => {
-    let arr = [{ name: '热门', id: '666' }]
+    let arr = [{ name: '热门', type: 'hots' }]
     for (let i = 65; i < 91; i++) {
       arr.push({
-        name: String.fromCharCode(i)
+        name: String.fromCharCode(i),
+        type: 'hot'
       })
     }
     return arr
@@ -38,31 +51,39 @@ class Singer extends Component {
 
   render() {
     const language = [
-      { name: '华语', id: '1' },
-      { name: '欧美', id: '2' },
-      { name: '日本', id: '6' },
-      { name: '韩国', id: '7' },
-      { name: '其他', id: '4' }
+      { name: '华语', type: 'language', id: '1' },
+      { name: '欧美', type: 'language', id: '2' },
+      { name: '日本', type: 'language', id: '6' },
+      { name: '韩国', type: 'language', id: '7' },
+      { name: '其他', type: 'language', id: '4' }
     ]
     const classify = [
-      { name: '男歌手', id: '001' },
-      { name: '女歌手', id: '002' },
-      { name: '乐队组合', id: '003' }
+      { name: '男歌手', type: 'classify', id: '001' },
+      { name: '女歌手', type: 'classify', id: '002' },
+      { name: '乐队组合', type: 'classify', id: '003' }
     ]
     const hot = this.getEN()
 
     return (
       <div className="m-Singer scrollbar">
         <div className="m-Singer-nav">
-          <Tag title="语种:" category={language} />
-          <Tag title="分类:" category={classify} />
-          <Tag title="筛选:" category={hot} />
+          <Tag
+            title="语种:"
+            category={language}
+            handleEvent={this.selectedTag}
+          />
+          <Tag
+            title="分类:"
+            category={classify}
+            handleEvent={this.selectedTag}
+          />
+          <Tag title="筛选:" category={hot} handleEvent={this.selectedTag} />
         </div>
         {this.state.singerList.length ? (
           <ul className="m-Singer-list">
             {this.state.singerList.map(singer => {
               return (
-                <li key={singer.id}>
+                <li key={singer.id} className="item-singer">
                   <p>
                     <img src={singer.picUrl} />
                   </p>

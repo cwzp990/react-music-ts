@@ -335,13 +335,13 @@ export const api = {
    * @param cat
    * @param initial
    */
-  getSingerList(limit, offset, cat, initial) {
+  getSingerList(cat, initial, limit, offset) {
     return axios.get(QuerySinger, {
       params: {
         cat: cat || '',
         initial: initial || '',
-        limit: limit ||50,
-        offset: offset || 0,
+        limit: limit || 50,
+        offset: offset || 0
       }
     })
   },

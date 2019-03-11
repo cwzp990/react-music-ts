@@ -2,13 +2,16 @@
 .m-Tag {
   margin: 10px 0;
   line-height: 18px;
+  .m-Tag-title {
+    @include sc($font_size_medium, $lg);
+  }
   .m-Tag-list {
     display: flex;
-    margin-left: 10px;
+    flex-wrap: wrap;
+    width: calc(100% - 70px);
     .item-tag {
       @include sc($font_size_medium, $lg);
-      padding: 0 10px;
-      border-right: 1px solid #fff;
+      padding: 1px 8px;
       cursor: pointer;
       &:last-child {
         border: none;

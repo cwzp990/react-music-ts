@@ -10,6 +10,7 @@ import './songlist.scss'
 class SongList extends Component {
   state = {
     showCategory: false,
+    name: '全部歌单',
     language: [], // 语种
     style: [], // 风格
     scene: [], // 场景
@@ -39,12 +40,13 @@ class SongList extends Component {
     })
   }
 
-  getData = (tag) => {
-    api.getTopPlaylistResource(tag || '全部').then(res => {
+  getData = (tag = '全部') => {
+    api.getTopPlaylistResource(tag).then(res => {
       if (res.status === 200) {
         this.setState({
           songList: res.data.playlists,
-          showCategory: false
+          showCategory: false,
+          name: tag
         })
       }
     })
@@ -64,12 +66,12 @@ class SongList extends Component {
 
   // 用户点击了tag标签
   selectedTag = (tag) => {
-    console.log(tag)
     this.getData(tag.name)
   }
 
   render() {
     const category = {
+      name: this.state.name,
       language: this.state.language,
       style: this.state.style,
       scene: this.state.scene,
@@ -80,11 +82,19 @@ class SongList extends Component {
     return (
       <div className="m-SongList">
         <Button size="small" onClick={this.showCategoryBox}>
-          流行
+          {category.name}
           <Icon type="down" />
         </Button>
-        <Tag title="热门标签:" category={category.hot} handleEvent={this.selectedTag} />
-        <div className={`m-SongList-pop scrollbar ${this.state.showCategory ? 'show' : 'none'}`}>
+        <Tag
+          title="热门标签:"
+          category={category.hot}
+          handleEvent={this.selectedTag}
+        />
+        <div
+          className={`m-SongList-pop scrollbar ${
+            this.state.showCategory ? 'show' : 'none'
+          }`}
+        >
           <Classify category={category} handleEvent={this.selectedTag} />
         </div>
         <div className="m-SongList-wrapper scrollbar">

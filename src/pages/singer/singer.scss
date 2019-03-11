@@ -8,8 +8,11 @@
     grid-row-gap: 15px;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     justify-content: space-between;
-    .item-name {
-      @include sc($font_size_medium, $lg);
+    .item-singer {
+      cursor: pointer;
+      .item-name {
+        @include sc($font_size_medium, $lg);
+      }
     }
   }
 }
