@@ -3,6 +3,15 @@ import React, { Component } from 'react'
 import './tag.scss'
 
 class Tag extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  
+  selectedTag = (item) => {
+    this.props.handleEvent(item)
+  }
+
   render() {
     const title = this.props.title
     const category = this.props.category
@@ -11,7 +20,7 @@ class Tag extends Component {
         <span className="title">{title}</span>
         <ul className="m-Tag-list">
           {category.map((tag, index) => (
-            <li key={index} className="item-tag">
+            <li key={index} className="item-tag" onClick={this.selectedTag.bind(this, tag)}>
               {tag.name || tag}
             </li>
           ))}

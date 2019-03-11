@@ -26,7 +26,14 @@ class SongLists extends Component {
                 onClick={this.getListDetails.bind(this, list)}
               >
                 <p className="item-tips">{list.copywriter}</p>
-                <span className="item-count">{list.playCount}</span>
+                <div className="item-count">
+                  <Icon type="customer-service" />
+                  <span>
+                    {list.playCount > 10000
+                      ? (list.playCount / 10000).toFixed() + '万'
+                      : list.playCount}
+                  </span>
+                </div>
                 <span className="item-play">
                   <Icon type="play-circle" theme="outlined" />
                 </span>

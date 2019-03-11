@@ -3,6 +3,15 @@ import React, { Component } from 'react'
 import './classify.scss'
 
 class Classify extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  selectedTag = (item) => {
+    this.props.handleEvent(item)
+  }
+
   render() {
     const arr = [
       { name: '语种', type: 'language', list: this.props.category.language },
@@ -21,7 +30,11 @@ class Classify extends Component {
                 <p className="item-name">{item.name}</p>
                 <ul className="item-tag">
                   {item.list.map((tag, index) => (
-                    <li key={index} className="tag-box box">
+                    <li
+                      key={index}
+                      className="tag-box box"
+                      onClick={this.selectedTag.bind(this, tag)}
+                    >
                       {tag.name}
                     </li>
                   ))}

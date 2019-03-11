@@ -9,6 +9,7 @@
     .list-item {
       position: relative;
       @include wh(150px, 150px);
+      cursor: pointer;
       .item-tips {
         display: none;
         position: absolute;
@@ -19,8 +20,9 @@
       }
       .item-count {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 3px;
+        right: 3px;
+        @include sc($font_size_small, #fff);
       }
       .item-play {
         display: none;

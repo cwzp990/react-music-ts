@@ -305,8 +305,8 @@ export const api = {
   getTopPlaylistResource(tag, order, limit, offset) {
     return axios.get(TopPlaylistResource, {
       params: {
-        order: order || 'hot',
         cat: tag || '',
+        order: order || 'hot',
         limit: limit || 30,
         offset: offset || 0
       }
