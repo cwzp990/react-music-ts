@@ -11,7 +11,8 @@ import {
   setPlayingStatus,
   setPlayList,
   setSequenceList,
-  setCurrentIndex
+  setCurrentIndex,
+  setMyList
 } from '../../store/actions'
 
 import './songlist-details.scss'
@@ -57,8 +58,14 @@ class SonglistDetails extends Component {
     this.getData()
   }
 
+  // songlist/123 => songlist/456 需要在此生命周期里触发
+  componentWillReceiveProps() {
+    this.getData()
+  }
+
   getData = () => {
-    // console.log(this.props) 获取url参数
+    // 获取url参数
+    console.log(this.props)
     api.getPlaylistDetailResource(this.props.match.params.id).then(res => {
       if (res.status === 200) {
         const songLists = res.data.playlist.tracks.map((item, index) => {
@@ -81,6 +88,8 @@ class SonglistDetails extends Component {
           details: res.data.playlist,
           songLists
         })
+        // 关闭左侧抽屉
+        this.props.setMyList(false)
       }
     })
   }
@@ -213,6 +222,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setCurrentIndex: status => {
     dispatch(setCurrentIndex(status))
+  },
+  setMyList: status => {
+    dispatch(setMyList(status))
   }
 })
 

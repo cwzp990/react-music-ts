@@ -19,6 +19,10 @@
   border-radius: 3px;
 }
 
+.selected {
+  color: $hover-bgc !important;
+}
+
 // 清除浮动
 .clearfix {
   &:after {

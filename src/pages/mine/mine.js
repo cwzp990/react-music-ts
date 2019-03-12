@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Drawer } from 'antd'
+import PropTypes from 'prop-types'
+import { Drawer, Icon } from 'antd'
 import { api } from '../../api/index'
 import { setMyList } from '../../store/actions'
 
@@ -12,8 +13,13 @@ class Mine extends Component {
     this.state = {
       visible: false,
       userId: undefined || 88905019,
+      currentIndex: -1,
       myList: []
     }
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
   }
 
   componentDidMount() {
@@ -34,7 +40,18 @@ class Mine extends Component {
     this.props.setMyList(false)
   }
 
+  selectedList = (item, index) => {
+    this.setState({
+      currentIndex: index
+    })
+    this.context.router.history.push(`/songlist/${item.id}`)
+  }
+
   render() {
+    const IconFont = Icon.createFromIconfontCN({
+      scriptUrl: '//at.alicdn.com/t/font_831982_tcb8ha10fpr.js'
+    })
+
     return (
       <Drawer
         title="我的歌单"
@@ -45,10 +62,17 @@ class Mine extends Component {
         onClose={this.onClose}
         visible={this.props.showMine}
       >
-        {this.state.myList.map(list => {
+        {this.state.myList.map((list, index) => {
           return (
-            <p key={list.id} className="nowrap m-Mine-title">
-              {list.name}
+            <p
+              key={list.id}
+              className={`nowrap m-Mine-title ${this.state.currentIndex == index ? 'selected' : ''}`}
+              onClick={this.selectedList.bind(this, list, index)}
+            >
+              <span className="m-Mine-icon">
+                <IconFont type="icon-music" />
+              </span>
+              <span>{list.name}</span>
             </p>
           )
         })}

@@ -9,11 +9,11 @@ import SongList from '../components/songlist-details/songlist-details'
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/recommend" component={Recommend} />
+      <Route path="/recommend" exact component={Recommend} />
       <Route path="/songlist" exact component={Songlist} />
-      <Route path="/rank" component={Rank} />
-      <Route path="/singer" component={Singer} />
-      <Route path="/songlist/:id" component={SongList} />
+      <Route path="/rank" exact component={Rank} />
+      <Route path="/singer" exact component={Singer} />
+      <Route path="/songlist/:id" exact component={SongList} />
       <Redirect to="/recommend" />
     </Switch>
   )

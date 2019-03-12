@@ -4,26 +4,35 @@
     @include sc($font_size_medium, $lg);
     line-height: 24px;
     cursor: pointer;
+    .m-Mine-icon {
+      margin-right: 5px;
+    }
+    &:hover {
+      color: $hover-bgc;
+    }
   }
-  .ant-drawer-wrapper-body {
-    &::-webkit-scrollbar {
-      width: 10px;
-      height: 10px;
-      background-color: #f5f5f5;
-    }
+  .ant-drawer-content {
+    background: $bgc;
+    .ant-drawer-wrapper-body {
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        background-color: #f5f5f5;
+      }
 
-    /*定义滚动条轨道 内阴影+圆角*/
-    &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px $lg;
-      border-radius: 10px;
-      background-color: #f5f5f5;
-    }
+      /*定义滚动条轨道 内阴影+圆角*/
+      &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px $lg;
+        border-radius: 10px;
+        background-color: #f5f5f5;
+      }
 
-    /*定义滑块 内阴影+圆角*/
-    &::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      -webkit-box-shadow: inset 0 0 6px $lg;
-      background-color: #e3e3ef;
+      /*定义滑块 内阴影+圆角*/
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px $lg;
+        background-color: #e3e3ef;
+      }
     }
   }
 }
