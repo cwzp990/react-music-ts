@@ -53,7 +53,7 @@ class Rank extends Component {
         {rank.length ? (
           <ul className="m-Rank-wrapper">
             {rank.map(item => (
-              <li key={item.id} className="m-Rank-list">
+              <li key={item.id} className="m-Rank-list" title="双击进行播放" >
                 <RankList list={item} />
               </li>
             ))}

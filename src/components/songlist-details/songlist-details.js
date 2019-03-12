@@ -6,6 +6,7 @@ import Loading from '../loading/loading'
 import { Tabs, Table, Tooltip } from 'antd'
 import { api } from '../../api/index'
 import { fmtDate } from '../../utils/common'
+import { toNormalizeList } from '../../utils/common'
 import {
   setSong,
   setPlayingStatus,
@@ -68,21 +69,8 @@ class SonglistDetails extends Component {
     console.log(this.props)
     api.getPlaylistDetailResource(this.props.match.params.id).then(res => {
       if (res.status === 200) {
-        const songLists = res.data.playlist.tracks.map((item, index) => {
-          let singer = ''
-          item.ar.forEach(i => {
-            singer += i.name + '/'
-          })
-          singer = singer.slice(0, -1)
-          return {
-            index: index + 1,
-            singer,
-            title: item.name,
-            album: item.al.name,
-            picUrl: item.al.picUrl,
-            key: item.id
-          }
-        })
+        // 歌单列表格式化
+        const songLists = toNormalizeList(res.data.playlist.tracks)
         this.setState({
           isLoading: true,
           details: res.data.playlist,

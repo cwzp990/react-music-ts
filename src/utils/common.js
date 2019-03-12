@@ -33,3 +33,23 @@ export const formatDuring = function (mss){
 export const toLocalTime = function (time) {
   return new Date(parseInt(time)).toLocaleString().replace(/:\d{1,2}$/,' ')
 }
+
+// 格式化歌单数据
+export const toNormalizeList = function (list) {
+  let arr = list.map((item, index) => {
+    let singer = ''
+    item.ar.forEach(i => {
+      singer += i.name + '/'
+    })
+    singer = singer.slice(0, -1)
+    return {
+      index: index + 1,
+      singer,
+      title: item.name,
+      album: item.al.name,
+      picUrl: item.al.picUrl,
+      key: item.id
+    }
+  })
+  return arr
+}

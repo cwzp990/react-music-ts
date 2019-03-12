@@ -1,10 +1,41 @@
 import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { deepCopy, toNormalizeList } from '../../../utils/common'
+import {
+  setSong,
+  setPlayingStatus,
+  setPlayList,
+  setSequenceList,
+  setCurrentIndex
+} from '../../../store/actions'
 
 import './ranklist.scss'
 
 class RankList extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
+  play = (song, index) => {
+    this.props.setSong(song)
+    this.props.setPlayingStatus(true)
+    this.props.setPlayList(this.props.list)
+    this.props.setSequenceList(this.props.list)
+    this.props.setCurrentIndex(index)
+  }
+
+  seeAll = item => {
+    this.context.router.history.push(`/songlist/${item.id}`)
+  }
+
   render() {
-    const props = this.props.list
+    // 歌单列表格式化
+    const props = deepCopy(this.props.list)
+    const songLists = toNormalizeList(props.tracks)
+    delete props.tracks
+    props.tracks = songLists
+
     const list = props.tracks.filter((item, index) => index < 10)
     return (
       <div className="m-RankList">
@@ -14,25 +45,49 @@ class RankList extends Component {
         <ul>
           {list.map((song, index) => {
             return (
-              <li key={song.id} className="rank-item">
+              <li
+                key={song.key}
+                className="rank-item"
+                onDoubleClick={this.play.bind(this, song, index)}
+              >
                 <p className="nowrap">
-                  {index + 1}
+                  {song.index}
                   &nbsp;
-                  {song.name}
+                  {song.title}
                 </p>
-                <p className="nowrap">
-                  {song.ar.map(singer => (
-                    <span key={singer.id}>{singer.name + '/'}</span>
-                  ))}
-                </p>
+                <p className="nowrap">{song.singer}</p>
               </li>
             )
           })}
         </ul>
-        <div className="more">查看全部 ></div>
+        <div className="more" onClick={this.seeAll.bind(this, props)}>
+          查看全部 >
+        </div>
       </div>
     )
   }
 }
 
-export default RankList
+// 映射dispatch到props (发送)
+const mapDispatchToProps = dispatch => ({
+  setSong: status => {
+    dispatch(setSong(status))
+  },
+  setPlayingStatus: status => {
+    dispatch(setPlayingStatus(status))
+  },
+  setPlayList: status => {
+    dispatch(setPlayList(status))
+  },
+  setSequenceList: status => {
+    dispatch(setSequenceList(status))
+  },
+  setCurrentIndex: status => {
+    dispatch(setCurrentIndex(status))
+  }
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(RankList)

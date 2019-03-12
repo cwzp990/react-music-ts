@@ -34,7 +34,6 @@ class Singer extends Component {
     else if (tag.type === 'classify') param2 = tag.id
     else if (tag.type === 'hots') param3 = ''
     else param3 = tag.name
-    console.log(param1, param2, param3)
     this.getData(param1 + param2, param3)
   }
 
