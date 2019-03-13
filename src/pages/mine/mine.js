@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Drawer, Icon } from 'antd'
+import { Drawer, Icon, message } from 'antd'
 import { api } from '../../api/index'
 import { setMyList } from '../../store/actions'
 
@@ -12,7 +12,6 @@ class Mine extends Component {
     super(props)
     this.state = {
       visible: false,
-      userId: undefined || 88905019,
       currentIndex: -1,
       myList: []
     }
@@ -22,12 +21,12 @@ class Mine extends Component {
     router: PropTypes.object
   }
 
-  componentDidMount() {
-    this.getData()
+  componentWillReceiveProps(nextProps) {
+    this.getData(nextProps)
   }
 
-  getData = () => {
-    api.getUserPlaylistResource(this.state.userId).then(res => {
+  getData = (nextProps) => {
+    api.getUserPlaylistResource(nextProps.userInfo.userId).then(res => {
       if (res.status === 200) {
         this.setState({
           myList: res.data.playlist
@@ -66,7 +65,9 @@ class Mine extends Component {
           return (
             <p
               key={list.id}
-              className={`nowrap m-Mine-title ${this.state.currentIndex == index ? 'selected' : ''}`}
+              className={`nowrap m-Mine-title ${
+                this.state.currentIndex == index ? 'selected' : ''
+              }`}
               onClick={this.selectedList.bind(this, list, index)}
             >
               <span className="m-Mine-icon">
@@ -83,7 +84,8 @@ class Mine extends Component {
 
 // 映射Redux全局的state到组件的props上 (接收)
 const mapStateToProps = state => ({
-  showMine: state.showMine
+  showMine: state.showMine,
+  userInfo: state.userInfo
 })
 
 // 映射dispatch到props (发送)

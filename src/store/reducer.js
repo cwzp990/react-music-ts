@@ -30,7 +30,7 @@ const defaultState = {
 function userInfo(userInfo = defaultState.userInfo, action) {
   switch (action.type) {
     case types.SET_USER_INFO:
-      return action.userinfo
+      return action.userInfo
     default:
       return userInfo
   }

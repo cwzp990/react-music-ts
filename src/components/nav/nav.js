@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Button } from 'antd'
+import { Button, message } from 'antd'
 import { setMyList } from '../../store/actions'
 
 import './nav.scss'
@@ -13,6 +13,10 @@ class Nav extends Component {
   }
 
   showDrawer = () => {
+    if (JSON.stringify(this.props.userInfo) === '{}') {
+      message.warning('需要先登录哦~')
+      return false
+    }
     this.props.setMyList(true)
   }
 
@@ -39,6 +43,11 @@ class Nav extends Component {
   }
 }
 
+// 映射Redux全局的state到组件的props上 (接收)
+const mapStateToProps = state => ({
+  userInfo: state.userInfo
+})
+
 // 映射dispatch到props (发送)
 const mapDispatchToProps = dispatch => ({
   setMyList: status => {
@@ -47,6 +56,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Nav)

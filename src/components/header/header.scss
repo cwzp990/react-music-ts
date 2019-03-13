@@ -6,8 +6,23 @@
     @include center();
   }
   .m-Header-user {
-    @include ct();
-    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: auto;
+    min-width: 70px;
+    max-width: 90px;
+    height: 100%;
     cursor: pointer;
+    .m-Header-avatar {
+      @include avatar(25px, 25px);
+      @include sc($font_size_small, $lg);
+    }
+  }
+}
+
+.m-Header-form {
+  .form-username {
+    margin-bottom: 15px;
   }
 }
