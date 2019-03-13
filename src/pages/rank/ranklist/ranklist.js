@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import { deepCopy, toNormalizeList } from '../../../utils/common'
 import {
-  setSong,
   setPlayingStatus,
   setPlayList,
   setSequenceList,
@@ -18,7 +17,6 @@ class RankList extends Component {
   }
 
   play = (song, index) => {
-    this.props.setSong(song)
     this.props.setPlayingStatus(true)
     this.props.setPlayList(this.props.list)
     this.props.setSequenceList(this.props.list)
@@ -70,9 +68,6 @@ class RankList extends Component {
 
 // 映射dispatch到props (发送)
 const mapDispatchToProps = dispatch => ({
-  setSong: status => {
-    dispatch(setSong(status))
-  },
   setPlayingStatus: status => {
     dispatch(setPlayingStatus(status))
   },

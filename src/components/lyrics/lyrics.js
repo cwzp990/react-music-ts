@@ -10,19 +10,22 @@ class Lyrics extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      lyric: '',
-      song: {}
+      lyric: [],
+      song: {},
+      currentLineNum: 0
     }
   }
 
   componentWillReceiveProps(nextProps) {
     // console.log(nextProps)
-    const { song, playing } = nextProps
+    const { playing, playList, currentIndex } = nextProps
     if (!playing) return false
+    const song = playList[currentIndex]
     api.getLyricResource(song.key).then(res => {
       if (res.data.code === 200) {
+        let currentLyric = new Lyric(res.data.lrc.lyric, null)
         this.setState({
-          lyric: res.data.lrc.lyric,
+          lyric: currentLyric.lines,
           song
         })
       }
@@ -36,8 +39,8 @@ class Lyrics extends Component {
   }
 
   render() {
-    const { song, lyric } = this.state
-    // let currentLyric = new Lyric(lyric)
+    const { lyric, song, currentLineNum } = this.state
+
     return (
       <div className="m-Lyric">
         <div className="m-Lyric-avatar">
@@ -65,13 +68,26 @@ class Lyrics extends Component {
             </div>
           )}
         </div>
-        <div className="m-Lyric-container">
+        <div className="m-Lyric-container" ref="musicLyric">
           {!song.key ? (
             <p>当前没有播放音乐</p>
-          ) : lyric ? (
-            <p>{lyric}</p>
+          ) : lyric.length ? (
+            <div>
+              {lyric.map((line, index) => {
+                return (
+                  <p
+                    key={index}
+                    className={`m-Lyric-line ${
+                      currentLineNum == index ? 'selected' : ''
+                    }`}
+                  >
+                    {line.txt}
+                  </p>
+                )
+              })}
+            </div>
           ) : (
-            <p>暂无歌词</p>
+            <div>暂无歌词</div>
           )}
         </div>
       </div>
@@ -81,8 +97,9 @@ class Lyrics extends Component {
 
 // 映射Redux全局的state到组件的props上 (接收)
 const mapStateToProps = state => ({
-  song: state.song,
-  playing: state.playing
+  playing: state.playing,
+  playList: state.playList,
+  currentIndex: state.currentIndex
 })
 
 export default connect(

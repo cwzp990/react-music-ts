@@ -31,5 +31,12 @@
   }
   .m-Lyric-container {
     @include sc($font_size_medium, $lg);
+    @include wh(100%, calc(100vh - 410px));
+    overflow: auto;
+    text-align: center;
+    line-height: 1.5;
+    &::-webkit-scrollbar {
+      width: 0 !important;
+    }
   }
 }

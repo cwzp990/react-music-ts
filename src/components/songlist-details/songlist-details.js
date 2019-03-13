@@ -8,7 +8,6 @@ import { api } from '../../api/index'
 import { fmtDate } from '../../utils/common'
 import { toNormalizeList } from '../../utils/common'
 import {
-  setSong,
   setPlayingStatus,
   setPlayList,
   setSequenceList,
@@ -103,7 +102,6 @@ class SonglistDetails extends Component {
 
   // 播放歌曲
   play = (song, index) => {
-    this.props.setSong(song)
     this.props.setPlayingStatus(true)
     this.props.setPlayList(this.state.songLists)
     this.props.setSequenceList(this.state.songLists)
@@ -196,9 +194,6 @@ class SonglistDetails extends Component {
 
 // 映射dispatch到props (发送)
 const mapDispatchToProps = dispatch => ({
-  setSong: status => {
-    dispatch(setSong(status))
-  },
   setPlayingStatus: status => {
     dispatch(setPlayingStatus(status))
   },

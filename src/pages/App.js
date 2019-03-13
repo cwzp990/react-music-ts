@@ -7,8 +7,10 @@ import Nav from '../components/nav/nav'
 import Lyrics from '../components/lyrics/lyrics'
 import Player from '../pages/player/player'
 import Mine from '../pages/mine/mine'
-import './App.scss'
 import store from '../store'
+
+import '../utils/music'
+import './App.scss'
 
 class App extends Component {
   render() {

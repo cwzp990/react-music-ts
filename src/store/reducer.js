@@ -6,7 +6,7 @@ import { playMode } from '../utils/common'
 const defaultState = {
   // 用户信息
   userInfo: {},
-  // 歌手
+  // 当前歌曲信息
   song: {},
   // 播放状态
   playing: false,
