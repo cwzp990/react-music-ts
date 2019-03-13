@@ -10,7 +10,7 @@ import './songlist.scss'
 class SongList extends Component {
   state = {
     showCategory: false,
-    name: '全部歌单',
+    name: '全部',
     language: [], // 语种
     style: [], // 风格
     scene: [], // 场景
@@ -88,6 +88,7 @@ class SongList extends Component {
         </Button>
         <Tag
           title="热门标签:"
+          forbid={false}
           category={category.hot}
           handleEvent={this.selectedTag}
         />

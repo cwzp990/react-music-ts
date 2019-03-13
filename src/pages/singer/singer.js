@@ -68,15 +68,17 @@ class Singer extends Component {
         <div className="m-Singer-nav">
           <Tag
             title="语种:"
+            forbid={true}
             category={language}
             handleEvent={this.selectedTag}
           />
           <Tag
             title="分类:"
+            forbid={true}
             category={classify}
             handleEvent={this.selectedTag}
           />
-          <Tag title="筛选:" category={hot} handleEvent={this.selectedTag} />
+          <Tag title="筛选:" forbid={true} category={hot} handleEvent={this.selectedTag} />
         </div>
         {this.state.singerList.length ? (
           <ul className="m-Singer-list">
