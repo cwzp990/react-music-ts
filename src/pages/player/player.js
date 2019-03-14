@@ -8,6 +8,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Icon, Slider } from 'antd'
 import { connect } from 'react-redux'
+import History from '../../components/historyLists/historyLists'
 import { setCurrentIndex, setPlayingStatus } from '../../store/actions'
 
 import './player.scss'
@@ -15,7 +16,9 @@ import './player.scss'
 class Player extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      showHistory: false
+    }
   }
 
   componentDidMount() {
@@ -55,8 +58,14 @@ class Player extends Component {
     this.props.setCurrentIndex(index)
   }
 
+  showHistory = () => {
+    this.setState({
+      showHistory: true
+    })
+  }
+
   render() {
-    const { playing, playList, currentIndex } = this.props
+    const { playing, playList, currentIndex, sequenceList } = this.props
     const song = playList[currentIndex]
     return (
       <div className="m-Player">
@@ -88,7 +97,14 @@ class Player extends Component {
             <Slider />
           </div>
           <Icon type="retweet" theme="outlined" className="btn-center" />
-          <Icon type="bars" theme="outlined" />
+          <Icon type="bars" theme="outlined" onClick={this.showHistory} />
+        </div>
+        <div
+          className={`m-History-pop ${
+            this.state.showHistory ? 'show' : 'none'
+          }`}
+        >
+          <History playList={sequenceList} />
         </div>
         <audio
           autoPlay

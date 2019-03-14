@@ -174,7 +174,7 @@ class SonglistDetails extends Component {
                   />
                 </TabPane>
                 <TabPane tab="评论" key="2">
-                  <div className="m-Comment-container scrollbar">
+                  <div className="m-Comment-container">
                     <h3>精彩评论</h3>
                     <Comment commentList={this.state.hotComments} />
                     <h3>最新评论({this.state.count})</h3>

@@ -93,13 +93,13 @@ class SongList extends Component {
           handleEvent={this.selectedTag}
         />
         <div
-          className={`m-SongList-pop scrollbar ${
+          className={`m-SongList-pop ${
             this.state.showCategory ? 'show' : 'none'
           }`}
         >
           <Classify category={category} handleEvent={this.selectedTag} />
         </div>
-        <div className="m-SongList-wrapper scrollbar">
+        <div className="m-SongList-wrapper">
           <SongLists songList={this.state.songList} />
         </div>
       </div>

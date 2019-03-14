@@ -1,0 +1,18 @@
+@import '../../styles/mixin.scss';
+.m-History {
+  @include wh(100%, 100%);
+  background: $bgc;
+  .m-History-avatar {
+    display: none;
+    @include sc($font_size_small, $hover-bgc);
+    line-height: 24px;
+  }
+  .ant-tabs-content {
+    height: calc(85vh - 56px);
+    overflow: auto;
+  }
+  .ant-list-item {
+    padding: 3px 20px;
+    cursor: pointer;
+  }
+}
