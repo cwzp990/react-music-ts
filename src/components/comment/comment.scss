@@ -8,8 +8,6 @@
       @include wh(100%, auto);
       margin-bottom: 5px;
       .m-Comment-avatar-wrapper {
-        @include avatar(50px, 50px);
-        flex: 0 0 50px;
         margin-right: 10px;
       }
       .m-Comment-content {

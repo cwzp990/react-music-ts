@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Tag from '../../components/tag/tag'
 import Comment from '../../components/comment/comment'
 import Loading from '../loading/loading'
-import { Tabs, Table, Tooltip } from 'antd'
+import { Tabs, Table, Tooltip, Avatar } from 'antd'
 import { api } from '../../api/index'
 import { fmtDate } from '../../utils/common'
 import { toNormalizeList } from '../../utils/common'
@@ -136,7 +136,11 @@ class SonglistDetails extends Component {
                 <div className="m-details-info-author">
                   <div className="author-avatar">
                     <div className="author-avatar-wrapper">
-                      <img src={details.creator.avatarUrl} />
+                      {details.creator.avatarUrl ? (
+                        <Avatar size={30} src={details.creator.avatarUrl} />
+                      ) : (
+                        <Avatar size={30} shape="square" icon="user" />
+                      )}
                     </div>
                     <p className="author-name">{details.creator.nickname}</p>
                   </div>

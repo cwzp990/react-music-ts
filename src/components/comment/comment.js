@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon } from 'antd'
+import { Icon, Avatar } from 'antd'
 import { toLocalTime } from '../../utils/common'
 
 import './comment.scss'
@@ -19,7 +19,15 @@ class Comment extends Component {
             return (
               <li key={comment.commentId} className="m-Comment-list">
                 <div className="m-Comment-avatar-wrapper">
-                  <img src={comment.user.avatarUrl} />
+                  {comment.user.avatarUrl ? (
+                    <Avatar
+                      size={50}
+                      shape="square"
+                      src={comment.user.avatarUrl}
+                    />
+                  ) : (
+                    <Avatar size={50} shape="square" icon="user" />
+                  )}
                 </div>
                 <div className="m-Comment-content">
                   <div className="comment-mine">
@@ -36,7 +44,10 @@ class Comment extends Component {
                   )}
                   <div className="m-Comment-data">
                     <p className="comment-date">{toLocalTime(comment.time)}</p>
-                    <p className="comment-like"><Icon type="like" />{comment.likedCount}</p>
+                    <p className="comment-like">
+                      <Icon type="like" />
+                      {comment.likedCount}
+                    </p>
                   </div>
                 </div>
               </li>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Icon, Modal, Input, message } from 'antd'
+import { Icon, Modal, Input, message, Avatar } from 'antd'
 import { setUserInfo } from '../../store/actions'
 import { setToken } from '../../utils/cookie'
 import { api } from '../../api/index'
@@ -25,8 +25,7 @@ class Header extends Component {
     })
   }
 
-  showUserInfo = () => {
-  }
+  showUserInfo = () => {}
 
   onSubmit = e => {
     e.preventDefault()
@@ -83,23 +82,20 @@ class Header extends Component {
     return (
       <div className="m-Header">
         <h1 className="m-Header-title">在线音乐播放器</h1>
-        {
-          isLogin ? (
-            <div className="m-Header-user" onClick={this.showUserInfo}>
-              <p className="m-Header-avatar">
-                <img src={userInfo.avatarUrl} alt=""/>
-              </p>
-              <p>{userInfo.nickname}</p>
-              <Icon type="caret-down" />
-            </div>
-          ) : (
-            <div className="m-Header-user" onClick={this.showDialog}>
+        {isLogin ? (
+          <div className="m-Header-user" onClick={this.showUserInfo}>
+            <p className="m-Header-avatar">
+              <Avatar size={25} src={userInfo.avatarUrl} />
+            </p>
+            <p>{userInfo.nickname}</p>
+            <Icon type="caret-down" />
+          </div>
+        ) : (
+          <div className="m-Header-user" onClick={this.showDialog}>
             <Icon type="user" theme="outlined" />
             未登录
           </div>
-          )
-        }
-
+        )}
 
         <Modal
           title="用户登录"

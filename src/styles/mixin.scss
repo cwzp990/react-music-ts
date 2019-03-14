@@ -87,12 +87,3 @@ $font_size_large_x: 22px;
   word-break: break-all;
   overflow: hidden;
 }
-
-// 圆形头像
-@mixin avatar($width, $height) {
-  position: relative;
-  width: $width;
-  height: $height;
-  border-radius: 50%;
-  overflow: hidden;
-}

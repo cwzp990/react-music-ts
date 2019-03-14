@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import Routers from '../router/router'
+import Tips from '../components/tips/tips'
 import Header from '../components/header/header'
 import Nav from '../components/nav/nav'
 import Lyrics from '../components/lyrics/lyrics'
@@ -18,6 +19,7 @@ class App extends Component {
       <Provider store={store}>
         <BrowserRouter>
           <div className="m-App">
+            <Tips />
             <Header />
             <div className="m-App-Content clearfix">
               <div className="m-App-Content-l">

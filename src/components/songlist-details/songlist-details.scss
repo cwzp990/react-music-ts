@@ -47,7 +47,6 @@
             align-items: center;
             margin-right: 10px;
             .author-avatar-wrapper {
-              @include avatar(30px, 30px);
               margin-right: 10px;
             }
             .author-name {

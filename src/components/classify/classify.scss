@@ -10,6 +10,7 @@
     flex-direction: column;
     .other-item {
       display: flex;
+      align-items: center;
       margin-bottom: 10px;
       .item-name {
         width: calc(100% / 6);
