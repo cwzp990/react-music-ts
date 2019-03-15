@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import * as types from './actionTypes'
-import { playMode } from '../utils/common'
+import { getUserInfo, playMode } from '../utils/common'
 
 // 定义初始 state
 const defaultState = {
   // 用户信息
-  userInfo: {},
+  userInfo: getUserInfo() || {},
   // 当前歌曲信息
   song: {},
   // 播放状态
@@ -14,6 +14,8 @@ const defaultState = {
   playList: [],
   // 顺序列表
   sequenceList: [],
+  // 历史播放
+  historyList: [],
   // 播放单曲的序号
   currentIndex: -1,
   // 播放方式
@@ -76,6 +78,16 @@ function sequenceList(sequenceList = defaultState.sequenceList, action) {
   }
 }
 
+// 设置历史播放列表
+function historyList(historyList = defaultState.historyList, action) {
+  switch (action.type) {
+    case types.SET_HISTORY_LIST:
+      return [...historyList, action.historyList]
+    default:
+      return historyList
+  }
+}
+
 // 设置当前音乐
 function currentIndex(currentIndex = defaultState.currentIndex, action) {
   switch (action.type) {
@@ -122,6 +134,7 @@ const reducer = combineReducers({
   playing,
   playList,
   sequenceList,
+  historyList,
   currentIndex,
   mode,
   showMine,

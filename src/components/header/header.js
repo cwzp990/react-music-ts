@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Icon, Modal, Input, message, Avatar } from 'antd'
 import { setUserInfo } from '../../store/actions'
-import { setToken } from '../../utils/cookie'
+import { setToken, removeToken } from '../../utils/cookie'
 import { api } from '../../api/index'
 
 import './header.scss'
@@ -12,8 +12,7 @@ class Header extends Component {
     super(props)
     this.state = {
       visible: false,
-      userInfo: {},
-      isLogin: false,
+      showInfo: false,
       username: 18655323262,
       password: 'cwzp990.!'
     }
@@ -25,7 +24,11 @@ class Header extends Component {
     })
   }
 
-  showUserInfo = () => {}
+  showUserInfo = () => {
+    this.setState({
+      showInfo: true
+    })
+  }
 
   onSubmit = e => {
     e.preventDefault()
@@ -44,13 +47,8 @@ class Header extends Component {
   login = (username, password) => {
     api.getLoginCellphoneResource(username, password).then(res => {
       if (res.status === 200) {
-        setToken('username', username) // 设置cookie
-        setToken('password', password) // 设置cookie
+        setToken('userInfo', res.data.profile)
         this.props.setUserInfo(res.data.profile) // 设置用户信息
-        this.setState({
-          userInfo: res.data.profile,
-          isLogin: true
-        })
         message.success(`欢迎您，${res.data.profile.nickname}~`)
         this.onCancel()
       } else {
@@ -62,6 +60,21 @@ class Header extends Component {
   onCancel = () => {
     this.setState({
       visible: false
+    })
+  }
+
+  logOut = () => {
+    api.getLogout().then(res => {
+      if (res.status === 200) {
+        removeToken('userInfo')
+        this.props.setUserInfo({})
+        this.setState({
+          showInfo: false
+        })
+        message.success('已退出登录')
+      } else {
+        message.warning('登出失败，请重试')
+      }
     })
   }
 
@@ -78,11 +91,16 @@ class Header extends Component {
   }
 
   render() {
-    const { userInfo, isLogin } = this.state
+    const { showInfo } = this.state
+    const { userInfo } = this.props
+    const IconFont = Icon.createFromIconfontCN({
+      scriptUrl: '//at.alicdn.com/t/font_831982_2jm03atr9f.js'
+    })
+
     return (
       <div className="m-Header">
         <h1 className="m-Header-title">在线音乐播放器</h1>
-        {isLogin ? (
+        {userInfo.userId ? (
           <div className="m-Header-user" onClick={this.showUserInfo}>
             <p className="m-Header-avatar">
               <Avatar size={25} src={userInfo.avatarUrl} />
@@ -121,10 +139,43 @@ class Header extends Component {
             />
           </div>
         </Modal>
+
+        <div className={`m-Header-userInfo ${showInfo ? 'show' : 'none'}`}>
+          <div className="m-Header-avatar">
+            <p className="m-Header-info">
+              <Avatar size={50} src={userInfo.avatarUrl} />
+              <span className="m-Header-name">{userInfo.nickname}</span>
+            </p>
+            <p className="sign-in">签到</p>
+          </div>
+          <div className="m-Header-update">
+            <p className="updates">
+              <span className="important">{userInfo.eventCount}</span>
+              <span>动态</span>
+            </p>
+            <p className="updates">
+              <span className="important">{userInfo.follows}</span>
+              <span>关注</span>
+            </p>
+            <p className="updates">
+              <span className="important">{userInfo.followeds}</span>
+              <span>粉丝</span>
+            </p>
+          </div>
+          <p className="logout" onClick={this.logOut}>
+            <IconFont type="icon-close" className="icon-close" />
+            <span>退出登录</span>
+          </p>
+        </div>
       </div>
     )
   }
 }
+
+// 映射Redux全局的state到组件的props上 (接收)
+const mapStateToProps = state => ({
+  userInfo: state.userInfo
+})
 
 // 映射dispatch到props (发送)
 const mapDispatchToProps = dispatch => ({
@@ -134,6 +185,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Header)

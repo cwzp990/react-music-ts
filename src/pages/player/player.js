@@ -9,7 +9,11 @@ import ReactDOM from 'react-dom'
 import { Icon, Slider } from 'antd'
 import { connect } from 'react-redux'
 import History from '../../components/historyLists/historyLists'
-import { setCurrentIndex, setPlayingStatus } from '../../store/actions'
+import {
+  setCurrentIndex,
+  setPlayingStatus,
+  setChangeMode
+} from '../../store/actions'
 
 import './player.scss'
 
@@ -22,7 +26,23 @@ class Player extends Component {
   }
 
   componentDidMount() {
+    this.modeList = [1, 2, 3]
     this.audioEle = ReactDOM.findDOMNode(this.refs.audio)
+    this.bindEvents()
+  }
+
+  componentWillUnmount() {
+    this.unbindEvents()
+  }
+
+  // 添加绑定事件
+  bindEvents = () => {
+    // document.body.addEventListener('click', this.closeHistory, false)
+  }
+
+  // 移除绑定事件
+  unbindEvents = () => {
+    // document.body.removeEventListener('click', this.closeHistory, false)
   }
 
   // 上一首
@@ -58,15 +78,33 @@ class Player extends Component {
     this.props.setCurrentIndex(index)
   }
 
+  changeMode = () => {
+    let first = this.modeList.splice(0, 1)
+    this.modeList.splice(this.modeList.length, 0, ...first)
+    this.props.setChangeMode(this.modeList[0])
+  }
+
   showHistory = () => {
     this.setState({
       showHistory: true
     })
   }
 
+  closeHistory = () => {
+    this.setState({
+      showHistory: false
+    })
+  }
+
   render() {
-    const { playing, playList, currentIndex, sequenceList } = this.props
+    const { mode, playing, currentIndex, playList, historyList } = this.props
+
     const song = playList[currentIndex]
+
+    const IconFont = Icon.createFromIconfontCN({
+      scriptUrl: '//at.alicdn.com/t/font_831982_ag7c3k06v3e.js'
+    })
+
     return (
       <div className="m-Player">
         <div className="m-Player-playBtn">
@@ -96,15 +134,35 @@ class Player extends Component {
             <Icon type="sound" theme="filled" />
             <Slider />
           </div>
-          <Icon type="retweet" theme="outlined" className="btn-center" />
-          <Icon type="bars" theme="outlined" onClick={this.showHistory} />
+          {mode === 1 ? (
+            <Icon
+              type="bars"
+              theme="outlined"
+              className="btn-center"
+              onClick={this.changeMode}
+            />
+          ) : mode === 2 ? (
+            <Icon
+              type="retweet"
+              theme="outlined"
+              className="btn-center"
+              onClick={this.changeMode}
+            />
+          ) : (
+            <IconFont
+              type="icon-suiji"
+              className="btn-center"
+              onClick={this.changeMode}
+            />
+          )}
+          <IconFont type="icon-liebiao" onClick={this.showHistory} />
         </div>
         <div
           className={`m-History-pop ${
             this.state.showHistory ? 'show' : 'none'
           }`}
         >
-          <History playList={sequenceList} />
+          <History playList={playList} historyList={historyList} />
         </div>
         <audio
           autoPlay
@@ -124,7 +182,7 @@ class Player extends Component {
 const mapStateToProps = state => ({
   playing: state.playing,
   playList: state.playList,
-  sequenceList: state.sequenceList,
+  historyList: state.historyList,
   currentIndex: state.currentIndex,
   mode: state.mode
 })
@@ -136,6 +194,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setPlayingStatus: status => {
     dispatch(setPlayingStatus(status))
+  },
+  setChangeMode: status => {
+    dispatch(setChangeMode(status))
   }
 })
 

@@ -15,6 +15,7 @@ class SongLists extends Component {
 
   render() {
     const songList = this.props.songList || []
+    
     return (
       <div className="m-SongLists">
         <ul className="list-wrapper">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Lyric from 'lyric-parser'
 import { Icon } from 'antd'
+import { parseLyric } from '../../utils/common'
 import { api } from '../../api'
 
 import './lyric.scss'
@@ -23,9 +23,17 @@ class Lyrics extends Component {
     const song = playList[currentIndex]
     api.getLyricResource(song.key).then(res => {
       if (res.data.code === 200) {
-        let currentLyric = new Lyric(res.data.lrc.lyric, null)
+        // 暂无歌词
+        if (res.data.nolyric) {
+          this.setState({
+            lyric: [],
+            song
+          })
+          return false
+        }
+        let currentLyric = parseLyric(res.data.lrc.lyric)
         this.setState({
-          lyric: currentLyric.lines,
+          lyric: currentLyric,
           song
         })
       }

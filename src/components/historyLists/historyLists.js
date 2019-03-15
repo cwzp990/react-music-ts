@@ -9,13 +9,15 @@ class History extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      playList: []
+      playList: [],
+      historyList: []
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      playList: nextProps.playList
+      playList: nextProps.playList,
+      historyList: nextProps.historyList
     })
   }
 
@@ -44,7 +46,24 @@ class History extends Component {
             </List>
           </TabPane>
           <TabPane tab="历史纪录" key="2">
-            Content of Tab Pane 2
+            <List
+              dataSource={this.state.historyList}
+              renderItem={item => (
+                <List.Item key={item.key}>
+                  <List.Item.Meta
+                    avatar={<Icon type="pause" className="m-History-avatar" />}
+                    title={item.title}
+                  />
+                  <div>{item.singer}</div>
+                </List.Item>
+              )}
+            >
+              {this.state.loading && this.state.hasMore && (
+                <div className="m-History-loading-container">
+                  <Spin />
+                </div>
+              )}
+            </List>
           </TabPane>
         </Tabs>
       </div>

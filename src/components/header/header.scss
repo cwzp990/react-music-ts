@@ -16,6 +16,65 @@
     cursor: pointer;
     @include sc($font_size_medium, $lg);
   }
+  .m-Header-userInfo {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    padding: 10px;
+    @include wh(300px, auto);
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: $bgc;
+    box-shadow: 1px 1px 2px $dg;
+    z-index: 9999;
+    .m-Header-avatar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+      .m-Header-name {
+        margin-left: 10px;
+        @include sc($font_size_medium, $dg);
+      }
+      .sign-in {
+        padding: 5px 8px;
+        border: 1px solid $border-gray;
+        border-radius: 3px;
+        cursor: pointer;
+        @include sc($font_size_small, $lg);
+      }
+    }
+    .m-Header-update {
+      display: flex;
+      height: 40px;
+      margin: 10px 0;
+      border-top: 1px solid $border-gray;
+      border-bottom: 1px solid $border-gray;
+      .updates {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex: 1;
+        padding: 10px 0;
+        cursor: pointer;
+        border-right: 1px solid $border-gray;
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+    .logout {
+      display: flex;
+      align-items: center;
+      .icon-close {
+        @include svg($font_size_large_x, $lg);
+      }
+      @include sc($font_size_medium_x, $lg);
+      line-height: 24px;
+      cursor: pointer;
+    }
+  }
 }
 
 .m-Header-form {

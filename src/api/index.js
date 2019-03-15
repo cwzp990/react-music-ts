@@ -2,6 +2,7 @@ import axios from 'axios'
 
 import {
   LoginCellphoneResource,
+  Logout,
   UserDetails,
   SongDetails,
   UserInfos,
@@ -61,6 +62,10 @@ export const api = {
         password: password || ''
       }
     })
+  },
+
+  getLogout() {
+    return axios.get(Logout)
   },
 
   getUserDetails(id) {

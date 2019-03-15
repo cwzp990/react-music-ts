@@ -6,6 +6,7 @@ import {
   setPlayingStatus,
   setPlayList,
   setSequenceList,
+  setHistoryList,
   setCurrentIndex
 } from '../../../store/actions'
 
@@ -20,6 +21,7 @@ class RankList extends Component {
     this.props.setPlayingStatus(true)
     this.props.setPlayList(this.props.list)
     this.props.setSequenceList(this.props.list)
+    this.props.setHistoryList(song)
     this.props.setCurrentIndex(index)
   }
 
@@ -33,8 +35,8 @@ class RankList extends Component {
     const songLists = toNormalizeList(props.tracks)
     delete props.tracks
     props.tracks = songLists
-
     const list = props.tracks.filter((item, index) => index < 10)
+
     return (
       <div className="m-RankList">
         <div className="m-RankList-title">
@@ -76,6 +78,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setSequenceList: status => {
     dispatch(setSequenceList(status))
+  },
+  setHistoryList: status => {
+    dispatch(setHistoryList(status))
   },
   setCurrentIndex: status => {
     dispatch(setCurrentIndex(status))

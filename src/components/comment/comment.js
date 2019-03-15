@@ -12,6 +12,7 @@ class Comment extends Component {
 
   render() {
     const commentList = this.props.commentList
+    
     return (
       <div className="m-Comment">
         <ul className="m-Comment-wrapper">

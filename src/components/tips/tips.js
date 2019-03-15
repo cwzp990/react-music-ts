@@ -26,7 +26,7 @@ class Tips extends Component {
           closable={false}
           onOk={this.onSure}
           footer={[
-            <Button type="primary" onClick={this.onSure}>
+            <Button type="primary" onClick={this.onSure} key="sure">
               嗯哼~
             </Button>
           ]}

@@ -7,13 +7,7 @@ import { Tabs, Table, Tooltip, Avatar } from 'antd'
 import { api } from '../../api/index'
 import { fmtDate } from '../../utils/common'
 import { toNormalizeList } from '../../utils/common'
-import {
-  setPlayingStatus,
-  setPlayList,
-  setSequenceList,
-  setCurrentIndex,
-  setMyList
-} from '../../store/actions'
+import { setMyList, setAllPlay } from '../../store/actions'
 
 import './songlist-details.scss'
 
@@ -65,7 +59,6 @@ class SonglistDetails extends Component {
 
   getData = () => {
     // 获取url参数
-    console.log(this.props)
     api.getPlaylistDetailResource(this.props.match.params.id).then(res => {
       if (res.status === 200) {
         // 歌单列表格式化
@@ -102,10 +95,10 @@ class SonglistDetails extends Component {
 
   // 播放歌曲
   play = (song, index) => {
-    this.props.setPlayingStatus(true)
-    this.props.setPlayList(this.state.songLists)
-    this.props.setSequenceList(this.state.songLists)
-    this.props.setCurrentIndex(index)
+    this.props.setAllPlay({
+      playList: this.state.songLists,
+      currentIndex: index
+    })
   }
 
   render() {
@@ -198,20 +191,11 @@ class SonglistDetails extends Component {
 
 // 映射dispatch到props (发送)
 const mapDispatchToProps = dispatch => ({
-  setPlayingStatus: status => {
-    dispatch(setPlayingStatus(status))
-  },
-  setPlayList: status => {
-    dispatch(setPlayList(status))
-  },
-  setSequenceList: status => {
-    dispatch(setSequenceList(status))
-  },
-  setCurrentIndex: status => {
-    dispatch(setCurrentIndex(status))
-  },
   setMyList: status => {
     dispatch(setMyList(status))
+  },
+  setAllPlay: status => {
+    dispatch(setAllPlay(status))
   }
 })
 

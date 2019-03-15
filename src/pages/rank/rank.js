@@ -48,6 +48,7 @@ class Rank extends Component {
     const rank = this.state.isLoading
       ? [this.state.surge, this.state.news, this.state.original, this.state.hot]
       : []
+      
     return (
       <div className="m-Rank">
         {rank.length ? (

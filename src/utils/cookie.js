@@ -1,13 +1,17 @@
-import Cookies from 'js-cookie'
-
-export function getToken(TokenKey) {
-  return Cookies.get(TokenKey)
+export function getToken(key) {
+  if (window.sessionStorage) {
+    return JSON.parse(sessionStorage.getItem(key))
+  }
 }
 
-export function setToken(TokenKey, token) {
-  return Cookies.set(TokenKey, token, { expires: 3 })
+export function setToken(key, val) {
+  if (window.sessionStorage) {
+    sessionStorage.setItem(key, JSON.stringify(val))
+  }
 }
 
-export function removeToken(TokenKey) {
-  return Cookies.remove(TokenKey)
+export function removeToken(key) {
+  if (window.sessionStorage) {
+    sessionStorage.removeItem(key)
+  }
 }

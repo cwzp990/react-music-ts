@@ -10,7 +10,6 @@ import Player from '../pages/player/player'
 import Mine from '../pages/mine/mine'
 import store from '../store'
 
-import '../utils/music'
 import './App.scss'
 
 class App extends Component {

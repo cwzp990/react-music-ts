@@ -8,6 +8,8 @@ export const SET_PLAY_STATUS = 'SET_PLAY_STATUS'
 export const SET_PLAY_LIST = 'SET_PLAY_LIST'
 // 顺序列表
 export const SET_SEQUENCE_LIST = 'SET_SEQUENCE_LIST'
+// 历史播放
+export const SET_HISTORY_LIST = 'SET_HISTORY_LIST'
 // 播放单曲的序号
 export const SET_CURRENT_INDEX = 'SET_CURRENT_INDEX'
 // 播放方式 顺序播放 单曲循环 随机播放

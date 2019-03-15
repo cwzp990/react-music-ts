@@ -23,6 +23,10 @@
   color: $hover-bgc !important;
 }
 
+.important {
+  font-weight: 900;
+}
+
 // 清除浮动
 .clearfix {
   &:after {

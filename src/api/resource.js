@@ -2,6 +2,7 @@ const API_ROOT = 'http://www.cwzp990.com:3000'
 
 const apiMusic = {
   loginCellphone: '/login/cellphone', // 手机登陆
+  logout: '/logout', // 登出
   userDetails: '/user/detail', // 用户详情
   songDetails: '/song/detail', // 歌曲详情
   userInfos: '/user/subcount', // 用户信息
@@ -53,6 +54,7 @@ const apiMusic = {
 }
 
 export const LoginCellphoneResource = API_ROOT.concat(apiMusic.loginCellphone)
+export const Logout = API_ROOT.concat(apiMusic.logout)
 export const UserDetails = API_ROOT.concat(apiMusic.userDetails)
 export const SongDetails = API_ROOT.concat(apiMusic.songDetails)
 export const UserInfos = API_ROOT.concat(apiMusic.userInfos)
