@@ -146,7 +146,7 @@ class Header extends Component {
               <Avatar size={50} src={userInfo.avatarUrl} />
               <span className="m-Header-name">{userInfo.nickname}</span>
             </p>
-            <p className="sign-in">签到</p>
+            <p className="sign-in" onClick={this.signIn}>签到</p>
           </div>
           <div className="m-Header-update">
             <p className="updates">

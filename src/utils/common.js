@@ -12,12 +12,12 @@ export const getUserInfo = () => {
 }
 
 // 深拷贝
-export const deepCopy = function(val) {
+export const deepCopy = val => {
   return JSON.parse(JSON.stringify(val))
 }
 
 // 时间戳转换成yyyy-mm-dd
-export const fmtDate = function(obj) {
+export const fmtDate = obj => {
   let date = new Date(obj)
   let y = 1900 + date.getYear()
   let m = '0' + (date.getMonth() + 1)
@@ -32,19 +32,27 @@ export const fmtDate = function(obj) {
 }
 
 // 时间戳转换成mm-ss
-export const formatDuring = function(mss) {
-  let hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+export const formatDuring = mss => {
+  // let hours = parseInt((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
   let minutes = parseInt((mss % (1000 * 60 * 60)) / (1000 * 60))
-  let seconds = (mss % (1000 * 60)) / 1000
-  hours = hours < 10 ? '0' + hours : hours
+  let seconds = parseInt((mss % (1000 * 60)) / 1000)
+  // hours = hours < 10 ? '0' + hours : hours
   minutes = minutes < 10 ? '0' + minutes : minutes
   seconds = seconds < 10 && seconds >= 1 ? '0' + seconds : seconds
-  return hours === '00' ? '' : hours + ' :' + minutes + ' :' + seconds
+  return minutes + ':' + seconds
 }
 
 // 时间戳转换成当地时间 2019/3/5 下午4:19
 export const toLocalTime = time => {
   return new Date(parseInt(time)).toLocaleString().replace(/:\d{1,2}$/, ' ')
+}
+
+// 秒数转换为mm:ss
+export const formatTime = interval => {
+  interval = interval | 0
+  const minute = String(interval / 60 | 0).padStart(2, '0')
+  const second = String(interval % 60).padStart(2, '0')
+  return `${minute}:${second}`
 }
 
 // 格式化歌单数据
@@ -57,6 +65,7 @@ export const toNormalizeList = list => {
     singer = singer.slice(0, -1)
     return {
       index: index + 1,
+      duration: item.dt,
       singer,
       title: item.name,
       album: item.al.name,
@@ -83,11 +92,10 @@ export function parseLyric(lrc) {
         sec = Number(String(t.match(/\:\d*/i)).slice(1))
       let time = min * 60 + sec
       if (clause !== '') {
-        lrcObj.push({ time: time, text: clause })
+        lrcObj.push({ time: time, txt: clause })
       }
     }
   }
-  console.log(lrcObj)
   return lrcObj
 }
 
