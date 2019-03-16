@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Tag from '../../components/tag/tag'
 import Loading from '../loading/loading'
-import { Tabs, Tooltip, Avatar, List, Icon, Spin } from 'antd'
+import { Tabs, Tooltip, Avatar, List, Icon } from 'antd'
 import InfiniteScroll from 'react-infinite-scroller'
 import { api } from '../../api/index'
 import {
@@ -109,7 +109,7 @@ class SonglistDetails extends Component {
   }
 
   render() {
-    const { details, isLoading, loading, hasMore } = this.state
+    const { details, isLoading } = this.state
 
     return (
       <div className="m-SonglistDetails">
@@ -162,36 +162,38 @@ class SonglistDetails extends Component {
                 </div>
               </div>
             </div>
-            <div className="m-Details-list">
+            <div className="m-Details-SongList">
               <Tabs onTabClick={this.changeTab}>
                 <TabPane tab="歌曲列表" key="1">
-                  <List
-                    header={
-                      <div className="m-Details-songItem">
-                        <p className="item-song">序号</p>
-                        <p className="item-song">音乐标题</p>
-                        <p className="item-song">歌手</p>
-                        <p className="item-song">专辑</p>
-                        <p className="item-song">时长</p>
-                      </div>
-                    }
-                    dataSource={this.state.songLists}
-                    renderItem={item => (
-                      <List.Item
-                        key={item.key}
-                        className="m-Details-songItem"
-                        onClick={this.play.bind(this, item, item.index - 1)}
-                      >
-                        <p className="item-song">{item.index}</p>
-                        <p className="item-song">{item.title}</p>
-                        <p className="item-song">{item.singer}</p>
-                        <p className="item-song">{item.album}</p>
-                        <p className="item-song">
-                          {formatTime(item.duration / 1000)}
-                        </p>
-                      </List.Item>
-                    )}
-                  />
+                  <div className="m-SongList-scroll">
+                    <List
+                      header={
+                        <div className="m-Details-songItem">
+                          <p className="item-song">序号</p>
+                          <p className="item-song">音乐标题</p>
+                          <p className="item-song">歌手</p>
+                          <p className="item-song">专辑</p>
+                          <p className="item-song">时长</p>
+                        </div>
+                      }
+                      dataSource={this.state.songLists}
+                      renderItem={item => (
+                        <List.Item
+                          key={item.key}
+                          className="m-Details-songItem"
+                          onClick={this.play.bind(this, item, item.index - 1)}
+                        >
+                          <p className="item-song">{item.index}</p>
+                          <p className="item-song">{item.title}</p>
+                          <p className="item-song">{item.singer}</p>
+                          <p className="item-song">{item.album}</p>
+                          <p className="item-song">
+                            {formatTime(item.duration / 1000)}
+                          </p>
+                        </List.Item>
+                      )}
+                    />
+                  </div>
                 </TabPane>
                 <TabPane tab="评论" key="2">
                   <div className="m-Comment-container">
@@ -240,13 +242,7 @@ class SonglistDetails extends Component {
                               />
                             </List.Item>
                           )}
-                        >
-                          {loading && hasMore && (
-                            <div className="demo-loading-container">
-                              <Spin />
-                            </div>
-                          )}
-                        </List>
+                        />
                       </InfiniteScroll>
                     </div>
                   </div>

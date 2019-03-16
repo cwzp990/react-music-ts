@@ -19,7 +19,7 @@ class Singer extends Component {
   }
 
   getData = (id = '', capital = '') => {
-    api.getSingerList(id, capital).then(res => {
+    api.getSingerList(id, capital, 1).then(res => {
       if (res.status === 200) {
         this.setState({
           singerList: res.data.artists

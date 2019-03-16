@@ -1,0 +1,25 @@
+@import '../../styles/mixin.scss';
+.m-Comment {
+  @include wh(100%, calc(100vh - 185px));
+  .m-Comment-count {
+    @include sc($font_size_medium, $dg);
+    line-height: 24px;
+  }
+  .m-Comment-scroll {
+    height: 100%;
+    overflow: auto;
+    font-size: $font_size_small;
+    .m-Comment-name {
+      color: $hover-db;
+      margin-right: 10px;
+    }
+    .m-Comment-content {
+      color: $dg;
+    }
+    .m-Comment-replied {
+      border: 1px solid $border-gray;
+      padding: 8px 0 8px 10px;
+      margin: 8px 0;
+    }
+  }
+}

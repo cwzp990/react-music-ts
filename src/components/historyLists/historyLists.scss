@@ -4,7 +4,7 @@
   background: $bgc;
   .m-History-avatar {
     display: none;
-    @include sc($font_size_small, $hover-bgc);
+    @include sc($font_size_small, $hover-db);
     line-height: 24px;
   }
   .ant-tabs-content {

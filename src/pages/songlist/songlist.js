@@ -41,7 +41,7 @@ class SongList extends Component {
   }
 
   getData = (tag = '全部') => {
-    api.getTopPlaylistResource(tag).then(res => {
+    api.getTopPlaylistResource(tag, 1).then(res => {
       if (res.status === 200) {
         this.setState({
           songList: res.data.playlists,

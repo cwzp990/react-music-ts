@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 import { Icon, Slider } from 'antd'
 import { connect } from 'react-redux'
 import { formatTime, formatDuring } from '../../utils/common'
@@ -26,6 +27,10 @@ class Player extends Component {
       currentTime: '00:00',
       percent: 0,
     }
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
   }
 
   componentDidMount() {
@@ -112,6 +117,12 @@ class Player extends Component {
     this.props.setChangeMode(this.modeList[0])
   }
 
+  showComment = () => {
+    const { currentIndex, playList } = this.props
+    const currentSong = playList[currentIndex]
+    this.context.router.history.push(`/comment/${currentSong.key}`)
+  }
+
   showHistory = () => {
     this.setState({
       showHistory: true
@@ -129,7 +140,7 @@ class Player extends Component {
     const { percent } = this.state
     const song = playList[currentIndex]
     const IconFont = Icon.createFromIconfontCN({
-      scriptUrl: '//at.alicdn.com/t/font_831982_ag7c3k06v3e.js'
+      scriptUrl: '//at.alicdn.com/t/font_831982_r328s0f73f.js'
     })
 
     return (
@@ -172,6 +183,7 @@ class Player extends Component {
             <Icon type="sound" theme="filled" />
             <Slider />
           </div>
+          <IconFont type="icon-comment" onClick={this.showComment} />
           {mode === 1 ? (
             <Icon
               type="bars"
@@ -188,12 +200,12 @@ class Player extends Component {
             />
           ) : (
             <IconFont
-              type="icon-suiji"
+              type="icon-random"
               className="btn-center"
               onClick={this.changeMode}
             />
           )}
-          <IconFont type="icon-liebiao" onClick={this.showHistory} />
+          <IconFont type="icon-list" onClick={this.showHistory} />
         </div>
         <div
           className={`m-History-pop ${

@@ -309,13 +309,13 @@ export const api = {
    * @param offset  偏移量 默认为0
    * @returns 返回歌单列表
    */
-  getTopPlaylistResource(tag, order, offset) {
+  getTopPlaylistResource(tag, offset, order) {
     return axios.get(TopPlaylistResource, {
       params: {
         cat: tag || '',
         order: order || 'hot',
-        limit: 20,
-        offset: offset * 20
+        limit: 30,
+        offset: offset * 30
       }
     })
   },
@@ -347,8 +347,8 @@ export const api = {
       params: {
         cat: cat || '',
         initial: initial || '',
-        limit: 20,
-        offset: offset * 20
+        limit: 30,
+        offset: offset * 30
       }
     })
   },

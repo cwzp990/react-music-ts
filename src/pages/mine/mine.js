@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Drawer, Icon, message } from 'antd'
+import { Drawer, Icon } from 'antd'
 import { api } from '../../api/index'
 import { setMyList } from '../../store/actions'
 

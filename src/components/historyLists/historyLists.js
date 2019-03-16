@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Tabs, List, Icon, Spin } from 'antd'
+import { Tabs, List, Icon } from 'antd'
 
 import './historyLists.scss'
 
@@ -37,13 +37,7 @@ class History extends Component {
                   <div>{item.singer}</div>
                 </List.Item>
               )}
-            >
-              {this.state.playList && (
-                <div className="m-History-loading-container">
-                  <Spin />
-                </div>
-              )}
-            </List>
+            />
           </TabPane>
           <TabPane tab="历史纪录" key="2">
             <List
@@ -57,13 +51,7 @@ class History extends Component {
                   <div>{item.singer}</div>
                 </List.Item>
               )}
-            >
-              {this.state.historyList && (
-                <div className="m-History-loading-container">
-                  <Spin />
-                </div>
-              )}
-            </List>
+            />
           </TabPane>
         </Tabs>
       </div>
