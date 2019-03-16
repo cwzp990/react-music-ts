@@ -71,12 +71,22 @@ export function setMsg(showMsg) {
   }
 }
 
+// 添加播放历史
+export const addHistory = music => (dispatch, getState) => {
+  let historyList = [...getState().historyList]
+  let index = findIndex(historyList, music)
+  if (index > -1) {
+    historyList.splice(index, 1)
+  }
+  historyList.push(music)
+  dispatch(setHistoryList(historyList))
+}
+
 // 播放歌曲 歌单
 export const setAllPlay = ({ playList, currentIndex }) => dispatch => {
   dispatch(setPlayingStatus(true))
   dispatch(setPlayList(playList))
   dispatch(setSequenceList(playList))
-  dispatch(setHistoryList(playList[currentIndex]))
   dispatch(setCurrentIndex(currentIndex))
 }
 

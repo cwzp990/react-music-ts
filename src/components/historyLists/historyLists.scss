@@ -2,10 +2,17 @@
 .m-History {
   @include wh(100%, 100%);
   background: $bgc;
-  .m-History-avatar {
-    display: none;
-    @include sc($font_size_small, $hover-db);
-    line-height: 24px;
+  .m-History-song {
+    .m-History-avatar {
+      display: none;
+      @include sc($font_size_small, $hover-db);
+      line-height: 24px;
+    }
+    &:hover {
+      .m-History-avatar {
+        display: inline-block !important;
+      }
+    }
   }
   .ant-tabs-content {
     height: calc(85vh - 56px);

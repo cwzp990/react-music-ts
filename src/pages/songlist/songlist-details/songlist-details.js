@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Tag from '../../components/tag/tag'
-import Loading from '../loading/loading'
 import { Tabs, Tooltip, Avatar, List, Icon } from 'antd'
 import InfiniteScroll from 'react-infinite-scroller'
-import { api } from '../../api/index'
+import Tag from '../../../components/tag/tag'
+import Loading from '../../../components/loading/loading'
+import { api } from '../../../api/index'
 import {
   fmtDate,
   formatTime,
   toLocalTime,
   toNormalizeList
-} from '../../utils/common'
-import { setMyList, setAllPlay } from '../../store/actions'
+} from '../../../utils/common'
+import { setMyList, setAllPlay, addHistory } from '../../../store/actions'
 
 import './songlist-details.scss'
 
@@ -90,6 +90,7 @@ class SonglistDetails extends Component {
       playList: this.state.songLists,
       currentIndex: index
     })
+    this.props.addHistory(song)
   }
 
   onLoad = () => {
@@ -265,6 +266,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setAllPlay: status => {
     dispatch(setAllPlay(status))
+  },
+  addHistory: status => {
+    dispatch(addHistory(status))
   }
 })
 

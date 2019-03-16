@@ -82,7 +82,7 @@ function sequenceList(sequenceList = defaultState.sequenceList, action) {
 function historyList(historyList = defaultState.historyList, action) {
   switch (action.type) {
     case types.SET_HISTORY_LIST:
-      return [...historyList, action.historyList]
+      return action.historyList
     default:
       return historyList
   }

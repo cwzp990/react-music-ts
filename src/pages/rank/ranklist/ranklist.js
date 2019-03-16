@@ -2,13 +2,7 @@ import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import { deepCopy, toNormalizeList } from '../../../utils/common'
-import {
-  setPlayingStatus,
-  setPlayList,
-  setSequenceList,
-  setHistoryList,
-  setCurrentIndex
-} from '../../../store/actions'
+import { setAllPlay, addHistory } from '../../../store/actions'
 
 import './ranklist.scss'
 
@@ -18,11 +12,12 @@ class RankList extends Component {
   }
 
   play = (song, index) => {
-    this.props.setPlayingStatus(true)
-    this.props.setPlayList(this.props.list)
-    this.props.setSequenceList(this.props.list)
-    this.props.setHistoryList(song)
-    this.props.setCurrentIndex(index)
+    const songLists = toNormalizeList(this.props.list.tracks)
+    this.props.setAllPlay({
+      playList: songLists,
+      currentIndex: index
+    })
+    this.props.addHistory(song)
   }
 
   seeAll = item => {
@@ -48,7 +43,7 @@ class RankList extends Component {
               <li
                 key={song.key}
                 className="rank-item"
-                onDoubleClick={this.play.bind(this, song, index)}
+                onClick={this.play.bind(this, song, index)}
               >
                 <p className="nowrap">
                   {song.index}
@@ -70,20 +65,11 @@ class RankList extends Component {
 
 // 映射dispatch到props (发送)
 const mapDispatchToProps = dispatch => ({
-  setPlayingStatus: status => {
-    dispatch(setPlayingStatus(status))
+  setAllPlay: status => {
+    dispatch(setAllPlay(status))
   },
-  setPlayList: status => {
-    dispatch(setPlayList(status))
-  },
-  setSequenceList: status => {
-    dispatch(setSequenceList(status))
-  },
-  setHistoryList: status => {
-    dispatch(setHistoryList(status))
-  },
-  setCurrentIndex: status => {
-    dispatch(setCurrentIndex(status))
+  addHistory: status => {
+    dispatch(addHistory(status))
   }
 })
 

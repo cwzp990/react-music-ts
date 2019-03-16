@@ -108,9 +108,9 @@ export function parseLyric(lrc) {
 }
 
 // 查找数组序号
-export const findIndex = (list, item) => {
+export const findIndex = (list, song) => {
   return list.findIndex(item => {
-    return item.id === item.id
+    return item.key === song.key
   })
 }
 

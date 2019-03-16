@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Tabs, List, Icon } from 'antd'
+import { addPlay } from '../../store/actions'
 
 import './historyLists.scss'
 
@@ -21,6 +23,11 @@ class History extends Component {
     })
   }
 
+  play = (song) => {
+    console.log(song)
+    this.props.addPlay(song)
+  }
+
   render() {
     return (
       <div className="m-History">
@@ -29,7 +36,11 @@ class History extends Component {
             <List
               dataSource={this.state.playList}
               renderItem={item => (
-                <List.Item key={item.key}>
+                <List.Item
+                  key={item.key}
+                  className="m-History-song"
+                  onClick={this.play.bind(this, item)}
+                >
                   <List.Item.Meta
                     avatar={<Icon type="pause" className="m-History-avatar" />}
                     title={item.title}
@@ -43,7 +54,11 @@ class History extends Component {
             <List
               dataSource={this.state.historyList}
               renderItem={item => (
-                <List.Item key={item.key}>
+                <List.Item
+                  key={item.key}
+                  className="m-History-song"
+                  onClick={this.play.bind(this, item)}
+                >
                   <List.Item.Meta
                     avatar={<Icon type="pause" className="m-History-avatar" />}
                     title={item.title}
@@ -59,4 +74,14 @@ class History extends Component {
   }
 }
 
-export default History
+// 映射dispatch到props (发送)
+const mapDispatchToProps = dispatch => ({
+  addPlay: status => {
+    dispatch(addPlay(status))
+  }
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(History)
