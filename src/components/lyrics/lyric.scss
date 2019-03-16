@@ -20,6 +20,7 @@
   .m-Lyric-info {
     @include sc($font_size_medium, $lg);
     margin-bottom: 15px;
+    text-align: center;
     .singer-info {
       margin: 10px 0;
     }

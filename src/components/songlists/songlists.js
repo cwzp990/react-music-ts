@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Icon } from 'antd'
+import { conversion } from '../../utils/common'
 
 import './songlists.scss'
 
@@ -15,7 +16,7 @@ class SongLists extends Component {
 
   render() {
     const songList = this.props.songList || []
-    
+
     return (
       <div className="m-SongLists">
         <ul className="list-wrapper">
@@ -29,11 +30,7 @@ class SongLists extends Component {
                 <p className="item-tips">{list.copywriter}</p>
                 <div className="item-count">
                   <Icon type="customer-service" />
-                  <span>
-                    {list.playCount > 10000
-                      ? (list.playCount / 10000).toFixed() + '万'
-                      : list.playCount}
-                  </span>
+                  <span>{conversion(list.playCount)}</span>
                 </div>
                 <span className="item-play">
                   <Icon type="play-circle" theme="outlined" />

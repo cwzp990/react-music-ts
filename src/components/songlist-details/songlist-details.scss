@@ -65,12 +65,23 @@
       }
     }
     .m-Details-list {
+      .m-Details-songItem {
+        display: flex;
+        justify-content: space-around;
+        cursor: pointer;
+        .item-song {
+          flex: 1;
+        }
+        &:hover {
+          background: $hover-bgc;
+        }
+      }
       .m-Comment-container {
         @include wh(100%, calc(100vh - 390px));
-        overflow: auto;
-      }
-      .ant-table-pagination.ant-pagination {
-        margin: -45px 0 0 0;
+        .m-Comment-scroll {
+          height: 100%;
+          overflow: auto;
+        }
       }
     }
   }

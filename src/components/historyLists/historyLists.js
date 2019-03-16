@@ -38,7 +38,7 @@ class History extends Component {
                 </List.Item>
               )}
             >
-              {this.state.loading && this.state.hasMore && (
+              {this.state.playList && (
                 <div className="m-History-loading-container">
                   <Spin />
                 </div>
@@ -58,7 +58,7 @@ class History extends Component {
                 </List.Item>
               )}
             >
-              {this.state.loading && this.state.hasMore && (
+              {this.state.historyList && (
                 <div className="m-History-loading-container">
                   <Spin />
                 </div>

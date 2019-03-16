@@ -50,9 +50,17 @@ export const toLocalTime = time => {
 // 秒数转换为mm:ss
 export const formatTime = interval => {
   interval = interval | 0
-  const minute = String(interval / 60 | 0).padStart(2, '0')
+  const minute = String((interval / 60) | 0).padStart(2, '0')
   const second = String(interval % 60).padStart(2, '0')
   return `${minute}:${second}`
+}
+
+export const conversion = count => {
+  return count > 10000000
+    ? (count / 10000000).toFixed(1) + '亿'
+    : count > 10000
+    ? (count / 10000).toFixed() + '万'
+    : count
 }
 
 // 格式化歌单数据

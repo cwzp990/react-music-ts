@@ -15,23 +15,45 @@
         position: absolute;
         top: 0;
         left: 0;
+        width: 100%;
+        min-height: 25px;
+        line-height: 16px;
         @include sc($font_size_small, #fff);
         background: $bgc;
       }
       .item-count {
         position: absolute;
-        top: 3px;
-        right: 3px;
+        top: 0;
+        right: 0;
+        @include wh(100%, 25px);
+        text-align: right;
+        background: linear-gradient(to right, #fff, #000);
+        opacity: 0.5;
         @include sc($font_size_small, #fff);
+        line-height: 25px;
       }
       .item-play {
         display: none;
         position: absolute;
-        right: 0;
-        bottom: 0;
+        right: 5px;
+        bottom: 5px;
+        @include sc(24px, #fff);
       }
       .item-title {
         @include sc($font_size_medium, $lg);
+      }
+      &:hover {
+        .item-count {
+          display: none;
+        }
+        .item-tips {
+          display: inline-block !important;
+          background: #000;
+          opacity: 0.5;
+        }
+        .item-play {
+          display: inline-block !important;
+        }
       }
     }
   }

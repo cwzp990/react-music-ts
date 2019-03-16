@@ -80,6 +80,7 @@ export const setAllPlay = ({ playList, currentIndex }) => dispatch => {
   dispatch(setCurrentIndex(currentIndex))
 }
 
+// 添加一个歌曲
 export const addPlay = music => (dispatch, getState) => {
   let sequenceList = [...getState().sequenceList]
   let index = findIndex(sequenceList, music)
@@ -93,6 +94,7 @@ export const addPlay = music => (dispatch, getState) => {
   }
 }
 
+// 更改播放模式
 export const setChangeMode = mode => (dispatch, getState) => {
   let sequenceList = getState().sequenceList
   dispatch(setMode(mode))

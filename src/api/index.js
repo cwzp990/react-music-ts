@@ -137,13 +137,13 @@ export const api = {
    * @param offset 数据偏移量
    * @returns response  数据返回值
    */
-  getSearchResource(keywords, type, limit, offset) {
+  getSearchResource(keywords, type, offset) {
     return axios.get(SearchResource, {
       params: {
         keywords: keywords,
         type: type || 1,
-        offset: offset || 0,
-        limit: limit || 10
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
@@ -192,11 +192,12 @@ export const api = {
   },
 
   // 获取评论， id为单曲id
-  getCommentResource(id, limit) {
+  getCommentResource(id, offset) {
     return axios.get(CommentResource, {
       params: {
         id: id,
-        limit: limit || 30
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
@@ -232,11 +233,12 @@ export const api = {
   },
 
   // 获取歌手专辑列表， id为歌手id
-  getArtistAlbumResource(id, size) {
+  getArtistAlbumResource(id, offset) {
     return axios.get(ArtistAlbumResource, {
       params: {
         id: id,
-        limit: 50 || size
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
@@ -307,13 +309,13 @@ export const api = {
    * @param offset  偏移量 默认为0
    * @returns 返回歌单列表
    */
-  getTopPlaylistResource(tag, order, limit, offset) {
+  getTopPlaylistResource(tag, order, offset) {
     return axios.get(TopPlaylistResource, {
       params: {
         cat: tag || '',
         order: order || 'hot',
-        limit: limit || 30,
-        offset: offset || 0
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
@@ -324,11 +326,11 @@ export const api = {
    * @param offset
    * @returns 返回新碟列表
    */
-  getNewAlbumResource(limit, offset) {
+  getNewAlbumResource(offset) {
     return axios.get(NewAlbumResource, {
       params: {
-        limit: limit || 50,
-        offset: offset || 0
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
@@ -340,13 +342,13 @@ export const api = {
    * @param cat
    * @param initial
    */
-  getSingerList(cat, initial, limit, offset) {
+  getSingerList(cat, initial, offset) {
     return axios.get(QuerySinger, {
       params: {
         cat: cat || '',
         initial: initial || '',
-        limit: limit || 50,
-        offset: offset || 0
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
@@ -357,11 +359,11 @@ export const api = {
    * @param offset
    * @returns 返回热门歌手列表
    */
-  getTopArtistsResource(limit, offset) {
+  getTopArtistsResource(offset) {
     return axios.get(TopArtistsResource, {
       params: {
-        limit: limit || 100,
-        offset: offset || 0
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
@@ -390,10 +392,11 @@ export const api = {
   },
 
   // 获取精品歌单
-  getHighQuality(limit) {
+  getHighQuality(offset) {
     return axios.get(HighQuality, {
       params: {
-        limit: limit || 30
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
@@ -440,10 +443,11 @@ export const api = {
       }
     })
   },
-  getMVRank(limit) {
+  getMVRank(offset) {
     return axios.get(MVRank, {
       params: {
-        limit: limit || 30
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
@@ -465,10 +469,12 @@ export const api = {
     })
   },
   // 获取歌单评论
-  getPlaylistCommentResource(id) {
+  getPlaylistCommentResource(id, offset) {
     return axios.get(PlaylistCommentResource, {
       params: {
-        id: id
+        id: id,
+        limit: 20,
+        offset: offset * 20
       }
     })
   },
