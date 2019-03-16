@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { Icon, Slider } from 'antd'
 import { connect } from 'react-redux'
-import { formatTime, formatDuring } from '../../utils/common'
+import { formatTime, formatDuring, playMode } from '../../utils/common'
 import History from '../../components/historyLists/historyLists'
 import {
   setCurrentIndex,
@@ -25,7 +25,7 @@ class Player extends Component {
     this.state = {
       showHistory: false,
       currentTime: '00:00',
-      percent: 0,
+      percent: 0
     }
   }
 
@@ -91,12 +91,26 @@ class Player extends Component {
     this.props.setCurrentIndex(index)
   }
 
+  loop = () => {
+    this.refs.audio.currentTime = 0
+    this.refs.audio.play()
+    this.props.setPlayingStatus(true)
+  }
+
+  end = () => {
+    if (this.props.mode === playMode.loop) {
+      this.loop()
+    } else {
+      this.next()
+    }
+  }
+
   changePlay = val => {
     const { currentIndex, playList } = this.props
     const currentTime = (playList[currentIndex].duration * val) / 100
     const m = parseInt((currentTime % (1000 * 60 * 60)) / (1000 * 60))
     const s = parseInt((currentTime % (1000 * 60)) / 1000)
-    this.audioEle.currentTime = m*60+s
+    this.audioEle.currentTime = m * 60 + s
     this.setState({
       currentTime: formatDuring(currentTime)
     })
@@ -107,7 +121,7 @@ class Player extends Component {
     const duration = e.target.duration
     this.setState({
       currentTime: formatTime(currentTime),
-      percent: parseInt(currentTime / duration * 100)
+      percent: parseInt((currentTime / duration) * 100)
     })
   }
 
@@ -115,6 +129,10 @@ class Player extends Component {
     let first = this.modeList.splice(0, 1)
     this.modeList.splice(this.modeList.length, 0, ...first)
     this.props.setChangeMode(this.modeList[0])
+  }
+
+  changeVoice = val => {
+    this.refs.audio.volume = val / 100
   }
 
   showComment = () => {
@@ -181,7 +199,7 @@ class Player extends Component {
         <div className="m-Player-listBtn">
           <div className="m-Player-sound">
             <Icon type="sound" theme="filled" />
-            <Slider />
+            <Slider onChange={this.changeVoice} defaultValue={58} />
           </div>
           <IconFont type="icon-comment" onClick={this.showComment} />
           {mode === 1 ? (
@@ -217,6 +235,7 @@ class Player extends Component {
         <audio
           autoPlay
           ref="audio"
+          onEnded={this.end}
           onTimeUpdate={this.timeUpdate}
           src={
             song

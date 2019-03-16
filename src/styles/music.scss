@@ -15,8 +15,8 @@
 }
 
 .active {
-  border: 1px solid $hover-db;
-  border-radius: 3px;
+  background: $hover-db;
+  color: #fff !important;
 }
 
 .selected {

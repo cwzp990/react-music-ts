@@ -91,3 +91,10 @@
     }
   }
 }
+
+// 简介pop宽度
+.brief-card {
+  .ant-tooltip-inner {
+    min-width: 50vw !important;
+  }
+}

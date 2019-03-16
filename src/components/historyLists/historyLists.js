@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Tabs, List, Icon } from 'antd'
-import { addPlay } from '../../store/actions'
+import { addPlay, addHistory } from '../../store/actions'
 
 import './historyLists.scss'
 
@@ -24,8 +24,8 @@ class History extends Component {
   }
 
   play = (song) => {
-    console.log(song)
     this.props.addPlay(song)
+    this.props.addHistory(song)
   }
 
   render() {
@@ -78,6 +78,9 @@ class History extends Component {
 const mapDispatchToProps = dispatch => ({
   addPlay: status => {
     dispatch(addPlay(status))
+  },
+  addHistory: status => {
+    dispatch(addHistory(status))
   }
 })
 

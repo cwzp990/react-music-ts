@@ -25,6 +25,7 @@ class SongLists extends Component {
               <li
                 key={list.id}
                 className="list-item"
+                title={list.name}
                 onClick={this.getListDetails.bind(this, list)}
               >
                 <p className="item-tips">{list.copywriter}</p>

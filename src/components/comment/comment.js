@@ -81,7 +81,7 @@ class Comment extends Component {
                   ]}
                 >
                   <List.Item.Meta
-                    avatar={<Avatar src={comment.user.avatarUrl} />}
+                    avatar={<Avatar size={50} src={comment.user.avatarUrl} />}
                     title={
                       <div>
                         <div>
