@@ -1,14 +1,14 @@
 # ReactPlayer V1.0.0（2019.03.17）
 
-市面上有很多的网易云音乐项目，本来不想做这个的，奈何其API是最全的，还是动手做了一下
+市面上有很多的网易云音乐项目，本来不想做这个的，奈何其 API 是最全的，还是动手做了一下
 
-这个是PC版的网易云音乐，界面做了精简，因使用的是脸书的React框架，所以为了良好的浏览体验，强烈建议使用Chrome浏览器
+这个是 PC 版的网易云音乐，界面做了精简，因使用的是脸书的 React 框架，所以为了良好的浏览体验，强烈建议使用 Chrome 浏览器
 
-因服务器带宽不高(只有1M)，过多的人使用可能会有卡顿，请谅解
+因服务器带宽不高(只有 1M)，过多的人使用可能会有卡顿，请谅解
 
 另外，此项目没有做过多的移动端兼容，在移动端、以及页面过小的情况下，可能会出现变形，后续会补上
 
-> api：一个开源的[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi)（有api才有动力写！！！）
+> api：一个开源的[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi)（有 api 才有动力写！！！）
 
 > [在线演示地址](http://www.cwzp990.com)
 
@@ -36,9 +36,9 @@ yarn build //项目打包
 - react-router（页面路由）
 - redux（状态管理）
 - ES 6 / 7 （JavaScript 语言的下一代标准）
-- SCSS（CSS预处理器）
+- SCSS（CSS 预处理器）
 - Axios（网络请求）
-- Antd （蚂蚁金融出品的React UI框架）
+- Antd （蚂蚁金融出品的 React UI 框架）
 - TypeScript (目前没有使用，后续会补上，前端的趋势)
 
 ## 项目布局
@@ -94,22 +94,29 @@ yarn build //项目打包
 
 ## 界面欣赏
 
-#### 正在播放
-![正在播放](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8cb660c8?w=1920&h=1006&f=png&s=643864)
-#### 排行榜
-![排行榜](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8e6ff8e6?w=1920&h=1006&f=png&s=871255)
-#### 搜索
-![搜索](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8d19a51f?w=1920&h=1007&f=png&s=629351)
-#### 我的歌单
-![我的歌单](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8e9c9182?w=1920&h=1005&f=png&s=1296698)
-#### 我听过的
-![我听过的](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8ea461ee?w=1920&h=1003&f=png&s=646239)
-#### 歌曲评论
-![歌曲评论](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8edbd1b0?w=1920&h=1006&f=png&s=675028)
+#### 登录页面
+
+![登录页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/login.gif)
+
+#### 播放页面
+
+![播放页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/play.gif)
+
+#### 排行页面
+
+![排行页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/rank.gif)
+
+#### 歌手页面
+
+![歌手页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/singer.gif)
+
+#### 歌单页面
+
+![歌单页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/songList.gif)
 
 ## 其他说明
 
-- 个人练手项目（终于对React有了大致的了解啦！！！）
+- 个人练手项目（终于对 React 有了大致的了解啦！！！）
 - 近期会将在此项目中遇到的问题整理出来，React 和 Vue 有一些地方还是有所不同的，其中踩了很多的坑
 - 如果您喜欢该作品，您可以点右上角 "Star" "Fork" 表示支持 谢谢！
 - 如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR
