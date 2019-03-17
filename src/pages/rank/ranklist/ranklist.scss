@@ -15,12 +15,12 @@
     display: flex;
     justify-content: space-between;
     @include sc($font_size_medium, $lg);
-    line-height: 30px;
+    line-height: 24px;
   }
   .more {
     text-align: right;
     @include sc($font_size_medium, $lg);
-    line-height: 30px;
+    line-height: 24px;
     cursor: pointer;
   }
 }

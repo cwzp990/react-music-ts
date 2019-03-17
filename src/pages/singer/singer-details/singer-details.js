@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { Avatar, Tabs, Empty } from 'antd'
+import { Avatar, Tabs, Empty, message } from 'antd'
+import Loading from '../../../components/loading/loading'
 import { api } from '../../../api/index'
 import { toNormalizeAlbum, conversion, formatTime } from '../../../utils/common'
 
 import './singer-details.scss'
+import { resolve } from 'q'
 
 const TabPane = Tabs.TabPane
 
@@ -81,13 +83,42 @@ class SingerDetails extends Component {
     this.setState({
       isLoading: false
     })
-    api.getSimiSinger(this.props.match.params.id).then(res => {
-      if (res.status === 200) {
+    api
+      .getSimiSinger(this.props.match.params.id)
+      .then(res => {
+        if (res.status === 200) {
+          this.setState({
+            isLoading: true,
+            similar: res.data
+          })
+        }
+      })
+      .catch(err => {
         this.setState({
           isLoading: true,
-          singer: res.data
+          similar: []
         })
+        message.warning('此接口有问题，后续会更新')
+      })
+  }
+
+  getMVUrl = async id => {
+    let res = await api.getMVPlay(id)
+    return new Promise((resolve, reject) => {
+      if (res.status === 200) {
+        resolve(res.data.data.url)
+      } else {
+        reject(res)
       }
+    })
+  }
+
+  play = (video, event) => {
+    let dom = event.target
+    if (!dom) return false
+    this.getMVUrl(video.id).then(res => {
+      dom.src = res
+      dom.play()
     })
   }
 
@@ -136,39 +167,46 @@ class SingerDetails extends Component {
                 {MV.map((item, index) => {
                   return (
                     <li key={index} className="m-MV-list" title={item.name}>
-                      <div className="m-MV-avatar">
-                        <p>
-                          <video src="" />
-                        </p>
-                        <p className="count">{conversion(item.playCount)}</p>
-                        <p className="time">{formatTime(item.duration)}</p>
-                      </div>
-                      <p className="m-MV-name">{item.name}</p>
+                      <video
+                        src=""
+                        poster={item.imgurl16v9}
+                        controls
+                        className="video-player"
+                        onClick={this.play.bind(this, item)}
+                      />
+                      <p className="count">{conversion(item.playCount)}</p>
+                      <p className="name">{item.name}</p>
                     </li>
                   )
                 })}
               </ul>
             </TabPane>
             <TabPane tab="歌手详情" key="3">
-              {info.introduction ? (
-                <div>
-                  <p>{info.briefDesc}</p>
-                  <ul>
-                    {info.introduction.map((item, index) => {
-                      return (
-                        <li key={index}>
-                          <h3>{item.ti}</h3>
-                          <p>{item.text}</p>
-                        </li>
-                      )
-                    })}
-                  </ul>
+              {isLoading ? (
+                <div className="m-Info-container">
+                  <p className="m-Info-brief">{info.briefDesc}</p>
+                  {info.introduction ? (
+                    <ul>
+                      {info.introduction.map((item, index) => {
+                        return (
+                          <li key={index} className="m-Info-details">
+                            <h3 className="title">{item.ti}</h3>
+                            <p className="name">{item.txt}</p>
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  ) : (
+                    <p />
+                  )}
                 </div>
               ) : (
-                <Empty />
+                <Loading />
               )}
             </TabPane>
-            <TabPane tab="相似歌曲" key="4" />
+            <TabPane tab="相似歌手" key="4">
+              {similar.length ? <div /> : <Empty />}
+            </TabPane>
           </Tabs>
         </div>
       </div>

@@ -13,7 +13,7 @@
         left: 0;
         width: 100%;
         min-height: 25px;
-        line-height: 16px;
+        line-height: 18px;
         @include sc($font_size_small, #fff);
         background: $bgc;
       }
@@ -26,7 +26,7 @@
         background: linear-gradient(to right, #fff, #000);
         opacity: 0.5;
         @include sc($font_size_small, #fff);
-        line-height: 25px;
+        line-height: 24px;
       }
       .item-play {
         display: none;

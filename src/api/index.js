@@ -238,8 +238,8 @@ export const api = {
     return axios.get(ArtistAlbumResource, {
       params: {
         id: id,
-        limit: 30,
-        offset: (offset - 1) * 30
+        limit: 10,
+        offset: (offset - 1) * 10
       }
     })
   },
@@ -437,10 +437,10 @@ export const api = {
     })
   },
   // 获取MV播放地址
-  getMVPlay(url) {
+  getMVPlay(id) {
     return axios.get(playMV, {
       params: {
-        url: url
+        id
       }
     })
   },
