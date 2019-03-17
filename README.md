@@ -1,44 +1,115 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ReactPlayer V1.0.0（2019.03.17）
 
-## Available Scripts
+市面上有很多的网易云音乐项目，本来不想做这个的，奈何其API是最全的，还是动手做了一下
 
-In the project directory, you can run:
+这个是PC版的网易云音乐，界面做了精简，因使用的是脸书的React框架，所以为了良好的浏览体验，强烈建议使用Chrome浏览器
 
-### `npm start`
+因服务器带宽不高(只有1M)，过多的人使用可能会有卡顿，请谅解
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+另外，此项目没有做过多的移动端兼容，在移动端、以及页面过小的情况下，可能会出现变形，后续会补上
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+> api：一个开源的[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi)（有api才有动力写！！！）
 
-### `npm test`
+> [在线演示地址](http://www.cwzp990.com)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 如何安装与使用
 
-### `npm run build`
+> ReactPlayer
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git clone https://github.com/cwzp990/react-music-ts.git //下载项目
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+cd react-music-ts // 进入react-music-ts播放器目录
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+yarn install // 安装依赖
 
-### `npm run eject`
+yarn start // 服务端运行
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+yarn build //项目打包
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 技术栈
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- create-react-app（Vue 脚手架工具）
+- react（核心框架）
+- react-router（页面路由）
+- redux（状态管理）
+- ES 6 / 7 （JavaScript 语言的下一代标准）
+- SCSS（CSS预处理器）
+- Axios（网络请求）
+- Antd （蚂蚁金融出品的React UI框架）
+- TypeScript (目前没有使用，后续会补上，前端的趋势)
 
-## Learn More
+## 项目布局
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+├─node_modules------------------------------------------------------------------------------  第三方依赖包
+├─public------------------------------------------------------------------------------------  react主入口
+└─src---------------------------------------------------------------------------------------  项目主目录
+    ├─api-----------------------------------------------------------------------------------  数据交互接口
+    ├─assets--------------------------------------------------------------------------------  静态资源目录
+    │  └─img--------------------------------------------------------------------------------  图片
+    ├─components----------------------------------------------------------------------------  公共项目组建
+    │  ├─classify---------------------------------------------------------------------------  分类组件
+    │  ├─comment----------------------------------------------------------------------------  评论组件
+    │  ├─header-----------------------------------------------------------------------------  头部组件
+    │  ├─historyLists-----------------------------------------------------------------------  历史列表弹框组件
+    │  ├─loading----------------------------------------------------------------------------  加载框组件
+    │  ├─lyrics-----------------------------------------------------------------------------  歌词组件
+    │  ├─nav--------------------------------------------------------------------------------  导航组件
+    │  ├─songlists--------------------------------------------------------------------------  歌单列表组件
+    │  ├─tag--------------------------------------------------------------------------------  标签组件
+    │  └─tips-------------------------------------------------------------------------------  更新提醒框组件
+    ├─pages---------------------------------------------------------------------------------  项目主页面
+    │  ├─mine-------------------------------------------------------------------------------  我的界面
+    │  ├─player-----------------------------------------------------------------------------  播放器
+    │  ├─playList---------------------------------------------------------------------------  播放列表
+    │  ├─rank-------------------------------------------------------------------------------  排行界面
+    │  │  └─ranklist------------------------------------------------------------------------  排行列表
+    │  ├─recommend--------------------------------------------------------------------------  推荐界面
+    │  ├─singer-----------------------------------------------------------------------------  歌手界面
+    │  │  └─singer-details------------------------------------------------------------------  歌手详情
+    │  └─songlist---------------------------------------------------------------------------  歌单界面
+    │      └─songlist-details---------------------------------------------------------------  歌单详情
+    ├─router--------------------------------------------------------------------------------  react-router路由
+    ├─store---------------------------------------------------------------------------------  redux状态管理库
+    ├─styles--------------------------------------------------------------------------------  公用样式
+    └─utils---------------------------------------------------------------------------------  公用js方法封装
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+
+## 功能
+
+- 播放器
+- 歌词滚动
+- 正在播放
+- 排行榜
+- 歌单详情
+- 割手详情
+- 播放历史
+- 查看评论
+- 同步网易云歌单
+- 搜索歌曲（正在开发）
+
+## 界面欣赏
+
+#### 正在播放
+![正在播放](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8cb660c8?w=1920&h=1006&f=png&s=643864)
+#### 排行榜
+![排行榜](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8e6ff8e6?w=1920&h=1006&f=png&s=871255)
+#### 搜索
+![搜索](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8d19a51f?w=1920&h=1007&f=png&s=629351)
+#### 我的歌单
+![我的歌单](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8e9c9182?w=1920&h=1005&f=png&s=1296698)
+#### 我听过的
+![我听过的](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8ea461ee?w=1920&h=1003&f=png&s=646239)
+#### 歌曲评论
+![歌曲评论](https://user-gold-cdn.xitu.io/2018/5/17/1636bc3d8edbd1b0?w=1920&h=1006&f=png&s=675028)
+
+## 其他说明
+
+- 个人练手项目（终于对React有了大致的了解啦！！！）
+- 近期会将在此项目中遇到的问题整理出来，React 和 Vue 有一些地方还是有所不同的，其中踩了很多的坑
+- 如果您喜欢该作品，您可以点右上角 "Star" "Fork" 表示支持 谢谢！
+- 如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR

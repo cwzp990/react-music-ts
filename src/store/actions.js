@@ -71,6 +71,13 @@ export function setMsg(showMsg) {
   }
 }
 
+export function setAudio(audio) {
+  return {
+    type: types.SET_AUDIO,
+    audio
+  }
+}
+
 // 添加播放历史
 export const addHistory = music => (dispatch, getState) => {
   let historyList = [...getState().historyList]

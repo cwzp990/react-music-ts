@@ -20,6 +20,7 @@ class Lyrics extends Component {
     // console.log(nextProps)
     const { playing, playList, currentIndex } = nextProps
     if (!playing) return false
+    // 获取歌词
     const song = playList[currentIndex]
     api.getLyricResource(song.key).then(res => {
       if (res.data.code === 200) {
@@ -69,10 +70,14 @@ class Lyrics extends Component {
           ) : (
             <div>
               <p>在线音乐播放器</p>
-              <p className="author-info">
+              <a
+                href="https://github.com/cwzp990/react-music-ts"
+                target="_Blank"
+                className="author-info"
+              >
                 <Icon type="github" />
                 <span>桔子</span>
-              </p>
+              </a>
             </div>
           )}
         </div>
@@ -80,13 +85,13 @@ class Lyrics extends Component {
           {!song.key ? (
             <p>当前没有播放音乐</p>
           ) : lyric.length ? (
-            <div>
+            <div className="m-Lyric-wrapper">
               {lyric.map((line, index) => {
                 return (
                   <p
                     key={index}
                     className={`m-Lyric-line ${
-                      currentLineNum == index ? 'selected' : ''
+                      currentLineNum == index ? '' : ''
                     }`}
                   >
                     {line.txt}
@@ -107,7 +112,8 @@ class Lyrics extends Component {
 const mapStateToProps = state => ({
   playing: state.playing,
   playList: state.playList,
-  currentIndex: state.currentIndex
+  currentIndex: state.currentIndex,
+  audio: state.audio
 })
 
 export default connect(

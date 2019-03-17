@@ -14,7 +14,8 @@ import History from '../../components/historyLists/historyLists'
 import {
   setCurrentIndex,
   setPlayingStatus,
-  setChangeMode
+  setChangeMode,
+  setAudio
 } from '../../store/actions'
 
 import './player.scss'
@@ -36,6 +37,7 @@ class Player extends Component {
   componentDidMount() {
     this.modeList = [1, 2, 3]
     this.audioEle = ReactDOM.findDOMNode(this.refs.audio)
+    // this.props.setAudio(this.audioEle)
     this.bindEvents()
   }
 
@@ -92,8 +94,8 @@ class Player extends Component {
   }
 
   loop = () => {
-    this.audioEle.audio.currentTime = 0
-    this.audioEle.audio.play()
+    this.audioEle.currentTime = 0
+    this.audioEle.play()
     this.props.setPlayingStatus(true)
   }
 
@@ -132,7 +134,7 @@ class Player extends Component {
   }
 
   changeVoice = val => {
-    this.audioEle.audio.volume = val / 100
+    this.audioEle.volume = val / 100
   }
 
   showComment = () => {
@@ -267,6 +269,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setChangeMode: status => {
     dispatch(setChangeMode(status))
+  },
+  setAudio: status => {
+    dispatch(setAudio(status))
   }
 })
 

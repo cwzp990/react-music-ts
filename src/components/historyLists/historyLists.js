@@ -23,6 +23,11 @@ class History extends Component {
     })
   }
 
+  changeTab = (val, event) => {
+    // 阻止原生事件上的冒泡
+    event.nativeEvent.stopImmediatePropagation()
+  }
+
   play = song => {
     this.props.addPlay(song)
     this.props.addHistory(song)
@@ -30,11 +35,10 @@ class History extends Component {
 
   render() {
     const { currentIndex } = this.props
-    console.log(currentIndex)
 
     return (
       <div className="m-History">
-        <Tabs type="card">
+        <Tabs onTabClick={this.changeTab} type="card">
           <TabPane tab="播放列表" key="1">
             <List
               dataSource={this.state.playList}

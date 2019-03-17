@@ -18,3 +18,5 @@ export const SET_MODE = 'SET_PLAY_MODE'
 export const SET_MY_LIST = 'SET_MY_LIST'
 // 用户聊天消息显隐
 export const SET_MSG = 'SET_MSG'
+// 设置Audio元素
+export const SET_AUDIO = 'SET_AUDIO'

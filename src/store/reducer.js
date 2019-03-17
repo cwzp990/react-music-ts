@@ -23,7 +23,9 @@ const defaultState = {
   // 我的歌单显隐
   showMine: false,
   // 用户聊天消息
-  showMsg: false
+  showMsg: false,
+  // audio元素
+  audio: null
 }
 
 // state 里存放了所有的数据
@@ -128,6 +130,16 @@ function showMsg(showMsg = defaultState.showMsg, action) {
   }
 }
 
+// audio
+function audio(audio = defaultState.audio, action) {
+  switch (action.type) {
+    case types.SET_AUDIO:
+      return action.audio
+    default:
+      return audio
+  }
+}
+
 const reducer = combineReducers({
   userInfo,
   song,
@@ -138,7 +150,8 @@ const reducer = combineReducers({
   currentIndex,
   mode,
   showMine,
-  showMsg
+  showMsg,
+  audio
 })
 
 export default reducer
