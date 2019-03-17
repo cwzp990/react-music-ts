@@ -44,6 +44,7 @@ import {
   MvResource,
   playMV,
   SimiMvResource,
+  SimiSingerResource,
   MvCommentResource,
   PlaylistCommentResource,
   AlbumCommentResource,
@@ -143,7 +144,7 @@ export const api = {
         keywords: keywords,
         type: type || 1,
         limit: 20,
-        offset: offset * 20
+        offset: (offset - 1) * 20
       }
     })
   },
@@ -197,7 +198,7 @@ export const api = {
       params: {
         id: id,
         limit: 20,
-        offset: offset * 20
+        offset: (offset - 1) * 20
       }
     })
   },
@@ -237,8 +238,8 @@ export const api = {
     return axios.get(ArtistAlbumResource, {
       params: {
         id: id,
-        limit: 20,
-        offset: offset * 20
+        limit: 30,
+        offset: (offset - 1) * 30
       }
     })
   },
@@ -315,7 +316,7 @@ export const api = {
         cat: tag || '',
         order: order || 'hot',
         limit: 30,
-        offset: offset * 30
+        offset: (offset - 1) * 30
       }
     })
   },
@@ -330,7 +331,7 @@ export const api = {
     return axios.get(NewAlbumResource, {
       params: {
         limit: 20,
-        offset: offset * 20
+        offset: (offset - 1) * 20
       }
     })
   },
@@ -348,7 +349,7 @@ export const api = {
         cat: cat || '',
         initial: initial || '',
         limit: 30,
-        offset: offset * 30
+        offset: (offset - 1) * 30
       }
     })
   },
@@ -363,7 +364,7 @@ export const api = {
     return axios.get(TopArtistsResource, {
       params: {
         limit: 20,
-        offset: offset * 20
+        offset: (offset - 1) * 20
       }
     })
   },
@@ -396,7 +397,7 @@ export const api = {
     return axios.get(HighQuality, {
       params: {
         limit: 20,
-        offset: offset * 20
+        offset: (offset - 1) * 20
       }
     })
   },
@@ -447,7 +448,7 @@ export const api = {
     return axios.get(MVRank, {
       params: {
         limit: 20,
-        offset: offset * 20
+        offset: (offset - 1) * 20
       }
     })
   },
@@ -460,6 +461,16 @@ export const api = {
       }
     })
   },
+
+  // 获取相似歌手
+  getSimiSinger(id) {
+    return axios.get(SimiSingerResource, {
+      params: {
+        id
+      }
+    })
+  },
+
   // 获取mv评论
   getMvCommentResource(id) {
     return axios.get(MvCommentResource, {
@@ -474,7 +485,7 @@ export const api = {
       params: {
         id: id,
         limit: 20,
-        offset: offset * 20
+        offset: (offset - 1) * 20
       }
     })
   },

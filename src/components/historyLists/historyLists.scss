@@ -5,12 +5,17 @@
   .m-History-song {
     .m-History-avatar {
       display: none;
-      @include sc($font_size_small, $hover-db);
+      @include sc($font_size_medium, $hover-db);
       line-height: 24px;
     }
     &:hover {
+      background: $hover-db;
+      color: #fff;
       .m-History-avatar {
-        display: inline-block !important;
+        color: #fff;
+      }
+      .ant-list-item-meta-title {
+        color: #fff;
       }
     }
   }

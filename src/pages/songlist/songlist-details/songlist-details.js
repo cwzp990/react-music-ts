@@ -150,7 +150,7 @@ class SonglistDetails extends Component {
                   </p>
                 </div>
                 <div className="m-details-info-tag">
-                  <Tag title="标签:" forbid={false} category={details.tags} />
+                  <Tag title="标签:" show={false} forbid={true} category={details.tags} />
                 </div>
                 <div className="m-details-brief nowrap">
                   <Tooltip

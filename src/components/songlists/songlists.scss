@@ -1,11 +1,7 @@
 @import '../../styles/mixin.scss';
 .m-SongLists {
   .list-wrapper {
-    display: grid;
-    grid-column-gap: 8px;
-    grid-row-gap: 25px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    justify-content: space-between;
+    @include grid(25px, 150px);
     .list-item {
       position: relative;
       @include wh(150px, 150px);

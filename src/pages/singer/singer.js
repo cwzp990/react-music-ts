@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Empty } from 'antd'
 import Tag from '../../components/tag/tag'
 import { api } from '../../api'
@@ -12,6 +13,10 @@ let param1 = '1',
 class Singer extends Component {
   state = {
     singerList: []
+  }
+
+  static contextTypes = {
+    router: PropTypes.object
   }
 
   componentDidMount() {
@@ -35,6 +40,10 @@ class Singer extends Component {
     else if (tag.type === 'hots') param3 = ''
     else param3 = tag.name
     this.getData(param1 + param2, param3)
+  }
+
+  getSingerDetails = (singer) => {
+    this.context.router.history.push(`/singer/${singer.id}`)
   }
 
   getEN = () => {
@@ -68,23 +77,25 @@ class Singer extends Component {
         <div className="m-Singer-nav">
           <Tag
             title="语种:"
-            forbid={true}
+            show={true}
+            forbid={false}
             category={language}
             handleEvent={this.selectedTag}
           />
           <Tag
             title="分类:"
-            forbid={true}
+            show={true}
+            forbid={false}
             category={classify}
             handleEvent={this.selectedTag}
           />
-          <Tag title="筛选:" forbid={true} category={hot} handleEvent={this.selectedTag} />
+          <Tag title="筛选:" show={true} forbid={false} category={hot} handleEvent={this.selectedTag} />
         </div>
         {this.state.singerList.length ? (
           <ul className="m-Singer-list">
             {this.state.singerList.map(singer => {
               return (
-                <li key={singer.id} className="item-singer">
+                <li key={singer.id} className="item-singer" onClick={this.getSingerDetails.bind(this, singer)}>
                   <p>
                     <img src={singer.picUrl} />
                   </p>

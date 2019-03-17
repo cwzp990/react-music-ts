@@ -84,8 +84,22 @@ export const toNormalizeList = list => {
   return arr
 }
 
-//歌词解析
-export function parseLyric(lrc) {
+// 格式化专辑数据
+export const toNormalizeAlbum = list => {
+  return list.map((item, index) => {
+    return {
+      index: index + 1,
+      title: item.name,
+      date: fmtDate(item.publishTime),
+      size: item.size,
+      picUrl: item.picUrl,
+      key: item.id
+    }
+  })
+}
+
+// 歌词解析
+export const parseLyric = lrc => {
   let lyrics = lrc.split('\n')
   let lrcObj = []
   for (let i = 0; i < lyrics.length; i++) {
@@ -114,7 +128,7 @@ export const findIndex = (list, song) => {
   })
 }
 
-export function shuffle(arr) {
+export const shuffle = arr => {
   let _arr = arr.slice()
   for (let i = 0; i < _arr.length; i++) {
     let j = getRandomInt(0, i)

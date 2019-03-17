@@ -3,11 +3,7 @@
   height: calc(100vh - 185px);
   overflow: auto;
   .m-Rank-wrapper {
-    display: grid;
-    grid-column-gap: 8px;
-    grid-row-gap: 25px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    justify-content: space-between;
+    @include grid(25px, 300px);
     .m-Rank-list {
       @include wh(300px, auto);
       cursor: pointer;

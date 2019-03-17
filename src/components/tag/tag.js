@@ -11,7 +11,8 @@ class Tag extends Component {
   }
 
   selectedTag = (item, index, forbid) => {
-    if (!forbid) return false
+    if (forbid) return false
+    console.log('执行了')
     this.setState({
       currentIndex: index
     })
@@ -19,10 +20,8 @@ class Tag extends Component {
   }
 
   render() {
-    const title = this.props.title
-    const forbid = this.props.forbid
-    const category = this.props.category
-    
+    const { title, show, forbid, category } = this.props
+
     return (
       <div className="m-Tag flex">
         <p className="m-Tag-title">{title}</p>
@@ -31,7 +30,7 @@ class Tag extends Component {
             <li
               key={index}
               className={`item-tag ${
-                this.state.currentIndex == index && forbid ? 'active' : ''
+                this.state.currentIndex == index && show ? 'active' : ''
               }`}
               onClick={this.selectedTag.bind(this, tag, index, forbid)}
             >

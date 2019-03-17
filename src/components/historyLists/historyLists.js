@@ -23,26 +23,36 @@ class History extends Component {
     })
   }
 
-  play = (song) => {
+  play = song => {
     this.props.addPlay(song)
     this.props.addHistory(song)
   }
 
   render() {
+    const { currentIndex } = this.props
+    console.log(currentIndex)
+
     return (
       <div className="m-History">
         <Tabs type="card">
           <TabPane tab="播放列表" key="1">
             <List
               dataSource={this.state.playList}
-              renderItem={item => (
+              renderItem={(item, index) => (
                 <List.Item
                   key={item.key}
                   className="m-History-song"
                   onClick={this.play.bind(this, item)}
                 >
                   <List.Item.Meta
-                    avatar={<Icon type="pause" className="m-History-avatar" />}
+                    avatar={
+                      <Icon
+                        type="caret-right"
+                        className={`m-History-avatar ${
+                          currentIndex === index ? 'show' : ''
+                        }`}
+                      />
+                    }
                     title={item.title}
                   />
                   <div>{item.singer}</div>
@@ -74,6 +84,11 @@ class History extends Component {
   }
 }
 
+// 映射Redux全局的state到组件的props上 (接收)
+const mapStateToProps = state => ({
+  currentIndex: state.currentIndex
+})
+
 // 映射dispatch到props (发送)
 const mapDispatchToProps = dispatch => ({
   addPlay: status => {
@@ -85,6 +100,6 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(History)

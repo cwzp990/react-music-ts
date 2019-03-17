@@ -45,6 +45,7 @@ const apiMusic = {
   playMV: '/mv/url',
   topMv: '/top/mv', // 获取mv排行
   simiMv: '/simi/mv', // 获取相似mv
+  simiSinger: '/simi/artist', // 获取相似歌手
   mvComment: '/comment/mv', // 获取mv评论
   playlistComment: '/comment/playlist', // 获取歌单评论
   albumComment: '/comment/album', // 获取专辑评论
@@ -97,6 +98,7 @@ export const MvResource = API_ROOT.concat(apiMusic.mv)
 export const playMV = API_ROOT.concat(apiMusic.playMV)
 export const MVRank = API_ROOT.concat(apiMusic.topMv)
 export const SimiMvResource = API_ROOT.concat(apiMusic.simiMv)
+export const SimiSingerResource = API_ROOT.concat(apiMusic.simiSinger)
 export const MvCommentResource = API_ROOT.concat(apiMusic.mvComment)
 export const PlaylistCommentResource = API_ROOT.concat(apiMusic.playlistComment)
 export const AlbumCommentResource = API_ROOT.concat(apiMusic.albumComment)

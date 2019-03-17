@@ -45,12 +45,12 @@ class Player extends Component {
 
   // 添加绑定事件
   bindEvents = () => {
-    // document.body.addEventListener('click', this.closeHistory, false)
+    document.addEventListener('click', this.closeHistory, false)
   }
 
   // 移除绑定事件
   unbindEvents = () => {
-    // document.body.removeEventListener('click', this.closeHistory, false)
+    document.removeEventListener('click', this.closeHistory, false)
   }
 
   // 上一首
@@ -92,8 +92,8 @@ class Player extends Component {
   }
 
   loop = () => {
-    this.refs.audio.currentTime = 0
-    this.refs.audio.play()
+    this.audioEle.audio.currentTime = 0
+    this.audioEle.audio.play()
     this.props.setPlayingStatus(true)
   }
 
@@ -132,16 +132,18 @@ class Player extends Component {
   }
 
   changeVoice = val => {
-    this.refs.audio.volume = val / 100
+    this.audioEle.audio.volume = val / 100
   }
 
   showComment = () => {
     const { currentIndex, playList } = this.props
+    if (!playList.length) return false
     const currentSong = playList[currentIndex]
     this.context.router.history.push(`/comment/${currentSong.key}`)
   }
 
-  showHistory = () => {
+  showHistory = e => {
+    e.nativeEvent.stopImmediatePropagation()
     this.setState({
       showHistory: true
     })
@@ -158,7 +160,7 @@ class Player extends Component {
     const { percent } = this.state
     const song = playList[currentIndex]
     const IconFont = Icon.createFromIconfontCN({
-      scriptUrl: '//at.alicdn.com/t/font_831982_r328s0f73f.js'
+      scriptUrl: '//at.alicdn.com/t/font_831982_ekj1a87f61a.js'
     })
 
     return (
@@ -203,16 +205,14 @@ class Player extends Component {
           </div>
           <IconFont type="icon-comment" onClick={this.showComment} />
           {mode === 1 ? (
-            <Icon
-              type="bars"
-              theme="outlined"
+            <IconFont
+              type="icon-sequence"
               className="btn-center"
               onClick={this.changeMode}
             />
           ) : mode === 2 ? (
-            <Icon
-              type="retweet"
-              theme="outlined"
+            <IconFont
+              type="icon-loop"
               className="btn-center"
               onClick={this.changeMode}
             />

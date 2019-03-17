@@ -13,9 +13,27 @@ class Header extends Component {
     this.state = {
       visible: false,
       showInfo: false,
-      username: 18655323262,
-      password: 'cwzp990.!'
+      username: '',
+      password: ''
     }
+  }
+
+  componentDidMount () {
+    this.bindEvents()
+  }
+
+  componentWillUnmount() {
+    this.unbindEvents()
+  }
+
+  // 添加绑定事件
+  bindEvents = () => {
+    document.addEventListener('click', this.closeUserInfo, false)
+  }
+
+  // 移除绑定事件
+  unbindEvents = () => {
+    document.removeEventListener('click', this.closeUserInfo, false)
   }
 
   showDialog = () => {
@@ -24,9 +42,16 @@ class Header extends Component {
     })
   }
 
-  showUserInfo = () => {
+  showUserInfo = e => {
+    e.nativeEvent.stopImmediatePropagation()
     this.setState({
       showInfo: true
+    })
+  }
+
+  closeUserInfo = () => {
+    this.setState({
+      showInfo: false
     })
   }
 
@@ -146,7 +171,9 @@ class Header extends Component {
               <Avatar size={50} src={userInfo.avatarUrl} />
               <span className="m-Header-name">{userInfo.nickname}</span>
             </p>
-            <p className="sign-in" onClick={this.signIn}>签到</p>
+            <p className="sign-in" onClick={this.signIn}>
+              签到
+            </p>
           </div>
           <div className="m-Header-update">
             <p className="updates">

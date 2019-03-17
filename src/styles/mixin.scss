@@ -82,6 +82,15 @@ $font_size_large_x: 22px;
   fill: $fill;
 }
 
+// grid布局
+@mixin grid($row, $width) {
+  display: grid;
+  grid-column-gap: 8px;
+  grid-row-gap: $row;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  justify-content: space-between;
+}
+
 // 多行文本省略号
 @mixin nowraps($row) {
   display: -webkit-box;

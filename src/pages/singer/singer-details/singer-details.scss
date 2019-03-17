@@ -1,0 +1,57 @@
+@import '../../../styles/mixin.scss';
+.m-SingerDetails {
+  .m-Singer-Info {
+    display: flex;
+    .m-Singer-count {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 100%;
+      margin-left: 15px;
+      @include sc($font_size_medium, $dg);
+      .m-Singer-follow {
+        display: flex;
+        justify-content: space-between;
+        .name {
+          @include sc($font_size_large_x, #000);
+          font-weight: 900;
+        }
+        .followed {
+          @include sc($font_size_medium, $lg);
+          padding: 8px 10px;
+          border: 1px solid $border-gray;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .m-Singer-main {
+    .m-Album-container {
+      @include grid(50px, 150px);
+      .m-Album-list {
+        @include wh(150px, 150px);
+        cursor: pointer;
+        .m-Album-avatar {
+          @include wh(150px, 150px);
+        }
+        .m-Album-name {
+          display: flex;
+          align-items: center;
+          @include sc($font_size_medium, $dg);
+          width: 100%;
+          .count {
+            margin-left: 8px;
+            @include sc($font_size_small, $lg);
+          }
+        }
+        .m-Album-date {
+          @include sc($font_size_medium, $lg);
+        }
+      }
+    }
+    .m-MV-container {
+      @include grid(50px, 150px);
+    }
+  }
+}
