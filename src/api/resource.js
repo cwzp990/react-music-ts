@@ -1,4 +1,4 @@
-const API_ROOT = 'http://www.cwzp990.com:3000'
+const API_ROOT = 'http://www.cwzp990.com:3001'
 
 const apiMusic = {
   loginCellphone: '/login/cellphone', // 手机登陆

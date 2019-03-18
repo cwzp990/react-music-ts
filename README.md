@@ -31,7 +31,7 @@ yarn build //项目打包
 
 ## 技术栈
 
-- create-react-app（Vue 脚手架工具）
+- create-react-app（react 脚手架工具）
 - react（核心框架）
 - react-router（页面路由）
 - redux（状态管理）
