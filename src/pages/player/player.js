@@ -234,6 +234,9 @@ class Player extends Component {
         >
           <History playList={playList} historyList={historyList} />
         </div>
+        <div className="player-bg">
+          <img src={playList.length ? playList[currentIndex].picUrl : require('../../assets/img/bg.jpg')} />
+        </div>
         <audio
           autoPlay
           ref="audio"

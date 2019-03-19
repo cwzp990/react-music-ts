@@ -1,11 +1,10 @@
 @import '../styles/mixin.scss';
 .m-App {
   height: 100vh;
-  padding: 0 150px;
+  padding: 0 450px;
   margin: 0 auto;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: $bgc;
   .m-App-Content {
     .m-App-Content-l {
       float: left;

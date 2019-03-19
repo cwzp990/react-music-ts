@@ -7,7 +7,6 @@
     left: 0;
     @include wh(50%, 300px);
     @include sc($font_size_small, $lg);
-    background: $bgc;
     box-shadow: 1px 1px 2px $dg;
     overflow: auto;
     z-index: 9999;

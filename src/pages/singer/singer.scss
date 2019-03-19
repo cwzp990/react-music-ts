@@ -3,7 +3,7 @@
   height: calc(100vh - 185px);
   overflow: auto;
   .m-Singer-list {
-    @include grid(15px, 150px);
+    @include grid(25px, 150px);
     .item-singer {
       cursor: pointer;
       .item-name {

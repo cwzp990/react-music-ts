@@ -1,17 +1,17 @@
 // 背景色
-$bgc: #fafafa;
+$bgc: #e1e1e1;
 
 // 边框颜色 灰色
 $border-gray: #e1e1e1;
 
 // 正常状态下字体颜色
-$lg: #666;
+$lg: hsla(0, 0%, 100%, 0.6);
 
 // 深灰
 $dg: #333;
 
 // hover深蓝
-$hover-lb: #e6f7ff;
+$hover-lb: #fff;
 
 // hover浅蓝
 $hover-db: #1890ff;
@@ -85,7 +85,7 @@ $font_size_large_x: 22px;
 // grid布局
 @mixin grid($row, $width) {
   display: grid;
-  grid-column-gap: 8px;
+  grid-column-gap: 50px;
   grid-row-gap: $row;
   grid-template-columns: repeat(auto-fit, minmax($width, 1fr));
   justify-content: space-between;

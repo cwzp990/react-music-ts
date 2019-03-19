@@ -1,7 +1,7 @@
 @import '../../styles/mixin.scss';
 .m-SongLists {
   .list-wrapper {
-    @include grid(25px, 150px);
+    @include grid(50px, 150px);
     .list-item {
       position: relative;
       @include wh(150px, 150px);
@@ -15,7 +15,6 @@
         min-height: 25px;
         line-height: 18px;
         @include sc($font_size_small, #fff);
-        background: $bgc;
       }
       .item-count {
         position: absolute;

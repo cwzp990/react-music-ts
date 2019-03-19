@@ -238,8 +238,8 @@ export const api = {
     return axios.get(ArtistAlbumResource, {
       params: {
         id: id,
-        limit: 10,
-        offset: (offset - 1) * 10
+        limit: 30,
+        offset: (offset - 1) * 30
       }
     })
   },
