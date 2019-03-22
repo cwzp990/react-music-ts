@@ -124,7 +124,7 @@ class Header extends Component {
 
     return (
       <div className="m-Header">
-        <h1 className="m-Header-title">React音乐播放器</h1>
+        <h1 className="m-Header-title important">React音乐播放器</h1>
         {userInfo.userId ? (
           <div className="m-Header-user" onClick={this.showUserInfo}>
             <p className="m-Header-avatar">

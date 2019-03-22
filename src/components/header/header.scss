@@ -4,6 +4,7 @@
   @include wh(100%, 60px);
   .m-Header-title {
     @include center();
+    @include sc($font_size_large, $fc);
   }
   .m-Header-user {
     display: flex;
@@ -25,7 +26,7 @@
     @include wh(300px, auto);
     box-sizing: border-box;
     border-radius: 5px;
-    box-shadow: 1px 1px 2px $fc;
+    box-shadow: 1px 1px 2px $fc_lg;
     z-index: 9999;
     .m-Header-avatar {
       display: flex;
@@ -34,14 +35,14 @@
       height: 50px;
       .m-Header-name {
         margin-left: 10px;
-        @include sc($font_size_medium, $fc);
+        @include sc($font_size_medium, $fc_lg);
       }
       .sign-in {
         padding: 5px 8px;
         border: 1px solid $border-gray;
         border-radius: 3px;
         cursor: pointer;
-        @include sc($font_size_small, $fc);
+        @include sc($font_size_small, $fc_lg);
       }
     }
     .m-Header-update {
@@ -68,9 +69,9 @@
       display: flex;
       align-items: center;
       .icon-close {
-        @include svg($font_size_large_x, $fc);
+        @include svg($font_size_large_x, $fc_lg);
       }
-      @include sc($font_size_medium_x, $fc);
+      @include sc($font_size_medium_x, $fc_lg);
       line-height: 24px;
       cursor: pointer;
     }

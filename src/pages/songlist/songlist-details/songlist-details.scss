@@ -1,6 +1,6 @@
 @import '../../../styles/mixin.scss';
 .m-SonglistDetails {
-  height: calc(100vh - 185px);
+  @include wh(100%, calc(100vh - 185px));
   .m-Details-wrapper {
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@
         }
         .m-details-brief {
           @include sc($font_size_small, $fc);
-          width: 100%;
+          max-width: 500px;
           cursor: pointer;
         }
       }
@@ -75,9 +75,6 @@
           .item-song {
             flex: 1;
           }
-          &:hover {
-            background: #fff;
-          }
         }
       }
       .m-Comment-container {
@@ -89,10 +86,6 @@
         .m-Comment-scroll {
           height: 100%;
           overflow: auto;
-          .ant-list-item-meta-title,
-          .ant-list-item-meta-description {
-            color: $fc !important;
-          }
         }
       }
     }
@@ -102,6 +95,6 @@
 // 简介pop宽度
 .brief-card {
   .ant-tooltip-inner {
-    min-width: 50vw !important;
+    min-width: 38vw !important;
   }
 }

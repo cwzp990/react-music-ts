@@ -7,7 +7,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { Icon, Slider } from 'antd'
+import { Icon, Slider, Tooltip } from 'antd'
 import { connect } from 'react-redux'
 import { formatTime, formatDuring, playMode } from '../../utils/common'
 import History from '../../components/historyLists/historyLists'
@@ -157,6 +157,7 @@ class Player extends Component {
     const { mode, playing, currentIndex, playList, historyList } = this.props
     const { currentTime, duration } = this.state
     const song = playList[currentIndex]
+    const SEQUENCE = 1, LOOP = 2
     const IconFont = Icon.createFromIconfontCN({
       scriptUrl: '//at.alicdn.com/t/font_831982_ekj1a87f61a.js'
     })
@@ -204,25 +205,27 @@ class Player extends Component {
             <Slider onChange={this.changeVoice} defaultValue={58} />
           </div>
           <IconFont type="icon-comment" onClick={this.showComment} />
-          {mode === 1 ? (
-            <IconFont
-              type="icon-sequence"
-              className="btn-center"
-              onClick={this.changeMode}
-            />
-          ) : mode === 2 ? (
-            <IconFont
-              type="icon-loop"
-              className="btn-center"
-              onClick={this.changeMode}
-            />
-          ) : (
-            <IconFont
-              type="icon-random"
-              className="btn-center"
-              onClick={this.changeMode}
-            />
-          )}
+          <Tooltip placement="top" title={mode === SEQUENCE ? '顺序播放' : mode === LOOP ? '循环播放' : '随机播放'} trigger={"click"} >
+            {mode === SEQUENCE ? (
+              <IconFont
+                type="icon-sequence"
+                className="btn-center"
+                onClick={this.changeMode}
+              />
+            ) : mode === LOOP ? (
+              <IconFont
+                type="icon-loop"
+                className="btn-center"
+                onClick={this.changeMode}
+              />
+            ) : (
+              <IconFont
+                type="icon-random"
+                className="btn-center"
+                onClick={this.changeMode}
+              />
+            )}
+          </Tooltip>
           <IconFont type="icon-list" onClick={this.showHistory} />
         </div>
         <div
@@ -244,8 +247,7 @@ class Player extends Component {
           />
         </div>
         {/* 灰色背景 */}
-        <div className="player-mask">
-        </div>
+        <div className="player-mask" />
         <audio
           autoPlay
           ref="audio"

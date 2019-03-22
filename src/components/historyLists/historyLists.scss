@@ -9,19 +9,23 @@
       line-height: 24px;
     }
     &:hover {
-      background: $hover-db;
-      color: #fff;
+      color: $hover-db !important;
       .m-History-avatar {
-        color: #fff;
+        color: $hover-db !important;
       }
       .ant-list-item-meta-title {
-        color: #fff;
+        color: $hover-db !important;
       }
     }
   }
   .ant-tabs-content {
     height: calc(85vh - 56px);
     overflow: auto;
+  }
+  .ant-tabs-tab,
+  .ant-list-item-meta-title,
+  .ant-list-item {
+    color: $fc_lg !important;
   }
   .ant-list-item {
     padding: 3px 20px;
