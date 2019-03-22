@@ -213,7 +213,7 @@ class SonglistDetails extends Component {
                             <List.Item
                               key={comment.commentId}
                               actions={[
-                                <p>
+                                <p className="liked-count">
                                   <Icon type="like" />
                                   {comment.likedCount}
                                 </p>

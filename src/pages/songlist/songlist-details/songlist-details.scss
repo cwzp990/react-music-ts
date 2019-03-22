@@ -86,6 +86,9 @@
         .m-Comment-scroll {
           height: 100%;
           overflow: auto;
+          .liked-count {
+            color: $fc;
+          }
         }
       }
     }
