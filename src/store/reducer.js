@@ -24,8 +24,8 @@ const defaultState = {
   showMine: false,
   // 用户聊天消息
   showMsg: false,
-  // audio元素
-  audio: null
+  // 当前播放时间
+  currentTime: 0
 }
 
 // state 里存放了所有的数据
@@ -131,12 +131,12 @@ function showMsg(showMsg = defaultState.showMsg, action) {
 }
 
 // audio
-function audio(audio = defaultState.audio, action) {
+function currentTime(currentTime = defaultState.currentTime, action) {
   switch (action.type) {
-    case types.SET_AUDIO:
-      return action.audio
+    case types.SET_CURRENT_TIME:
+      return action.currentTime
     default:
-      return audio
+      return currentTime
   }
 }
 
@@ -151,7 +151,7 @@ const reducer = combineReducers({
   mode,
   showMine,
   showMsg,
-  audio
+  currentTime
 })
 
 export default reducer

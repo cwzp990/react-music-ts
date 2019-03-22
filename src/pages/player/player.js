@@ -15,7 +15,7 @@ import {
   setCurrentIndex,
   setPlayingStatus,
   setChangeMode,
-  setAudio
+  setCurrentTime
 } from '../../store/actions'
 
 import './player.scss'
@@ -25,7 +25,7 @@ class Player extends Component {
     super(props)
     this.state = {
       showHistory: false,
-      currentTime: '00:00',
+      currentTime: 0,
       duration: 0
     }
   }
@@ -121,6 +121,7 @@ class Player extends Component {
       currentTime,
       duration
     })
+    this.props.setCurrentTime(currentTime)
   }
 
   changeMode = () => {
@@ -297,8 +298,8 @@ const mapDispatchToProps = dispatch => ({
   setChangeMode: status => {
     dispatch(setChangeMode(status))
   },
-  setAudio: status => {
-    dispatch(setAudio(status))
+  setCurrentTime: status => {
+    dispatch(setCurrentTime(status))
   }
 })
 

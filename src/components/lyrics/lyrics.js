@@ -18,8 +18,10 @@ class Lyrics extends Component {
 
   componentWillReceiveProps(nextProps) {
     // console.log(nextProps)
-    const { playing, playList, currentIndex } = nextProps
+    const { playing, playList, currentIndex, currentTime } = nextProps
     if (!playing) return false
+    this.clacTop()
+    this.highlightLyric(currentTime)
     // 获取歌词
     const song = playList[currentIndex]
     api.getLyricResource(song.key).then(res => {
@@ -39,6 +41,31 @@ class Lyrics extends Component {
         })
       }
     })
+  }
+
+  lyricTop = () => {
+    return {
+      transform: `translate3d(0, ${-34 *
+        (this.state.currentLineNum - this.top)}px, 0)`
+    }
+  }
+
+  // 计算歌词居中的 top值
+  clacTop = () => {
+    let height = this.refs.musicLyric.offsetHeight
+    this.top = Math.floor(height / 34 / 2)
+  }
+
+  // 高亮当前歌词
+  highlightLyric = time => {
+    if (!this.state.lyric.length) return false
+    for (let i = 0; i < this.state.lyric.length; i++) {
+      if (time > this.state.lyric[i].time) {
+        this.setState({
+          currentLineNum: i
+        })
+      }
+    }
   }
 
   musicUrl = () => {
@@ -85,13 +112,13 @@ class Lyrics extends Component {
           {!song.key ? (
             <p>当前没有播放音乐</p>
           ) : lyric.length ? (
-            <div className="m-Lyric-wrapper">
+            <div className="m-Lyric-wrapper" style={this.lyricTop()}>
               {lyric.map((line, index) => {
                 return (
                   <p
                     key={index}
                     className={`m-Lyric-line ${
-                      currentLineNum == index ? '' : ''
+                      currentLineNum == index ? 'selected' : ''
                     }`}
                   >
                     {line.txt}
@@ -113,7 +140,7 @@ const mapStateToProps = state => ({
   playing: state.playing,
   playList: state.playList,
   currentIndex: state.currentIndex,
-  audio: state.audio
+  currentTime: state.currentTime
 })
 
 export default connect(

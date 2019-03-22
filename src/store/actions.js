@@ -71,10 +71,10 @@ export function setMsg(showMsg) {
   }
 }
 
-export function setAudio(audio) {
+export function setCurrentTime(currentTime) {
   return {
-    type: types.SET_AUDIO,
-    audio
+    type: types.SET_CURRENT_TIME,
+    currentTime
   }
 }
 

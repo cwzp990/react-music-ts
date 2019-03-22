@@ -13,7 +13,7 @@
         display: flex;
         justify-content: space-between;
         .name {
-          @include sc($font_size_large_x, #000);
+          @include sc($font_size_large_x, $fc);
           font-weight: 900;
         }
         .followed {

@@ -37,10 +37,14 @@
   .m-Lyric-container {
     @include sc($font_size_medium, $fc);
     @include wh(100%, calc(100vh - 410px));
-    overflow: auto;
+    overflow: hidden;
     text-align: center;
     line-height: 1.5;
     cursor: pointer;
+    .m-Lyric-wrapper {
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.6s ease-out;
+    }
     &::-webkit-scrollbar {
       width: 0 !important;
     }
