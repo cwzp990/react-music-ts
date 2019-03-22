@@ -157,7 +157,8 @@ class Player extends Component {
     const { mode, playing, currentIndex, playList, historyList } = this.props
     const { currentTime, duration } = this.state
     const song = playList[currentIndex]
-    const SEQUENCE = 1, LOOP = 2
+    const SEQUENCE = 1,
+      LOOP = 2
     const IconFont = Icon.createFromIconfontCN({
       scriptUrl: '//at.alicdn.com/t/font_831982_ekj1a87f61a.js'
     })
@@ -204,8 +205,20 @@ class Player extends Component {
             <Icon type="sound" theme="filled" />
             <Slider onChange={this.changeVoice} defaultValue={58} />
           </div>
-          <IconFont type="icon-comment" onClick={this.showComment} />
-          <Tooltip placement="top" title={mode === SEQUENCE ? '顺序播放' : mode === LOOP ? '循环播放' : '随机播放'} trigger={"click"} >
+          <p onClick={this.showComment}>
+            <Icon type="message" theme="filled" />
+          </p>
+          <Tooltip
+            placement="top"
+            title={
+              mode === SEQUENCE
+                ? '顺序播放'
+                : mode === LOOP
+                ? '循环播放'
+                : '随机播放'
+            }
+            trigger={'click'}
+          >
             {mode === SEQUENCE ? (
               <IconFont
                 type="icon-sequence"

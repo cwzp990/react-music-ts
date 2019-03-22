@@ -21,7 +21,7 @@ class Tips extends Component {
     return (
       <div className="m-Tips">
         <Modal
-          title="更新信息V1.0"
+          title="更新信息V1.1"
           visible={this.state.visible}
           closable={false}
           onOk={this.onSure}
@@ -42,17 +42,10 @@ class Tips extends Component {
                   编写，故推荐使用Chrome浏览器进行浏览
                 </li>
                 <li>
-                  因时间比较仓促，样式方面大多数使用的是蚂蚁金融的
-                  <a
-                    href="https://ant-design.gitee.io/docs/react/introduce-cn"
-                    target="_Blank"
-                  >
-                    Antd UI
-                  </a>
-                  组件库，后续会进一步美化，请谅解
+                  添加背景图片，丰富界面内容
                 </li>
                 <li>
-                  此项目没有做过多的移动端兼容，在移动端访问会出现变形，后续会补上
+                  播放条播放及拖动更加平滑，更换播放模式时有弹窗提示
                 </li>
                 <li>
                   如果在使用过程中遇到任何问题，可以在
