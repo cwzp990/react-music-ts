@@ -53,7 +53,7 @@ class Recommend extends Component {
           <Carousel autoplay ref="banner">
             {this.state.banners.map(pic => {
               return (
-                <div key={pic.targetId}>
+                <div key={pic.targetId} className="img-wrapper">
                   <img src={pic.imageUrl} />
                 </div>
               )

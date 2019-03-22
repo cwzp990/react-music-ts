@@ -3,14 +3,14 @@
   margin: 10px 0;
   line-height: 18px;
   .m-Tag-title {
-    @include sc($font_size_medium, $lg);
+    @include sc($font_size_medium, $fc);
   }
   .m-Tag-list {
     display: flex;
     flex-wrap: wrap;
     width: calc(100% - 70px);
     .item-tag {
-      @include sc($font_size_medium, $lg);
+      @include sc($font_size_medium, $fc);
       padding: 1px 8px;
       cursor: pointer;
       &:last-child {

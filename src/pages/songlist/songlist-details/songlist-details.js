@@ -198,7 +198,7 @@ class SonglistDetails extends Component {
                 </TabPane>
                 <TabPane tab="评论" key="2">
                   <div className="m-Comment-container">
-                    <h3>最新评论({this.state.count})</h3>
+                    <h3 className="m-Comment-title">最新评论({this.state.count})</h3>
                     <div className="m-Comment-scroll">
                       <InfiniteScroll
                         initialLoad={false}

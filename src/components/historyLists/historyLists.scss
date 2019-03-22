@@ -1,6 +1,7 @@
 @import '../../styles/mixin.scss';
 .m-History {
   @include wh(100%, 100%);
+  background: $bgc;
   .m-History-song {
     .m-History-avatar {
       display: none;

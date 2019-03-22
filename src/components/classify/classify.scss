@@ -2,6 +2,7 @@
 .m-Classify {
   display: flex;
   flex-direction: column;
+  background: $bgc;
   .m-Classify-all {
     @include wh(100%, 30px);
   }
@@ -33,7 +34,7 @@
 .box {
   border: 1px solid $border-gray;
   text-align: center;
-  @include sc($font_size_small, $lg);
+  @include sc($font_size_small, $fc);
   line-height: 24px;
   cursor: pointer;
   &:hover {

@@ -14,12 +14,12 @@
   .rank-item {
     display: flex;
     justify-content: space-between;
-    @include sc($font_size_medium, $lg);
+    @include sc($font_size_medium, $fc);
     line-height: 24px;
   }
   .more {
     text-align: right;
-    @include sc($font_size_medium, $lg);
+    @include sc($font_size_medium, $fc);
     line-height: 24px;
     cursor: pointer;
   }

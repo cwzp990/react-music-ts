@@ -2,7 +2,7 @@
 .m-Comment {
   @include wh(100%, calc(100vh - 185px));
   .m-Comment-count {
-    @include sc($font_size_medium, $dg);
+    @include sc($font_size_medium, $fc);
     line-height: 24px;
   }
   .m-Comment-scroll {
@@ -14,7 +14,7 @@
       margin-right: 10px;
     }
     .m-Comment-content {
-      color: $dg;
+      color: $fc;
     }
     .m-Comment-replied {
       border: 1px solid $border-gray;

@@ -26,7 +26,7 @@ class Player extends Component {
     this.state = {
       showHistory: false,
       currentTime: '00:00',
-      percent: 0
+      duration: 0
     }
   }
 
@@ -108,13 +108,9 @@ class Player extends Component {
   }
 
   changePlay = val => {
-    const { currentIndex, playList } = this.props
-    const currentTime = (playList[currentIndex].duration * val) / 100
-    const m = parseInt((currentTime % (1000 * 60 * 60)) / (1000 * 60))
-    const s = parseInt((currentTime % (1000 * 60)) / 1000)
-    this.audioEle.currentTime = m * 60 + s
+    this.audioEle.currentTime = val
     this.setState({
-      currentTime: formatDuring(currentTime)
+      currentTime: val
     })
   }
 
@@ -122,8 +118,8 @@ class Player extends Component {
     const currentTime = e.target.currentTime
     const duration = e.target.duration
     this.setState({
-      currentTime: formatTime(currentTime),
-      percent: parseInt((currentTime / duration) * 100)
+      currentTime,
+      duration
     })
   }
 
@@ -159,7 +155,7 @@ class Player extends Component {
 
   render() {
     const { mode, playing, currentIndex, playList, historyList } = this.props
-    const { percent } = this.state
+    const { currentTime, duration } = this.state
     const song = playList[currentIndex]
     const IconFont = Icon.createFromIconfontCN({
       scriptUrl: '//at.alicdn.com/t/font_831982_ekj1a87f61a.js'
@@ -187,9 +183,11 @@ class Player extends Component {
           <Icon type="step-forward" theme="outlined" onClick={this.next} />
         </div>
         <div className="m-Progress-wrapper">
-          <span>{this.state.currentTime}</span>
+          <span>{formatTime(currentTime)}</span>
           <Slider
-            value={percent}
+            min={0}
+            max={duration}
+            value={currentTime}
             onChange={this.changePlay}
             disabled={!playing}
             className="progress"
@@ -235,7 +233,18 @@ class Player extends Component {
           <History playList={playList} historyList={historyList} />
         </div>
         <div className="player-bg">
-          <img src={playList.length ? playList[currentIndex].picUrl : require('../../assets/img/bg.jpg')} />
+          <img
+            src={
+              playList.length
+                ? playList[currentIndex].picUrl
+                : require('../../assets/img/bg.jpg')
+            }
+            width="100%"
+            height="100%"
+          />
+        </div>
+        {/* 灰色背景 */}
+        <div className="player-mask">
         </div>
         <audio
           autoPlay

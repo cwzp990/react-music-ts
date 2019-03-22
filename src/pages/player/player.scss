@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    @include sc(26px, $lg);
+    @include sc(26px, $fc);
     cursor: pointer;
   }
   .m-Progress-wrapper {
@@ -27,7 +27,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @include sc($font_size_large_x, $lg);
+    @include sc($font_size_large_x, $fc);
     cursor: pointer;
     .m-Player-sound {
       display: flex;
@@ -42,15 +42,22 @@
     right: 0;
     bottom: 60px;
     @include wh(38%, 85vh);
-    box-shadow: 1px 1px 2px $dg;
+    box-shadow: 1px 1px 2px $fc;
   }
   .player-bg {
     @include allcover();
+    @include wh(100%, 100%);
     z-index: -1;
     filter: blur(12px);
-    opacity: .7;
+    opacity: 0.7;
     transform: translateZ(0);
-    transition: all .8s;
+    transition: all 0.8s;
+  }
+  .player-mask {
+    @include allcover();
+    @include wh(100%, 100%);
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.4);
   }
   .btn-center {
     margin: 0 10px;

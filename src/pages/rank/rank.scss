@@ -1,6 +1,6 @@
 @import '../../styles/mixin.scss';
 .m-Rank {
-  height: calc(100vh - 185px);
+  @include wh(100%, calc(100vh - 185px));
   overflow: auto;
   .m-Rank-wrapper {
     @include grid(25px, 300px);

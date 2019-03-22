@@ -1,13 +1,13 @@
 @import '../../styles/mixin.scss';
 .m-Singer {
-  height: calc(100vh - 185px);
+  @include wh(100%, calc(100vh - 185px));
   overflow: auto;
   .m-Singer-list {
     @include grid(25px, 150px);
     .item-singer {
       cursor: pointer;
       .item-name {
-        @include sc($font_size_medium, $lg);
+        @include sc($font_size_medium, $fc);
       }
     }
   }

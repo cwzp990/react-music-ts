@@ -18,7 +18,7 @@
     }
   }
   .m-Lyric-info {
-    @include sc($font_size_medium, $lg);
+    @include sc($font_size_medium, $fc);
     margin-bottom: 15px;
     text-align: center;
     .singer-info {
@@ -28,10 +28,14 @@
       display: flex;
       justify-content: center;
       margin: 10px 0;
+      @include sc($font_size_medium, $fc);
+      &:hover {
+        color: $hover-db;
+      }
     }
   }
   .m-Lyric-container {
-    @include sc($font_size_medium, $lg);
+    @include sc($font_size_medium, $fc);
     @include wh(100%, calc(100vh - 410px));
     overflow: auto;
     text-align: center;

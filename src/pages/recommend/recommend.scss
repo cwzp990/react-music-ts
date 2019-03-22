@@ -1,11 +1,11 @@
 @import '../../styles/mixin.scss';
 .m-Recommend {
-  height: calc(100vh - 185px);
+  @include wh(100%, calc(100vh - 185px));
   margin-top: -15px;
   overflow: auto;
   .m-Recommend-banner {
     position: relative;
-    width: 50%;
+    width: 600px;
     margin: 15px auto;
     .btn-prev {
       @include ct();

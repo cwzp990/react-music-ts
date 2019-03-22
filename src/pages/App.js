@@ -20,7 +20,7 @@ class App extends Component {
           <div className="m-App">
             <Tips />
             <Header />
-            <div className="m-App-Content clearfix">
+            <div className="m-App-Content">
               <div className="m-App-Content-l">
                 <Nav />
                 <Routers />

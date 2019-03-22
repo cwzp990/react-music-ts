@@ -1,7 +1,7 @@
 @import '../../styles/mixin.scss';
 .m-Mine-songlist {
   .m-Mine-title {
-    @include sc($font_size_medium, $lg);
+    @include sc($font_size_medium, $fc);
     line-height: 24px;
     cursor: pointer;
     .m-Mine-icon {
@@ -10,7 +10,5 @@
     &:hover {
       color: $hover-db;
     }
-  }
-  .ant-drawer-content {
   }
 }

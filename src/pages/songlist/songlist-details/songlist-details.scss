@@ -22,7 +22,7 @@
           display: flex;
           justify-content: space-between;
           .m-details-info-name {
-            @include sc($font_size_medium_x, $lg);
+            @include sc($font_size_medium_x, $fc);
           }
           .m-details-info-count {
             display: flex;
@@ -32,7 +32,7 @@
               align-items: flex-end;
               flex: 1;
               padding: 0 8px;
-              @include sc($font_size_small, $lg);
+              @include sc($font_size_small, $fc);
               &:first-child {
                 border-right: 1px solid $border-gray;
               }
@@ -50,15 +50,15 @@
               margin-right: 10px;
             }
             .author-name {
-              @include sc($font_size_medium, $dg);
+              @include sc($font_size_medium, $fc);
             }
           }
           .author-createTime {
-            @include sc($font_size_small, $lg);
+            @include sc($font_size_small, $fc);
           }
         }
         .m-details-brief {
-          @include sc($font_size_small, $lg);
+          @include sc($font_size_small, $fc);
           width: 100%;
           cursor: pointer;
         }
@@ -76,16 +76,23 @@
             flex: 1;
           }
           &:hover {
-            background: $hover-lb;
+            background: #fff;
           }
         }
       }
       .m-Comment-container {
         position: relative;
         @include wh(100%, calc(100vh - 390px));
+        .m-Comment-title {
+          color: $fc !important;
+        }
         .m-Comment-scroll {
           height: 100%;
           overflow: auto;
+          .ant-list-item-meta-title,
+          .ant-list-item-meta-description {
+            color: $fc !important;
+          }
         }
       }
     }

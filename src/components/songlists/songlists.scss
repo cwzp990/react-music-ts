@@ -35,7 +35,7 @@
         @include sc(24px, #fff);
       }
       .item-title {
-        @include sc($font_size_medium, $lg);
+        @include sc($font_size_medium, $fc);
       }
       &:hover {
         .item-count {
