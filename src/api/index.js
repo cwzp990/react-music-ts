@@ -138,7 +138,7 @@ export const api = {
    * @param offset 数据偏移量
    * @returns response  数据返回值
    */
-  getSearchResource(keywords, type, offset) {
+  getSearchResource(keywords, offset, type) {
     return axios.get(SearchResource, {
       params: {
         keywords: keywords,

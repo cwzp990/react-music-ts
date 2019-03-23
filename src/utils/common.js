@@ -98,6 +98,26 @@ export const toNormalizeAlbum = list => {
   })
 }
 
+export const toNormalizeSearch = list => {
+  let arr = list.map((item, index) => {
+    let singer = ''
+    item.artists.forEach(i => {
+      singer += i.name + '/'
+    })
+    singer = singer.slice(0, -1)
+    return {
+      index: index + 1,
+      duration: item.duration,
+      singer,
+      title: item.name,
+      album: item.album.name,
+      picUrl: item.album.artist.img1v1Url,
+      key: item.id
+    }
+  })
+  return arr
+}
+
 // 歌词解析
 export const parseLyric = lrc => {
   let lyrics = lrc.split('\n')

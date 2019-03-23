@@ -38,6 +38,9 @@ class Nav extends Component {
         <Link to="/singer">
           <Button size={'large'}>歌手</Button>
         </Link>
+        <Link to="/search">
+          <Button size={'large'}>搜索</Button>
+        </Link>
       </div>
     )
   }

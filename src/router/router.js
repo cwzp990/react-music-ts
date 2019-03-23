@@ -7,6 +7,7 @@ import Rank from '../pages/rank/rank'
 import Singer from '../pages/singer/singer'
 import SingerDetails from '../pages/singer/singer-details/singer-details'
 import Comment from '../components/comment/comment'
+import Search from '../pages/search/search'
 
 const Routes = () => {
   return (
@@ -18,6 +19,7 @@ const Routes = () => {
       <Route path="/singer" exact component={Singer} />
       <Route path="/singer/:id" exact component={SingerDetails} />
       <Route path="/comment/:id" exact component={Comment} />
+      <Route path="/search" exact component={Search} />
       <Redirect to="/recommend" />
     </Switch>
   )

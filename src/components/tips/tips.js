@@ -21,7 +21,7 @@ class Tips extends Component {
     return (
       <div className="m-Tips">
         <Modal
-          title="更新信息V1.1"
+          title="更新信息V1.2"
           visible={this.state.visible}
           closable={false}
           onOk={this.onSure}
@@ -42,10 +42,10 @@ class Tips extends Component {
                   编写，故推荐使用Chrome浏览器进行浏览
                 </li>
                 <li>
-                  添加背景图片，丰富界面内容
+                  添加搜索歌曲功能模块
                 </li>
                 <li>
-                  新增歌词滚动，播放条播放及拖动更加平滑，更换播放模式时有弹窗提示
+                  歌词滚动bug
                 </li>
                 <li>
                   如果在使用过程中遇到任何问题，可以在

@@ -44,6 +44,7 @@ class Lyrics extends Component {
   }
 
   lyricTop = () => {
+    console.log(this.state.currentLineNum - this.top)
     return {
       transform: `translate3d(0, ${-34 *
         (this.state.currentLineNum - this.top)}px, 0)`
