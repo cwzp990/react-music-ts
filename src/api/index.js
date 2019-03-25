@@ -143,8 +143,8 @@ export const api = {
       params: {
         keywords: keywords,
         type: type || 1,
-        limit: 20,
-        offset: (offset - 1) * 20
+        limit: 25,
+        offset: (offset - 1) * 25
       }
     })
   },
@@ -204,7 +204,7 @@ export const api = {
   },
 
   // 评论点赞
-  getCommentLiked(songid, cid, liked, type) {
+  getCommentLiked(cid, liked, type, songid) {
     return axios.get(CommentLiked, {
       params: {
         id: songid,

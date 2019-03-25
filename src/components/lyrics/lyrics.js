@@ -22,8 +22,12 @@ class Lyrics extends Component {
     if (!playing) return false
     this.clacTop()
     this.highlightLyric(currentTime)
-    // 获取歌词
     const song = playList[currentIndex]
+    this.getLyricData(song)
+  }
+
+  getLyricData = (song) => {
+    if (this.state.lyric.length) return false
     api.getLyricResource(song.key).then(res => {
       if (res.data.code === 200) {
         // 暂无歌词
@@ -44,7 +48,6 @@ class Lyrics extends Component {
   }
 
   lyricTop = () => {
-    console.log(this.state.currentLineNum - this.top)
     return {
       transform: `translate3d(0, ${-34 *
         (this.state.currentLineNum - this.top)}px, 0)`
