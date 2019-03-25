@@ -13,8 +13,7 @@ class Comment extends Component {
       loading: false, // 评论
       hasMore: true, // 评论
       offset: 1, // 分页
-      comments: [],
-      hotComments: []
+      comments: []
     }
   }
 
@@ -26,12 +25,13 @@ class Comment extends Component {
     api
       .getCommentResource(this.props.match.params.id, this.state.offset)
       .then(res => {
-        let comments = this.state.comments.concat(res.data.comments)
-        let hotComments = this.state.hotComments.concat(res.data.hotComments)
+        let comments =
+          this.state.offset === 1
+            ? res.data.hotComments.concat(res.data.comments)
+            : this.state.comments.concat(res.data.comments)
         if (res.status === 200) {
           this.setState({
             comments,
-            hotComments,
             count: res.data.total,
             hasMore: res.data.more,
             loading: true
@@ -59,7 +59,7 @@ class Comment extends Component {
   render() {
     return (
       <div className="m-Comment">
-        <p className="m-Comment-count">最新评论({this.state.count})</p>
+        <p className="m-Comment-count">网友评论({this.state.count})</p>
         <div className="m-Comment-scroll">
           <InfiniteScroll
             initialLoad={false}
@@ -74,7 +74,7 @@ class Comment extends Component {
                 <List.Item
                   key={comment.commentId}
                   actions={[
-                    <p className="m-Comment-like">
+                    <p className={`m-Comment-like ${comment.likedCount > 999 ? 'hot' : ''}`}>
                       <Icon type="like" />
                       {comment.likedCount}
                     </p>
@@ -85,13 +85,19 @@ class Comment extends Component {
                     title={
                       <div>
                         <div>
-                          <p className="m-Comment-name">{comment.user.nickname}:</p>
+                          <p className="m-Comment-name">
+                            {comment.user.nickname}:
+                          </p>
                           <p className="m-Comment-content">{comment.content}</p>
                         </div>
                         {comment.beReplied.length ? (
                           <div className="m-Comment-replied">
-                            <span className="m-Comment-name">@{comment.beReplied[0].user.nickname}</span>
-                            <span className="m-Comment-content">{comment.beReplied[0].content}</span>
+                            <span className="m-Comment-name">
+                              @{comment.beReplied[0].user.nickname}
+                            </span>
+                            <span className="m-Comment-content">
+                              {comment.beReplied[0].content}
+                            </span>
                           </div>
                         ) : (
                           <span />
