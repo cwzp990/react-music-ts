@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Drawer, Tabs, Table } from 'antd'
-import { api } from '../../api/index'
 import './mine.scss'
 
 const TabPane = Tabs.TabPane

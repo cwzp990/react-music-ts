@@ -1,13 +1,26 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Recommend from '../pages/recommend/recommend'
-import Songlist from '../pages/songlist/songlist'
-import SongDetails from '../pages/songlist/songlist-details/songlist-details'
-import Rank from '../pages/rank/rank'
-import Singer from '../pages/singer/singer'
-import SingerDetails from '../pages/singer/singer-details/singer-details'
-import Comment from '../components/comment/comment'
-import Search from '../pages/search/search'
+import Bundle from './asyncComponent'
+import Loading from '../components/loading/loading'
+
+const AsyncComponent = loadComponent => props => (
+  <Bundle load={loadComponent}>
+    {Comp => (Comp ? <Comp {...props} /> : <Loading />)}
+  </Bundle>
+)
+
+const Recommend = AsyncComponent(() => import('../pages/recommend/recommend'))
+const Songlist = AsyncComponent(() => import('../pages/songlist/songlist'))
+const SongDetails = AsyncComponent(() =>
+  import('../pages/songlist/songlist-details/songlist-details')
+)
+const Rank = AsyncComponent(() => import('../pages/rank/rank'))
+const Singer = AsyncComponent(() => import('../pages/singer/singer'))
+const SingerDetails = AsyncComponent(() =>
+  import('../pages/singer/singer-details/singer-details')
+)
+const Comment = AsyncComponent(() => import('../components/comment/comment'))
+const Search = AsyncComponent(() => import('../pages/search/search'))
 
 const Routes = () => {
   return (
