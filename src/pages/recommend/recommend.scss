@@ -10,14 +10,15 @@
     .btn-prev {
       @include ct();
       left: 0;
-      @include sc(30px, #fff);
       z-index: 100;
     }
     .btn-next {
       @include ct();
       right: 0;
-      @include sc(30px, #fff);
       z-index: 100;
+    }
+    .iconfont {
+      @include sc(30px, #fff);
     }
   }
 }

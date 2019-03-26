@@ -26,6 +26,9 @@
         opacity: 0.5;
         @include sc($font_size_small, #fff);
         line-height: 24px;
+        .iconfont {
+          @include sc($font_size_small, #fff);
+        }
       }
       .item-play {
         display: none;
@@ -33,6 +36,9 @@
         right: 5px;
         bottom: 5px;
         @include sc(24px, #fff);
+        .iconfont {
+          @include sc(28px, #fff);
+        }
       }
       .item-title {
         @include sc($font_size_medium, $fc);

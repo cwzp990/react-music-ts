@@ -25,10 +25,6 @@
   font-weight: 900;
 }
 
-.iconfont {
-  @include sc($font_size_medium, $fc);
-}
-
 // 清除浮动
 .clearfix {
   &:after {

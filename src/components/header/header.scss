@@ -68,7 +68,7 @@
     .logout {
       display: flex;
       align-items: center;
-      .icon-close {
+      .iconfont {
         @include svg($font_size_large_x, $fc_lg);
       }
       @include sc($font_size_medium_x, $fc_lg);

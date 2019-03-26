@@ -44,7 +44,9 @@ class Recommend extends Component {
     return (
       <div className="m-Recommend">
         <div className="m-Recommend-banner">
-          <i className="icon-left iconfont" onClick={this.prev} />
+          <p className="btn-prev">
+            <i className="icon-left iconfont" onClick={this.prev} />
+          </p>
           <Carousel autoplay ref="banner">
             {this.state.banners.map(pic => {
               return (
@@ -54,7 +56,9 @@ class Recommend extends Component {
               )
             })}
           </Carousel>
-          <i className="icon-right iconfont" onClick={this.next} />
+          <p className="btn-next">
+            <i className="icon-right iconfont" onClick={this.next} />
+          </p>
         </div>
         <SongLists songList={this.state.songList} />
       </div>

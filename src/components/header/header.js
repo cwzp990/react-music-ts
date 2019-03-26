@@ -189,7 +189,7 @@ class Header extends Component {
             </p>
           </div>
           <p className="logout" onClick={this.logOut}>
-            <i className="icon-close iconfont" />
+            <i className="icon-logout iconfont" />
             <span>退出登录</span>
           </p>
         </div>

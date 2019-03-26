@@ -11,6 +11,9 @@
     align-items: center;
     @include sc(26px, $fc);
     cursor: pointer;
+    .iconfont {
+      @include sc($font_size_large_x, $fc);
+    }
   }
   .m-Progress-wrapper {
     display: flex;
@@ -36,6 +39,9 @@
       .ant-slider {
         width: 100px;
       }
+    }
+    .iconfont {
+      @include sc($font_size_large, $fc);
     }
   }
   .m-History-pop {
