@@ -21,7 +21,7 @@ class Tips extends Component {
     return (
       <div className="m-Tips">
         <Modal
-          title="更新信息V1.2"
+          title="更新信息V1.3"
           visible={this.state.visible}
           closable={false}
           onOk={this.onSure}
@@ -43,6 +43,7 @@ class Tips extends Component {
                 </li>
                 <li>添加搜索歌曲功能模块</li>
                 <li>歌词滚动bug</li>
+                <li>解决Antd图标字体bug，导致首屏加载时间过长</li>
                 <li>
                   如果在使用过程中遇到任何问题，可以在
                   <a
