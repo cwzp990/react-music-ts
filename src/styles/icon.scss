@@ -1,0 +1,100 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1553582385313'); /* IE9 */
+  src: url('iconfont.eot?t=1553582385313#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1553582385313') format('woff'),
+  url('iconfont.ttf?t=1553582385313') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1553582385313#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-play2:before {
+  content: "\e600";
+}
+
+.icon-play1:before {
+  content: "\e62f";
+}
+
+.icon-loop:before {
+  content: "\e786";
+}
+
+.icon-music:before {
+  content: "\e619";
+}
+
+.icon-list:before {
+  content: "\e690";
+}
+
+.icon-lock:before {
+  content: "\e618";
+}
+
+.icon-random:before {
+  content: "\e622";
+}
+
+.icon-loading:before {
+  content: "\e627";
+}
+
+.icon-user:before {
+  content: "\e604";
+}
+
+.icon-down:before {
+  content: "\e61a";
+}
+
+.icon-left:before {
+  content: "\e62d";
+}
+
+.icon-comment:before {
+  content: "\e891";
+}
+
+.icon-github:before {
+  content: "\e677";
+}
+
+.icon-headset:before {
+  content: "\e64b";
+}
+
+.icon-right:before {
+  content: "\e61e";
+}
+
+.icon-sequence:before {
+  content: "\e802";
+}
+
+.icon-like:before {
+  content: "\e73b";
+}
+
+.icon-prev:before {
+  content: "\e603";
+}
+
+.icon-next:before {
+  content: "\e602";
+}
+
+.icon-voice:before {
+  content: "\e735";
+}
+
+.icon-close:before {
+  content: "\e615";
+}
+

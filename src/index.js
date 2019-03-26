@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './pages/App'
 import * as serviceWorker from './serviceWorker'
 
-import './styles/reset.scss'
-import './styles/music.scss'
+import './styles/index.scss'
 
 ReactDOM.render(<App />, document.getElementById('root'))
 

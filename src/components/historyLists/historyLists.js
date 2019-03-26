@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Tabs, List, Icon } from 'antd'
+import { Tabs, List } from 'antd'
 import { addPlay, addHistory } from '../../store/actions'
 
 import './historyLists.scss'
@@ -50,12 +50,13 @@ class History extends Component {
                 >
                   <List.Item.Meta
                     avatar={
-                      <Icon
-                        type="caret-right"
+                      <p
                         className={`m-History-avatar ${
                           currentIndex === index ? 'show' : ''
                         }`}
-                      />
+                      >
+                        <i className="icon-play1 iconfont" />
+                      </p>
                     }
                     title={item.title}
                   />
@@ -74,7 +75,7 @@ class History extends Component {
                   onClick={this.play.bind(this, item)}
                 >
                   <List.Item.Meta
-                    avatar={<Icon type="pause" className="m-History-avatar" />}
+                    avatar={<i className="icon-pause iconfont" />}
                     title={item.title}
                   />
                   <div>{item.singer}</div>

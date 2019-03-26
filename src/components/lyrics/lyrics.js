@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Icon } from 'antd'
 import { parseLyric } from '../../utils/common'
 import { api } from '../../api'
 
@@ -26,7 +25,7 @@ class Lyrics extends Component {
     this.getLyricData(song)
   }
 
-  getLyricData = (song) => {
+  getLyricData = song => {
     if (this.state.lyric.length) return false
     api.getLyricResource(song.key).then(res => {
       if (res.data.code === 200) {
@@ -106,7 +105,7 @@ class Lyrics extends Component {
                 target="_Blank"
                 className="author-info"
               >
-                <Icon type="github" />
+                <i className="icon-github iconfont" />
                 <span>桔子</span>
               </a>
             </div>

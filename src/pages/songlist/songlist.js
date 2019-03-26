@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Icon } from 'antd'
+import { Button } from 'antd'
 import { api } from '../../api/index'
 import Classify from '../../components/classify/classify'
 import Tag from '../../components/tag/tag'
@@ -106,7 +106,7 @@ class SongList extends Component {
       <div className="m-SongList">
         <Button size="small" onClick={this.showCategoryBox}>
           {category.name}
-          <Icon type="down" />
+          <i className="icon-down iconfont" />
         </Button>
         <Tag
           title="热门标签:"

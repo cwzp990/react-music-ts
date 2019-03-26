@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Avatar, List, Icon } from 'antd'
+import { Avatar, List } from 'antd'
 import InfiniteScroll from 'react-infinite-scroller'
 import { api } from '../../api/index'
 import { toLocalTime } from '../../utils/common'
@@ -74,8 +74,12 @@ class Comment extends Component {
                 <List.Item
                   key={comment.commentId}
                   actions={[
-                    <p className={`m-Comment-like ${comment.likedCount > 999 ? 'hot' : ''}`}>
-                      <Icon type="like" />
+                    <p
+                      className={`m-Comment-like ${
+                        comment.likedCount > 999 ? 'hot' : ''
+                      }`}
+                    >
+                      <i className="icon-like iconfont" />
                       {comment.likedCount}
                     </p>
                   ]}

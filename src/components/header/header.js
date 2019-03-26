@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Icon, Modal, Input, message, Avatar } from 'antd'
+import { Modal, Input, message, Avatar } from 'antd'
 import { setUserInfo } from '../../store/actions'
 import { setToken, removeToken } from '../../utils/cookie'
 import { api } from '../../api/index'
@@ -18,7 +18,7 @@ class Header extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.bindEvents()
   }
 
@@ -118,9 +118,6 @@ class Header extends Component {
   render() {
     const { showInfo } = this.state
     const { userInfo } = this.props
-    const IconFont = Icon.createFromIconfontCN({
-      scriptUrl: '//at.alicdn.com/t/font_831982_2jm03atr9f.js'
-    })
 
     return (
       <div className="m-Header">
@@ -131,11 +128,13 @@ class Header extends Component {
               <Avatar size={25} src={userInfo.avatarUrl} />
             </p>
             <p>{userInfo.nickname}</p>
-            <Icon type="caret-down" />
+            <p>
+              <i className="icon-down iconfont" />
+            </p>
           </div>
         ) : (
           <div className="m-Header-user" onClick={this.showDialog}>
-            <Icon type="user" theme="outlined" />
+            <i className="icon-user iconfont" />
             未登录
           </div>
         )}
@@ -149,14 +148,14 @@ class Header extends Component {
         >
           <div>
             <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<i className="icon-user iconfont" />}
               placeholder="username"
               className="form-username"
               value={this.state.username}
               onChange={this.handleChangeUser}
             />
             <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<i className="icon-lock iconfont" />}
               type="password"
               placeholder="password"
               value={this.state.password}
@@ -190,7 +189,7 @@ class Header extends Component {
             </p>
           </div>
           <p className="logout" onClick={this.logOut}>
-            <IconFont type="icon-close" className="icon-close" />
+            <i className="icon-close iconfont" />
             <span>退出登录</span>
           </p>
         </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Drawer, Icon } from 'antd'
+import { Drawer } from 'antd'
 import { api } from '../../api/index'
 import { setMyList } from '../../store/actions'
 
@@ -25,7 +25,7 @@ class Mine extends Component {
     this.getData(nextProps)
   }
 
-  getData = (nextProps) => {
+  getData = nextProps => {
     api.getUserPlaylistResource(nextProps.userInfo.userId).then(res => {
       if (res.status === 200) {
         this.setState({
@@ -47,10 +47,6 @@ class Mine extends Component {
   }
 
   render() {
-    const IconFont = Icon.createFromIconfontCN({
-      scriptUrl: '//at.alicdn.com/t/font_831982_tcb8ha10fpr.js'
-    })
-
     return (
       <Drawer
         title="我的歌单"
@@ -71,7 +67,7 @@ class Mine extends Component {
               onClick={this.selectedList.bind(this, list, index)}
             >
               <span className="m-Mine-icon">
-                <IconFont type="icon-music" />
+                <i className="icon-music iconfont" />
               </span>
               <span>{list.name}</span>
             </p>

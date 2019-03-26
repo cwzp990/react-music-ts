@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, Carousel } from 'antd'
+import { Carousel } from 'antd'
 import SongLists from '../../components/songlists/songlists'
 import { api } from '../../api/index'
 
@@ -44,12 +44,7 @@ class Recommend extends Component {
     return (
       <div className="m-Recommend">
         <div className="m-Recommend-banner">
-          <Icon
-            type="left"
-            theme="outlined"
-            className="btn-prev"
-            onClick={this.prev}
-          />
+          <i className="icon-left iconfont" onClick={this.prev} />
           <Carousel autoplay ref="banner">
             {this.state.banners.map(pic => {
               return (
@@ -59,12 +54,7 @@ class Recommend extends Component {
               )
             })}
           </Carousel>
-          <Icon
-            type="right"
-            theme="outlined"
-            className="btn-next"
-            onClick={this.next}
-          />
+          <i className="icon-right iconfont" onClick={this.next} />
         </div>
         <SongLists songList={this.state.songList} />
       </div>

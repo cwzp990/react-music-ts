@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Tabs, Tooltip, Avatar, List, Icon } from 'antd'
+import { Tabs, Tooltip, Avatar, List } from 'antd'
 import InfiniteScroll from 'react-infinite-scroller'
 import Tag from '../../../components/tag/tag'
 import Loading from '../../../components/loading/loading'
@@ -150,7 +150,12 @@ class SonglistDetails extends Component {
                   </p>
                 </div>
                 <div className="m-details-info-tag">
-                  <Tag title="标签:" show={false} forbid={true} category={details.tags} />
+                  <Tag
+                    title="标签:"
+                    show={false}
+                    forbid={true}
+                    category={details.tags}
+                  />
                 </div>
                 <div className="m-details-brief nowrap">
                   <Tooltip
@@ -198,7 +203,9 @@ class SonglistDetails extends Component {
                 </TabPane>
                 <TabPane tab="评论" key="2">
                   <div className="m-Comment-container">
-                    <h3 className="m-Comment-title">最新评论({this.state.count})</h3>
+                    <h3 className="m-Comment-title">
+                      最新评论({this.state.count})
+                    </h3>
                     <div className="m-Comment-scroll">
                       <InfiniteScroll
                         initialLoad={false}
@@ -214,7 +221,7 @@ class SonglistDetails extends Component {
                               key={comment.commentId}
                               actions={[
                                 <p className="liked-count">
-                                  <Icon type="like" />
+                                  <i className="icon-like iconfont" />
                                   {comment.likedCount}
                                 </p>
                               ]}

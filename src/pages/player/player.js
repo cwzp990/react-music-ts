@@ -7,7 +7,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import { Icon, Slider, Tooltip } from 'antd'
+import { Slider, Tooltip } from 'antd'
 import { connect } from 'react-redux'
 import { formatTime, formatDuring, playMode } from '../../utils/common'
 import History from '../../components/historyLists/historyLists'
@@ -160,30 +160,17 @@ class Player extends Component {
     const song = playList[currentIndex]
     const SEQUENCE = 1,
       LOOP = 2
-    const IconFont = Icon.createFromIconfontCN({
-      scriptUrl: '//at.alicdn.com/t/font_831982_ekj1a87f61a.js'
-    })
 
     return (
       <div className="m-Player">
         <div className="m-Player-playBtn">
-          <Icon type="step-backward" theme="outlined" onClick={this.prev} />
+          <i className="icon-prev iconfont" onClick={this.prev} />
           {playing ? (
-            <Icon
-              type="pause"
-              theme="outlined"
-              className="btn-center"
-              onClick={this.play}
-            />
+            <i className="icon-play1 iconfont" onClick={this.play} />
           ) : (
-            <Icon
-              type="caret-right"
-              theme="outlined"
-              className="btn-center"
-              onClick={this.play}
-            />
+            <i className="icon-pause iconfont" onClick={this.play} />
           )}
-          <Icon type="step-forward" theme="outlined" onClick={this.next} />
+          <i className="icon-next iconfont" onClick={this.next} />
         </div>
         <div className="m-Progress-wrapper">
           <span>{formatTime(currentTime)}</span>
@@ -203,11 +190,11 @@ class Player extends Component {
         </div>
         <div className="m-Player-listBtn">
           <div className="m-Player-sound">
-            <Icon type="sound" theme="filled" />
+            <i className="icon-voice iconfont" />
             <Slider onChange={this.changeVoice} defaultValue={58} />
           </div>
           <p onClick={this.showComment}>
-            <Icon type="message" theme="filled" />
+            <i className="icon-comment iconfont" />
           </p>
           <Tooltip
             placement="top"
@@ -221,26 +208,14 @@ class Player extends Component {
             trigger={'click'}
           >
             {mode === SEQUENCE ? (
-              <IconFont
-                type="icon-sequence"
-                className="btn-center"
-                onClick={this.changeMode}
-              />
+              <i className="icon-sequence iconfont" onClick={this.changeMode} />
             ) : mode === LOOP ? (
-              <IconFont
-                type="icon-loop"
-                className="btn-center"
-                onClick={this.changeMode}
-              />
+              <i className="icon-loop iconfont" onClick={this.changeMode} />
             ) : (
-              <IconFont
-                type="icon-random"
-                className="btn-center"
-                onClick={this.changeMode}
-              />
+              <i className="icon-random iconfont" onClick={this.changeMode} />
             )}
           </Tooltip>
-          <IconFont type="icon-list" onClick={this.showHistory} />
+          <i className="icon-list iconfont" onClick={this.showHistory} />
         </div>
         <div
           className={`m-History-pop ${
