@@ -74,10 +74,7 @@ class History extends Component {
                   className="m-History-song"
                   onClick={this.play.bind(this, item)}
                 >
-                  <List.Item.Meta
-                    avatar={<i className="icon-pause iconfont" />}
-                    title={item.title}
-                  />
+                  <List.Item.Meta title={item.title} />
                   <div>{item.singer}</div>
                 </List.Item>
               )}

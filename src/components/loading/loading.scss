@@ -8,5 +8,19 @@
     justify-content: center;
     align-items: center;
     @include wh(100%, 100%);
+    .iconfont {
+      @include sc(48px, $fc);
+      animation: rotate 2s linear infinite;
+      @include wh(auto, auto);
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

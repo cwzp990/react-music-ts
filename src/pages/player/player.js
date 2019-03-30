@@ -166,9 +166,9 @@ class Player extends Component {
         <div className="m-Player-playBtn">
           <i className="icon-prev iconfont" onClick={this.prev} />
           {playing ? (
-            <i className="icon-play1 iconfont" onClick={this.play} />
-          ) : (
             <i className="icon-pause iconfont" onClick={this.play} />
+          ) : (
+            <i className="icon-play1 iconfont" onClick={this.play} />
           )}
           <i className="icon-next iconfont" onClick={this.next} />
         </div>

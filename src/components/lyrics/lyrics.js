@@ -22,11 +22,12 @@ class Lyrics extends Component {
     this.clacTop()
     this.highlightLyric(currentTime)
     const song = playList[currentIndex]
-    this.getLyricData(song)
+    if (!currentTime) {
+      this.getLyricData(song)
+    }
   }
 
   getLyricData = song => {
-    if (this.state.lyric.length) return false
     api.getLyricResource(song.key).then(res => {
       if (res.data.code === 200) {
         // 暂无歌词

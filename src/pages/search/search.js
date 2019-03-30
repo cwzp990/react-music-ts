@@ -45,12 +45,19 @@ class Search extends Component {
     if (!search) return false
     api.getSearchResource(search, offset).then(res => {
       if (res.status === 200) {
-        let list = toNormalizeSearch(res.data.result.songs) || []
+        let list = toNormalizeSearch(res.data.result.songs)
         this.setState({
           list
         })
       }
     })
+  }
+
+  setQuery = key => {
+    this.setState({
+      search: key
+    })
+    this.query()
   }
 
   // 播放歌曲
@@ -81,7 +88,7 @@ class Search extends Component {
                 <li
                   key={index}
                   className="key-item"
-                  onClick={this.query.bind(this, key.first)}
+                  onClick={this.setQuery.bind(this, key.first)}
                 >
                   {key.first}
                 </li>
