@@ -1,139 +1,68 @@
-# ReactPlayer V1.0.3（2019.03.26）
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-市面上有很多的网易云音乐项目，本来不想做这个的，奈何其 API 是最全的，还是动手做了一下
+## Available Scripts
 
-这个是 PC 版的网易云音乐，界面做了精简，因使用的是脸书的 React 框架，所以为了良好的浏览体验，强烈建议使用 Chrome 浏览器
+In the project directory, you can run:
 
-因服务器带宽不高(只有 1M)，过多的人使用可能会有卡顿，请谅解
+### `npm start`
 
-另外，此项目没有做过多的移动端兼容，在移动端、以及页面过小的情况下，可能会出现变形，后续会补上
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-> api：一个开源的[网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi)（有 api 才有动力写！！！）
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-> [在线演示地址](http://www.cwzp990.com)
+### `npm test`
 
-## 更新信息
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### V1.0.1 (2019.03.22)
-- 修改了布局及大部分的样式
-- 新增歌词滚动
-- 添加背景图片，丰富界面内容
-- 播放条播放及拖动更加平滑，更换播放模式时有弹窗提示
+### `npm run build`
 
-### V1.0.2 (2019.03.23)
-- 新增搜索歌曲功能
-- 修复歌词滚动bug
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### V1.0.3 (2019.03.26)
-- 解决Antd图标字体bug，导致首屏加载时间过长
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-## 如何安装与使用
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-> ReactPlayer
+### `npm run eject`
 
-```
-git clone https://github.com/cwzp990/react-music-ts.git //下载项目
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-cd react-music-ts // 进入react-music-ts播放器目录
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-yarn install // 安装依赖
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-yarn start // 服务端运行
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-yarn build //项目打包
+## Learn More
 
-```
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## 技术栈
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-- create-react-app（react 脚手架工具）
-- react（核心框架）
-- react-router（页面路由）
-- redux（状态管理）
-- ES 6 / 7 （JavaScript 语言的下一代标准）
-- SCSS（CSS 预处理器）
-- Axios（网络请求）
-- Antd （蚂蚁金融出品的 React UI 框架）
-- TypeScript (目前没有使用，后续会补上，前端的趋势)
+### Code Splitting
 
-## 项目布局
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-```
-├─node_modules------------------------------------------------------------------------------  第三方依赖包
-├─public------------------------------------------------------------------------------------  react主入口
-└─src---------------------------------------------------------------------------------------  项目主目录
-    ├─api-----------------------------------------------------------------------------------  数据交互接口
-    ├─assets--------------------------------------------------------------------------------  静态资源目录
-    │  └─img--------------------------------------------------------------------------------  图片
-    ├─icons---------------------------------------------------------------------------------  图标字体目录
-    ├─components----------------------------------------------------------------------------  公共项目组建
-    │  ├─classify---------------------------------------------------------------------------  分类组件
-    │  ├─comment----------------------------------------------------------------------------  评论组件
-    │  ├─header-----------------------------------------------------------------------------  头部组件
-    │  ├─historyLists-----------------------------------------------------------------------  历史列表弹框组件
-    │  ├─loading----------------------------------------------------------------------------  加载框组件
-    │  ├─lyrics-----------------------------------------------------------------------------  歌词组件
-    │  ├─nav--------------------------------------------------------------------------------  导航组件
-    │  ├─songlists--------------------------------------------------------------------------  歌单列表组件
-    │  ├─tag--------------------------------------------------------------------------------  标签组件
-    │  └─tips-------------------------------------------------------------------------------  更新提醒框组件
-    ├─pages---------------------------------------------------------------------------------  项目主页面
-    │  ├─mine-------------------------------------------------------------------------------  我的界面
-    │  ├─player-----------------------------------------------------------------------------  播放器
-    │  ├─playList---------------------------------------------------------------------------  播放列表
-    │  ├─rank-------------------------------------------------------------------------------  排行界面
-    │  │  └─ranklist------------------------------------------------------------------------  排行列表
-    │  ├─recommend--------------------------------------------------------------------------  推荐界面
-    │  ├─singer-----------------------------------------------------------------------------  歌手界面
-    │  │  └─singer-details------------------------------------------------------------------  歌手详情
-    │  └─songlist---------------------------------------------------------------------------  歌单界面
-    │      └─songlist-details---------------------------------------------------------------  歌单详情
-    ├─router--------------------------------------------------------------------------------  react-router路由
-    ├─store---------------------------------------------------------------------------------  redux状态管理库
-    ├─styles--------------------------------------------------------------------------------  公用样式
-    └─utils---------------------------------------------------------------------------------  公用js方法封装
+### Analyzing the Bundle Size
 
-```
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-## 功能
+### Making a Progressive Web App
 
-- 播放器
-- 歌词滚动
-- 正在播放
-- 排行榜
-- 歌单详情
-- 割手详情
-- 播放历史
-- 查看评论
-- 同步网易云歌单
-- 歌词滚动
-- 搜索歌曲
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-## 界面欣赏
+### Advanced Configuration
 
-#### 登录页面
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-![登录页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/login.gif)
+### Deployment
 
-#### 播放页面
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-![播放页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/play.gif)
+### `npm run build` fails to minify
 
-#### 排行页面
-
-![排行页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/rank.gif)
-
-#### 歌手页面
-
-![歌手页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/singer.gif)
-
-#### 歌单页面
-
-![歌单页面](https://github.com/cwzp990/react-music-ts/blob/master/src/assets/gif/songList.gif)
-
-## 其他说明
-
-- 个人练手项目（终于对 React 有了大致的了解啦！！！）
-- 近期会将在此项目中遇到的问题整理出来，React 和 Vue 有一些地方还是有所不同的，其中踩了很多的坑
-- 如果您喜欢该作品，您可以点右上角 "Star" "Fork" 表示支持 谢谢！
-- 如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

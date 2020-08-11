@@ -1,0 +1,5 @@
+@import '../../styles/mixin.scss';
+.music-header {
+  @include wh(100%, 50px);
+  background: #fff;
+}
